@@ -1,0 +1,25 @@
+{
+  "name": "qlik-sense-extension-tutorial",
+  "version": "1.0.0",
+  "description": "Qlik Sense extension tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jabellizzi@bitbucket.org/axisgroup-vap/qlik-sense-extension-tutorial.git"
+  },
+  "author": "John Bellizzi",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/axisgroup-vap/qlik-sense-extension-tutorial#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-env": "^1.5.2",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  }
+}
