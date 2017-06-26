@@ -1,1 +1,5 @@
 /node_modules
+/dist/app.bundle.js
+/dist/vendor.bundle.js
+/dist/bootstrap-3.3.7-dist
+/dist/jquery-3.2.1.min.js
