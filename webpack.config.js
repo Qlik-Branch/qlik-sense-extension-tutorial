@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -22,6 +23,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.ejs',
+      filename: 'index.html',
+      title: 'Qlik Sense Tutorial'
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor'
     })

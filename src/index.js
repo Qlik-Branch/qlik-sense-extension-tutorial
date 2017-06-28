@@ -1,1 +1,3 @@
-console.log('index.js');
+function closeNav(){console.log('open')}
+
+function openNav(){console.log('opent')};

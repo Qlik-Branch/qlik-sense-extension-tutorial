@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link href="dist/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+  </head>
+  <body>
+    <!--<%= require('html-loader!./partial.html') %>-->
+    <!--<div class="container-fluid">
+      <div class="row">-->
+        <div id="sidebar" class="sidebar">
+          <div class="sidebar-label">QIX Tutorial</div>
+          <hr/>
+          <ul class="nav nav-sidebar">
+            <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-menu-down"></span> 100. Qlik's open ecosystem</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> 101. What are extensions</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> 102. Hello World</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> 103. Make it data driven</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> 104. Make it selectable</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> 105. Make it stylish</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span> 106. Make it responsive</a></li>
+          </ul>
+        </div>
+
+        <div class="hamburger-open" onclick="openNav()">&#9776;</div>
+
+        <!--<div class="col-xs-11 col-xs-offset-1 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+          Dashboard
+        </div>-->
+      <!--</div>
+    </div>-->
+
+    <script>
+      function openNav(){
+        document.getElementById('sidebar').classList.add('active');
+      }
+
+      function closeNav(){
+        document.getElementById('sidebar').classList.remove('active');
+      }
+    </script>
+
+    <script src="dist/jquery-3.2.1.min.js"></script>
+    <script src="dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
