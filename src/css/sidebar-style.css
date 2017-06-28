@@ -11,14 +11,19 @@
   background-color: #2E3037;
 }
 .sidebar .closebtn {
+  position: absolute;
+  right: 25px;
   display: block;
   text-align: right;
+  float: left;
+  font-size: 14px;
+  color: #fff;
 }
 .hamburger-open {
   display: block;
   float: left;
-  width: 200px;
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-size: 30px;
   cursor: pointer;
 }
@@ -43,8 +48,10 @@
 }
 
 .sidebar-label {
+  float: left;
   margin-top: 6px;
   margin-left: 10px;
+  margin-right: 10px;
   font-family: 'Roboto Slab';
   font-size: 18px;
   color: white;
