@@ -85,3 +85,8 @@
     display: none;
   }
 }
+
+.sidebar .sub-sidebar a {
+  padding-left: 60px;
+  color: #DFDFDF;
+}
