@@ -27,24 +27,10 @@
   font-size: 30px;
   cursor: pointer;
 }
-@media(min-width: 768px) {
-  .sidebar {
-    width: 220px;
-    padding: 10px;
-  }
-
-  .sidebar .closebtn {
-    display: none;
-  }
-
-  .hamburger-open {
-    display: none;
-  }
-}
 
 .sidebar.active {
   width: 220px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .sidebar-label {
@@ -84,4 +70,18 @@
 .nav > li > a:hover,
 .nav > li > a:focus {
   background-color: #353D43;
+}
+@media(min-width: 768px) {
+  .sidebar {
+    width: 220px;
+    padding: 10px;
+  }
+
+  .sidebar .closebtn {
+    display: none;
+  }
+
+  .hamburger-open {
+    display: none;
+  }
 }
