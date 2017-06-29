@@ -20,98 +20,15 @@
         <div class="main-content">
           <div class="container content">
             <div class="header">
-              <h1 class="title">100. Prereq: Qlik's Open Ecosystem</h1>
-              <p><strong>An introduction to the concept of extensions and basic usage</strong></p>
-              <p>Learning goal: Understand what extensions are, what they are made of, and how to use them</p>
+              <%= require('html-loader!./html/content/chapter 1/chapter1-header.ejs') %>
               <hr/>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body">
-                <h2>What are extensions, conceptually?</h2>
-                <p>Qlik Sense comes with a standard set of chart objects that allow users to visually explore their data. The bar chart, line chart, and table are all examples of the out-of-box objects that users have access to with Qlik Sense. These objects can be organized into a dashboard, respond to any size, and be integrated into Qlik Sense Stories. However, these charts may not answer every problem that a user has, especially when encountering unique business cases.</p>
-                <p>As part of Qlik’s open ecosystem, Qlik has introduced a powerful concept called Extension Objects that allow us to extend the capabilities of the Qlik Sense Client in unique ways.</p>
-                <p>Extension Objects are custom objects integrated into Qlik SenseExtensions are custom objects built outside of the core Qlik Product. They are typically used to produce unique visualizations and chart forms that are not available from the core charting library.</p>
-                <p><img src="101.%20What%20are%20Extensions?/ext-sunburst.png" alt=""></img></p>
-                <p>
-                  However, these custom objects aren’t limited to data visualization and can serve other purposes as well. For example, we could build an extension that implements a custom navigation mechanism for moving from sheet to sheet in a Qlik Sense dashboard.
-                  <gif of navigation extension>
-                </p>
-                <p>
-                  They behave like normal objectsExtension Objects are embedded directly into the Qlik Sense Client and therefore feel like out of box components. Users add them to dashboards with the same drag and drop mechanism as any other feature in Qlik Sense. The objects are responsive to the screen resolution and can hook into dynamic Qlik data. This allows extensions to both respond to changing data as well as make selections and perform other actions back against Qlik’s data. Extensions are fully baked into Qlik Sense’s self-service model, making it easy for business users to take advantage of the additional functionality they bring to the tool.
-                  <gif of ext resize and filter>
-                </p>
-                <p>Anyone can build themExtension objects can be built by anyone with a little knowledge of web development using the Extension API documentation. There are no special licensing requirements to build and share an extension.</p>
-                <p>They work anywhere that Qlik Sense worksExtensions are easily deployable onto Qlik Sense Desktop and Qlik Sense Server. They can be shared easily; a large repository of open extensions are available from branch.qlik.com.</p>
-                <h2>What are extensions, technically?</h2>
-                <p>Extension objects, from a technical perspective, are comprised of code that runs in the browser. Specifically, they use:</p>
-                <ul>
-                  <li>
-                    <p><strong>HTML5</strong> for rendering onto the page via divs, svgs, etc.</p>
-                  </li>
-                  <li>
-                    <p><strong>JavaScript</strong> for adding interactivity to the object, such as filtering data or dynamically drawing a chart based on input data</p>
-                  </li>
-                  <li>
-                    <p><strong>JSON</strong> for defining metadata that guides how the extension is organized and configured by an end user</p>
-                  </li>
-                  <li>
-                    <p><strong>CSS</strong> for styling the object</p>
-                  </li>
-                </ul>
-                <h2>How do you deploy an extension? And how do you use it?</h2>
-                <p>Deployment of extensions depends on your environment, as it differs slightly from desktop to server.</p>
-                <h3>Qlik Sense Desktop</h3>
-                <p>On Qlik Sense Desktop, the code for an extension lives in a folder on our machine. We can directly create, edit, and remove extension code from this folder, and Qlik Sense Desktop will pull those extensions in. The location of this folder is <em>Users{our-username}\Documents\Qlik\Sense\Extensions</em>. To install an extension, all we need to do is:</p>
-                <ol>
-                  <li>
-                    <p>Download the folder containing the extension code<img src="101.%20What%20are%20Extensions?/sense-sankey-download.png" alt=""></img></p>
-                  </li>
-                  <li>
-                    <p>Place the extension folder into the directory <em>Users{our-username}\Documents\Qlik\Sense\Extensions</em><img src="101.%20What%20are%20Extensions?/sense-sankey-folder.png" alt=""></img></p>
-                  </li>
-                  <li>
-                    <p>Open Qlik Sense Desktop and we will have access to that extension in the left panel under the Custom Objects sub-panel!<img src="101.%20What%20are%20Extensions?/sense-sankey-custom-objects.png" alt=""></img></p>
-                  </li>
-                </ol>
-                <h3>Qlik Sense Server</h3>
-                <p>For Qlik Sense Server, extensions are installed via the QMC. To install an extension, we need to:</p>
-                <ol>
-                  <li>
-                    <p>Zip up a folder containing the extension code and import it via the Extensions page<img src="101.%20What%20are%20Extensions?/import-extensions.png" alt=""></img></p>
-                  </li>
-                  <li>
-                    <p>Once it is successfully imported, the extension will appear in the custom objects panel of Qlik Sense when in Edit mode<img src="101.%20What%20are%20Extensions?/sense-sankey-custom-objects.png" alt=""></img></p>
-                  </li>
-                </ol>
-                <p>Extensions are used just like out of the box charts. While editing a Qlik Sense dashboard, you can use the Extensions left panel to drag and drop an extension onto your dashboard. Once it is on the dashboard, it can be configured via the properties panel on the right just like any other object.</p>
-                <p>
-                  <gif of drag and drop, setup of extension>
-                </p>
-                <h2>Fin</h2>
-                <h4>Recap</h4>
-                <ul>
-                  <li>
-                    <p>Qlik Sense Extensions allow us to build custom functionality into the Qlik Sense Client, such as advanced charts or navigation components</p>
-                  </li>
-                  <li>
-                    <p>Extensions are built with HTML, CSS, and JS</p>
-                  </li>
-                  <li>
-                    <p>Extensions function just like the out-of-box charts and can be deployed to desktop and server</p>
-                  </li>
-                </ul>
-                <h4>Resources</h4>
-                <ul>
-                  <li>
-                    <p><a href="http://branch.qlik.com">Qlik Branch</a> – developer community with open source extensions for download</p>
-                  </li>
-                </ul>
-                <h4>Troubleshooting Guide</h4>
-                <ul>
-                  <li></li>
-                </ul>
+                <%= require('html-loader!./html/content/chapter 1/chapter1-body.ejs') %>
               </div>
             </div>
+            <hr/>
           </div>
         </div>
 

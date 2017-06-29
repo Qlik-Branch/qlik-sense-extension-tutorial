@@ -71,7 +71,7 @@
 .nav > li > a:focus {
   background-color: #353D43;
 }
-@media(min-width: 768px) {
+@media(min-width: 992px) {
   .sidebar {
     width: 220px;
     padding: 10px;

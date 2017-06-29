@@ -1,6 +1,16 @@
+/* ========= Container =========*/
 .main-content {
   margin-left: 47px;
 }
+.content {
+    width: 100%;
+}
+.content hr {
+  border-top-width: 1px;
+  border-top-color: #E1E1E1;
+}
+
+/* ========= Header =========*/
 .content .header h1 {
   margin-top: 66px;
   font-family: Raleway;
@@ -12,34 +22,45 @@
   font-weight: 300;
   font-style: italic;
 }
-.content .header hr {
-  border-top-width: 1px;
-  border-top-color: #E1E1E1;
-}
+
+/* ========= Body =========*/
 .content .body h2 {
   font-family: Raleway;
   font-size: 24px;
   font-weight: 500;
-  color: #36B7CF
+  font-style: normal;
+  color: #36B7CF;
 }
-@media(min-width: 768px) {
+.content .body h3 {
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  color: #36B7CF;
+}
+.content .body h4 {
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  color: #36B7CF;
+}
+.content .body p {
+  font-family: 'Open Sans';
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #565555;
+}
+
+/* ========= Media =========*/
+@media(min-width: 992px) {
   .main-content {
     margin-left: 220px;
   }
   .content {
     width: calc(100% - 180px);
     margin-left: 90px;
-    margin-right: 90px; 
-    /*width: calc(750px - 220px);*/
+    margin-right: 90px;
   }
 }
-/*@media(min-width: 992px) {
-  .content {
-    width: calc(970px - 220px);
-  }
-}
-@media(min-width: 1200px) {
-  .content {
-    width: calc(1170px - 220px)
-  }
-}*/
