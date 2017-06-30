@@ -57,37 +57,38 @@
 .content .row {
   position: relative;
 }
-.content .list-section {
-  margin-top: 40px;
-}
-.content .list-section-text {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.content .list-image {
-  float: right;
-}
-#section-10 {
-  margin-top: 40px;
+.content .section {
+  margin-bottom: 50px;
 }
 
 /* ========= Images ========= */
-.content .body-right #ext-sunburst {
-  /*position: relative;*/
-  margin-top: 56px;
-  margin-bottom: 10px;
-}
-.content .body-right #ext-navigation {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-.content .body-right #ext-resize {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
 
 /* ========= Media =========*/
+@media(min-width: 768px){
+  .content .list-section-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+  }
+  .content .list-image {
+    float: right;
+  }
+
+  .content .body-right #ext-sunburst {
+    margin-top: 56px;
+    margin-bottom: 10px;
+  }
+  .content .body-right #ext-navigation {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .content .body-right #ext-resize {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
 @media(min-width: 992px) {
   .main-content {
     margin-left: 220px;
