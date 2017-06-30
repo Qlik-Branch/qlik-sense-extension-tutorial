@@ -1,25 +1,15 @@
-<div id="sections">
-<div id="section-1">
 <h2>What are extensions, conceptually?</h2>
 <p>Qlik Sense comes with a standard set of chart objects that allow users to visually explore their data. The bar chart, line chart, and table are all examples of the out-of-box objects that users have access to with Qlik Sense. These objects can be organized into a dashboard, respond to any size, and be integrated into Qlik Sense Stories. However, these charts may not answer every problem that a user has, especially when encountering unique business cases.</p>
 <p>As part of Qlik’s open ecosystem, Qlik has introduced a powerful concept called Extension Objects that allow us to extend the capabilities of the Qlik Sense Client in unique ways.</p>
 <h3>Extension Objects are custom objects integrated into Qlik Sense</h3>
 <p>Extensions are custom objects built outside of the core Qlik Product. They are typically used to produce unique visualizations and chart forms that are not available from the core charting library.</p>
 <p>However, these custom objects aren’t limited to data visualization and can serve other purposes as well. For example, we could build an extension that implements a custom navigation mechanism for moving from sheet to sheet in a Qlik Sense dashboard.</p>
-</div>
-<div>
 <h3>They behave like normal objects</h3>
 <p> Objects are embedded directly into the Qlik Sense Client and therefore feel like out of box components. Users add them to dashboards with the same drag and drop mechanism as any other feature in Qlik Sense. The objects are responsive to the screen resolution and can hook into dynamic Qlik data. This allows extensions to both respond to changing data as well as make selections and perform other actions back against Qlik’s data. Extensions are fully baked into Qlik Sense’s self-service model, making it easy for business users to take advantage of the additional functionality they bring to the tool.</p>
-</div>
-<div>
 <h3>Anyone can build them</h3>
 <p>Extension objects can be built by anyone with a little knowledge of web development using the Extension API documentation. There are no special licensing requirements to build and share an extension.</p>
-</div>
-<div>
 <h3>They work anywhere that Qlik Sense works</h3>
 <p>Extensions are easily deployable onto Qlik Sense Desktop and Qlik Sense Server. They can be shared easily; a large repository of open extensions are available from branch.qlik.com.</p>
-</div>
-</div>
 <h2>What are extensions, technically?</h2>
 <p>Extension objects, from a technical perspective, are comprised of code that runs in the browser. Specifically, they use:</p>
 <ul>

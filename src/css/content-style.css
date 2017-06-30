@@ -8,6 +8,7 @@
 .content hr {
   border-top-width: 1px;
   border-top-color: #E1E1E1;
+  margin-bottom: 0;
 }
 
 /* ========= Header =========*/
@@ -25,7 +26,7 @@
 
 /* ========= Body =========*/
 .content .body-left h2 {
-  margin-top: 0;
+  margin-top: 56px;
   font-family: Raleway;
   font-size: 24px;
   font-weight: 500;
@@ -47,52 +48,23 @@
   color: #36B7CF;
 }
 .content .body-left p {
-  margin-bottom: 0;
-  margin-top: 10px;
   font-family: 'Open Sans';
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
   color: #565555;
 }
-/*.row {
-  position: relative;
-  height: 100%;
-}*/
-.body-right {
-  position: relative;
-  height: 50px;
+
+/* ========= Images ========= */
+.content .body-right #ext-sunburst {
+  /*position: relative;*/
+  margin-top: 56px;
 }
-#body-left > div {
-  opacity: 0.3;
+.content .body-right #ext-navigation {
+  margin-top: 180px;
 }
-#body-left.graph-scroll-active {
-  opacity: 1;
-}
-#section-0 {
-  position: relative;
-}
-#ext-sunburst {
-  position: absolute;
-  /*padding-left: 15px;
-  padding-right: 15px;*/
-  width: 300px;
-  right: 15px;
-  /*margin-left: 472px;*/
-  /*margin-top: 20px;
-  margin-bottom: 10px;*/
-  /*top: 20px;*/
-  /*width: 300px;*/
-}
-.graph-scroll-fixed #ext-sunburst {
-  position: fixed;
-  top: 0;
-  right: 120px;
-}
-.graph-scroll-below #ext-sunburst {
-  position: absolute;
-  top: auto;
-  bottom: 0px;
+.content .body-right #ext-resize {
+  margin-top: 30px;
 }
 
 /* ========= Media =========*/
