@@ -25,7 +25,7 @@
 
 /* ========= Body =========*/
 .content .body-left h2 {
-  margin-top: 80px;
+  margin-top: 0;
   font-family: Raleway;
   font-size: 24px;
   font-weight: 500;
@@ -47,11 +47,52 @@
   color: #36B7CF;
 }
 .content .body-left p {
+  margin-bottom: 0;
+  margin-top: 10px;
   font-family: 'Open Sans';
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
   color: #565555;
+}
+/*.row {
+  position: relative;
+  height: 100%;
+}*/
+.body-right {
+  position: relative;
+  height: 50px;
+}
+#body-left > div {
+  opacity: 0.3;
+}
+#body-left.graph-scroll-active {
+  opacity: 1;
+}
+#section-0 {
+  position: relative;
+}
+#ext-sunburst {
+  position: absolute;
+  /*padding-left: 15px;
+  padding-right: 15px;*/
+  width: 300px;
+  right: 15px;
+  /*margin-left: 472px;*/
+  /*margin-top: 20px;
+  margin-bottom: 10px;*/
+  /*top: 20px;*/
+  /*width: 300px;*/
+}
+.graph-scroll-fixed #ext-sunburst {
+  position: fixed;
+  top: 0;
+  right: 120px;
+}
+.graph-scroll-below #ext-sunburst {
+  position: absolute;
+  top: auto;
+  bottom: 0px;
 }
 
 /* ========= Media =========*/
