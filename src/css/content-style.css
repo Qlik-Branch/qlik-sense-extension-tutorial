@@ -65,26 +65,26 @@
 
 /* ========= Media =========*/
 @media(min-width: 768px){
-  .content .list-section-text {
+  .content .section-list .body-left {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
   }
-  .content .list-image {
+  .content .section-list .body-right {
     float: right;
   }
 
-  .content .body-right #ext-sunburst {
+  .content #section-0 .body-right img {
     margin-top: 56px;
     margin-bottom: 10px;
   }
-  .content .body-right #ext-navigation {
+  .content #section-1 .body-right img {
     margin-top: 20px;
     margin-bottom: 10px;
   }
-  .content .body-right #ext-resize {
+  .content #section-2 .body-right img {
     margin-top: 20px;
     margin-bottom: 10px;
   }
