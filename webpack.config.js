@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/js/index.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -38,13 +38,23 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.ejs',
+      template: 'src/html/index.ejs',
       filename: 'index.html',
       title: 'Qlik Sense Tutorial'
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+    new HtmlWebpackPlugin({
+      template: "src/html/100. Prereq Qliks Open Ecosystem/100. Prereq Qliks Open Ecosystem.ejs",
+      filename: "100. Prereq Qliks Open Ecosystem.html",
+      title: "Prereq: Qlik's Open Ecosystem"
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/html/101. What Are Extensions/101. What Are Extensions.ejs',
+      filename: '101. What Are Extensions.html',
+      title: 'What Are Extensions'
     })
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor'
+    // })
   ],
   devtool: 'cheap-module-eval-source-map',
 }
