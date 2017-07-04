@@ -1,6 +1,4 @@
-/node_modules
-/dist
-/html-content
-/src/imgs
+node_modules/
+dist/
 .DS_Store
-dist-mdon/
+markdown-original/

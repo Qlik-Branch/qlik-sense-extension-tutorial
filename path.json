@@ -1,4 +1,4 @@
 {
   "input": "markdown-input",
-  "output": "src/html"
+  "output": "src/web/html"
 }

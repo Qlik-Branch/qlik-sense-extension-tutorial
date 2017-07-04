@@ -15,9 +15,3 @@ hamburgerButton.addEventListener('click', () =>{
 closeButton.addEventListener('click', () =>{
   document.getElementById('sidebar').classList.remove('active');
 })
-// graphScroll()
-//     .graph(d3.select('#ext-sunburst'))
-//     .container(d3.select('#section-0'))
-//   .sections(d3.selectAll('#body-left'))
-  // .on('active', function(d){console.log('section ' +d +' active')})
-  // .offset(500);

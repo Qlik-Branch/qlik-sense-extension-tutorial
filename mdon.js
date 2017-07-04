@@ -1265,8 +1265,8 @@ var _compile2 = _interopRequireDefault(_compile);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var fs = __webpack_require__(75),
-    path = __webpack_require__(76);
+var fs = __webpack_require__(74),
+    path = __webpack_require__(75);
 
 fs.readFile('./path.json', 'utf8', function (err, directories) {
   var directoryObj = JSON.parse(directories);
@@ -1318,23 +1318,21 @@ var _markdownIt2 = _interopRequireDefault(_markdownIt);
 
 var _dataPrep = __webpack_require__(69);
 
+var _dataPrep2 = _interopRequireDefault(_dataPrep);
+
 var _nestData = __webpack_require__(70);
 
 var _nestData2 = _interopRequireDefault(_nestData);
 
-var _createBook = __webpack_require__(71);
+var _createChapter = __webpack_require__(71);
 
-var _createBook2 = _interopRequireDefault(_createBook);
+var _createChapter2 = _interopRequireDefault(_createChapter);
 
 var _applyClass = __webpack_require__(72);
 
 var _applyClass2 = _interopRequireDefault(_applyClass);
 
-var _applyStyle = __webpack_require__(73);
-
-var _applyStyle2 = _interopRequireDefault(_applyStyle);
-
-var _generateHTML = __webpack_require__(74);
+var _generateHTML = __webpack_require__(73);
 
 var _generateHTML2 = _interopRequireDefault(_generateHTML);
 
@@ -1345,7 +1343,7 @@ var md = new _markdownIt2.default();
 function compileMarkdown(inputMarkdown) {
   // =============== Testing ===============
   var parse2 = md.parse(inputMarkdown);
-  (0, _dataPrep.adjustTagNesting)(parse2);
+  (0, _dataPrep2.default)(parse2);
   var nestedData2 = (0, _nestData2.default)(parse2);
 
   // =============== Markdown-It ===============
@@ -1355,7 +1353,7 @@ function compileMarkdown(inputMarkdown) {
   // =============== Data Conversion ===============
   /* Find opening tags that have same nesting value as inline 
       and update */
-  (0, _dataPrep.adjustTagNesting)(parse);
+  (0, _dataPrep2.default)(parse);
 
   /* Nest all content into tags that contain them */
   var nestedData = (0, _nestData2.default)(parse);
@@ -1363,46 +1361,47 @@ function compileMarkdown(inputMarkdown) {
   /* Nest data using special rules where <h1> represents the
       start of a chapter and <h2> represents a section within
       a chapter */
-  var book = (0, _createBook2.default)(nestedData);
+  var chapter = (0, _createChapter2.default)(nestedData);
 
   // =============== Class ===============
   var classList = [{
     tag: 'img',
     className: 'img-responsive'
+  }, {
+    tag: 'div',
+    className: 'graph'
   }];
 
-  book.forEach(function (chapter) {
-    chapter.sections.forEach(function (section) {
-      (0, _applyClass2.default)(section.img, classList);
-    });
+  chapter.sections.forEach(function (section) {
+    (0, _applyClass2.default)(section.content, classList);
+    (0, _applyClass2.default)(section.graph, classList);
   });
 
   // =============== HTML ===============
   /* Convert json structure to HTML */
   var headerHtml = '',
       bodyHtml = '';
-  book.forEach(function (chapter) {
-    headerHtml += (0, _generateHTML2.default)(chapter.header);
-    chapter.sections.forEach(function (section) {
-      bodyHtml += '<div id="section-' + section.section + '"';
-      bodyHtml += 'class="section';
-      if (section.content.length > 0) {
-        if (section.img && section.content[0].tag === 'ol') {
-          bodyHtml += ' section-list">';
-        } else bodyHtml += '">';
-      } else bodyHtml += '">';
-      bodyHtml += '<div class="row">\n            <div class="col-sm-6 col-md-6 col-lg-6 body-left">\n      ';
-      bodyHtml += (0, _generateHTML2.default)(section.content);
+
+  headerHtml += (0, _generateHTML2.default)(chapter.header);
+  chapter.sections.forEach(function (section) {
+    bodyHtml += '<div id="section-' + section.section + '"';
+    bodyHtml += 'class="section">';
+    // if(section.content.length > 0){
+    //   if(section.img && section.content[0].tag === 'ol'){
+    //     bodyHtml += ' section-list">';
+    //   } else bodyHtml += '">';
+    // } else bodyHtml += '">';
+    bodyHtml += '<div class="row">\n          <div class="col-sm-6 col-md-6 col-lg-6 body-left">\n    ';
+    bodyHtml += (0, _generateHTML2.default)(section.content);
+    bodyHtml += '</div>';
+
+    if (section.graph) {
+      bodyHtml += '<div class="col-sm-6 col-md-6 col-lg-6 body-right">';
+      bodyHtml += (0, _generateHTML2.default)(section.graph);
       bodyHtml += '</div>';
+    }
 
-      if (section.img) {
-        bodyHtml += '<div class="col-sm-6 col-md-6 col-lg-6 body-right">';
-        bodyHtml += (0, _generateHTML2.default)(section.img);
-        bodyHtml += '</div>';
-      }
-
-      bodyHtml += '</div></div>';
-    });
+    bodyHtml += '</div></div>';
   });
 
   return {
@@ -10117,8 +10116,9 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = dataPrep;
 // Data Cleanse
-function adjustTagNesting(inputArray) {
+function dataPrep(inputArray) {
   /* ==============================================================================================
      The structure of tags generally looks like this:
       - level n for the opening tag
@@ -10148,17 +10148,20 @@ function adjustTagNesting(inputArray) {
           }
         });
       };
-
-      element.children.forEach(function (child) {
-        if (child.type === 'image') {
-          inputArray[elementIndex - 1] = child;
-          var removedItem = inputArray.splice(elementIndex, 1);
-
-          child.nesting = 1;
-          child.attrs[1][1] = child.content;
-        }
-      });
     };
+
+    if (element.content.includes('<div class="graph">')) {
+      element.type = 'div_open';
+      element.tag = 'div';
+      element.classList = [];
+      element.level = inputArray[elementIndex - 1].level;
+      if (element.children.length > 1) {
+        element.children[1].content = [{ content: '' }];
+        element.content = [element.children[1]];
+      } else element.content = [{ content: '' }];
+
+      inputArray.splice(elementIndex - 1, 1);
+    }
 
     if (element.tag === 'h2' && element.nesting === 1) {
       var h2Array = inputArray[elementIndex + 1].content.split(' ');
@@ -10177,8 +10180,6 @@ function adjustTagNesting(inputArray) {
 
   return inputArray;
 }
-
-exports.adjustTagNesting = adjustTagNesting;
 
 /***/ }),
 /* 70 */
@@ -10316,83 +10317,37 @@ exports.default = nestData;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = createBook;
-function createBook(nestedData) {
+exports.default = createChapter;
+function createChapter(nestedData) {
   // Convert content into book/chapter hierarchy
   /* Inputting array of nested elements. Enter nestedData array into
       a while loop. for every iteration will shift() a value out of 
       the array, and will repeat until the array is empty */
-  var book = [],
+  var chapter = {
+    sections: []
+  },
       i = 0;
 
   while (nestedData.length && i < 10000) {
-    // while there are still values in array..
-    /* Get current length of book and current length of sections with current book */
-    var bookIndex = book.length - 1;
-    if (book[bookIndex]) var sectionIndex = book[bookIndex].sections.length - 1;else var sectionIndex = 0;
+    var sectionIndex = chapter.sections.length;
 
-    /* If we reach an h1 tag, create a new chapter for the book. This content will
-        be a part of the header of the page. */
     if (nestedData[0].tag === 'h1') {
-      book.push({
-        chapter: book.length + 1,
-        title: nestedData[0].content[0].content,
-        header: [nestedData.shift()],
-        sections: []
+      chapter.title = nestedData[0].content[0].content;
+      chapter.header = [nestedData.shift()];
+    } else if (nestedData[0].tag === 'div') {
+      chapter.sections.push({
+        section: sectionIndex,
+        graph: [nestedData.shift()],
+        content: []
       });
+    } else {
+      if (sectionIndex > 0) chapter.sections[sectionIndex - 1].content.push(nestedData.shift());else chapter.header.push(nestedData.shift());
     }
-
-    /* If we reach an img tag, create a new section within the chapter. The image
-        content will be stored in the img object and the pertinent left pane text
-        will be stored in the content array */
-    else if (nestedData[0].tag === 'img') {
-        book[bookIndex].sections.push({
-          section: book[bookIndex].sections.length,
-          img: [nestedData.shift()],
-          content: []
-        });
-
-        if (nestedData[0]) {
-          /* Normally, an h2 tag will create a new section in the chapter. If an h2 tag
-              immediately follows an img tag, we want to shift it out of the array and
-              place it within the content of the image we just pulled */
-          if (nestedData[0].tag === 'h2') {
-            book[bookIndex].sections[book[bookIndex].sections.length - 1].content.push(nestedData.shift());
-          }
-
-          /* If we have an ol with associated img, the following tag should always start
-              a new section */
-          if (nestedData[0].tag === 'ol') {
-            book[bookIndex].sections[book[bookIndex].sections.length - 1].content.push(nestedData.shift());
-
-            if (nestedData[0].tag != 'img') {
-              book[bookIndex].sections.push({
-                section: book[bookIndex].sections.length,
-                content: [nestedData.shift()]
-              });
-            }
-          }
-        }
-      }
-
-      /* If we reach an h2 tag, create a new section. This will be triggered whenever
-          we have an h2 that doesn't have an image associated with it */
-      else if (nestedData[0].tag === 'h2') {
-          book[bookIndex].sections.push({
-            section: book[bookIndex].sections.length,
-            content: [nestedData.shift()]
-          });
-        }
-
-        /* All other content gets stored in whatever section of the book we are currently at. */
-        else {
-            if (book[bookIndex].sections.length > 0) book[bookIndex].sections[sectionIndex].content.push(nestedData.shift());else book[bookIndex].header.push(nestedData.shift());
-          }
 
     i++;
   }
 
-  return book;
+  return chapter;
 }
 
 /***/ }),
@@ -10410,6 +10365,7 @@ function applyClass(inputArray, classArray) {
   if (Array.isArray(inputArray)) {
     inputArray.forEach(function (element) {
       applyClass(element.content, classArray);
+      if (!element.classList) element.classList = [];
       classArray.forEach(function (classObject) {
         if (element.tag === classObject.tag) {
           if (element.classList.indexOf(classObject.className) === -1) {
@@ -10423,32 +10379,6 @@ function applyClass(inputArray, classArray) {
 
 /***/ }),
 /* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = applyStyle;
-function applyStyle(inputArray, styleArray) {
-  if (Array.isArray(inputArray)) {
-    inputArray.forEach(function (element) {
-      applyStyle(element.content, styleArray);
-      styleArray.forEach(function (styleObject) {
-        if (element.tag === styleObject.tag) {
-          styleObject.styleDefinitions.forEach(function (inlineStyle) {
-            element.styleList.push(inlineStyle);
-          });
-        }
-      });
-    });
-  }
-}
-
-/***/ }),
-/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10476,15 +10406,6 @@ function generateHTML(input) {
         outString += '"';
       };
 
-      /* add any styles that exist for this element */
-      if (element.styleList.length) {
-        outString += ' style="';
-        element.styleList.forEach(function (style) {
-          outString += style.style + ':' + style.definition + ';';
-        });
-        outString += '"';
-      };
-
       /* add any attributes that exist for this element */
       if (element.attrs) if (element.attrs.length) {
         element.attrs.forEach(function (attr) {
@@ -10505,13 +10426,13 @@ function generateHTML(input) {
 }
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");

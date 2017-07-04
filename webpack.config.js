@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/js/index.js'
+    app: './src/web/js/index.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -38,17 +38,17 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/html/index.ejs',
+      template: 'src/web/html/index.ejs',
       filename: 'index.html',
       title: 'Qlik Sense Tutorial'
     }),
     new HtmlWebpackPlugin({
-      template: "src/html/100. Prereq Qliks Open Ecosystem/100. Prereq Qliks Open Ecosystem.ejs",
+      template: "src/web/html/100. Prereq Qliks Open Ecosystem/100. Prereq Qliks Open Ecosystem.ejs",
       filename: "100. Prereq Qliks Open Ecosystem.html",
       title: "Prereq: Qlik's Open Ecosystem"
     }),
     new HtmlWebpackPlugin({
-      template: 'src/html/101. What Are Extensions/101. What Are Extensions.ejs',
+      template: 'src/web/html/101. What Are Extensions/101. What Are Extensions.ejs',
       filename: '101. What Are Extensions.html',
       title: 'What Are Extensions'
     })

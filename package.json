@@ -4,9 +4,8 @@
   "description": "Qlik Sense extension tutorial",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile-mdon": "node mdon.js",
     "watch-markdown": "node watch.js",
-    "compile-markdown": "node mdon.js",
     "build": "webpack",
     "watch": "webpack --watch",
     "serve": "webpack-dev-server --open",
@@ -34,6 +33,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "graph-scroll": "^1.0.1",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "markdown-it": "^8.3.1"
   }
 }
