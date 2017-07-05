@@ -1,0 +1,125 @@
+#sidebar .nav-sidebar .sublist-0{
+  display: block;
+}
+
+#section-0 .graph {
+  position: relative;
+}
+
+#section-0 .graph .iframe-container {
+  position: absolute;
+  top: 4.8%;
+  left: 3.9%;
+  width: 92.2%;
+  height: 64.2%;
+  border: none;
+}
+
+#section-0 .graph .iframe-container iframe {
+  position: relative;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  border: none;
+  transform: scale(0.5, 0.5);
+}
+
+#section-5 {
+  position: relative;
+}
+#section-5 p {
+  margin-bottom: 900px;
+  background-color: rgba(200, 200, 200, 0.8);
+}
+#section-5 p:first-child {
+  background-color: rgba(0, 0, 0, 0);
+}
+#section-5 p:last-child {
+  margin-bottom: 0;
+}
+#section-5 img:nth-child(1) {
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  opacity: 0;
+}
+#section-5 img:nth-child(2) {
+  width: 20%;
+  max-width: 80px;
+  margin: auto; 
+  opacity: 0;
+}
+#section-5 img:nth-child(3) {
+  width: 20%;
+  max-width: 80px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+}
+#section-5 img:nth-child(4) {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+#section-5 img:nth-child(5) {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  opacity: 0;
+}
+#section-5 .graph .gradient-cover {
+  position: absolute;
+  top: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+  margin: auto;
+}
+#section-5 .body-right {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: -1;
+}
+#section-5.graph-scroll-fixed .body-right {
+  position: fixed;
+  right: calc(50% - 47px/2);
+  transform: translateX(50%);
+}
+#section-5.graph-scroll-below .body-right {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 0;
+  top: auto;
+}
+
+#section-7 .body-right,
+#section-8 .body-right,
+#section-9 .body-right {
+  margin-top: 20px;
+}
+
+@media(min-width: 768px){
+  #section-5 p {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  #section-5 .body-right {
+    right: 0;
+    transform: translateX(0);
+  }
+  #section-5.graph-scroll-fixed .body-right {
+    right: 0;
+    transform: translateX(0);
+  }
+  #section-5.graph-scroll-below .body-right {
+    right: 0;
+    transform: translateX(0);
+  }
+}
+@media(min-width: 992px){
+  #section-5.graph-scroll-fixed .body-right {
+    right: 90px;
+  }
+}

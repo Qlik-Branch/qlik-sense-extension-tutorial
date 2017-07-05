@@ -1,4 +1,7 @@
 /* ========= Container =========*/
+body {
+  overflow-x: hidden;
+}
 .main-content {
   margin-left: 47px;
 }
@@ -26,7 +29,8 @@
 
 /* ========= Body =========*/
 .content .body-left h2 {
-  margin-top: 56px;
+  margin-top: 0;
+  margin-bottom: 18px;
   font-family: Raleway;
   font-size: 24px;
   font-weight: 500;
@@ -57,8 +61,12 @@
 .content .row {
   position: relative;
 }
+.content .body-right {
+  float: right;
+}
 .content .section {
-  margin-bottom: 50px;
+  margin-top: 75px;
+  margin-bottom: 25px;
 }
 
 /* ========= Images ========= */
@@ -74,19 +82,6 @@
   }
   .content .section-list .body-right {
     float: right;
-  }
-
-  .content #section-0 .body-right img {
-    margin-top: 56px;
-    margin-bottom: 10px;
-  }
-  .content #section-1 .body-right img {
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  .content #section-2 .body-right img {
-    margin-top: 20px;
-    margin-bottom: 10px;
   }
 }
 @media(min-width: 992px) {

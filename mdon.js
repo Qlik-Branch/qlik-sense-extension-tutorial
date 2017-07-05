@@ -1342,9 +1342,9 @@ var md = new _markdownIt2.default();
 
 function compileMarkdown(inputMarkdown) {
   // =============== Testing ===============
-  var parse2 = md.parse(inputMarkdown);
-  (0, _dataPrep2.default)(parse2);
-  var nestedData2 = (0, _nestData2.default)(parse2);
+  // var parse2 = md.parse(inputMarkdown);
+  // dataPrep(parse2);
+  // var nestedData2 = nestData(parse2);
 
   // =============== Markdown-It ===============
   // Parse input markdown using markdown-it
@@ -1353,29 +1353,15 @@ function compileMarkdown(inputMarkdown) {
   // =============== Data Conversion ===============
   /* Find opening tags that have same nesting value as inline 
       and update */
-  (0, _dataPrep2.default)(parse);
+  var preppedData = (0, _dataPrep2.default)(parse);
 
   /* Nest all content into tags that contain them */
-  var nestedData = (0, _nestData2.default)(parse);
+  var nestedData = (0, _nestData2.default)(preppedData);
 
   /* Nest data using special rules where <h1> represents the
       start of a chapter and <h2> represents a section within
       a chapter */
   var chapter = (0, _createChapter2.default)(nestedData);
-
-  // =============== Class ===============
-  var classList = [{
-    tag: 'img',
-    className: 'img-responsive'
-  }, {
-    tag: 'div',
-    className: 'graph'
-  }];
-
-  chapter.sections.forEach(function (section) {
-    (0, _applyClass2.default)(section.content, classList);
-    (0, _applyClass2.default)(section.graph, classList);
-  });
 
   // =============== HTML ===============
   /* Convert json structure to HTML */
@@ -10119,66 +10105,95 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = dataPrep;
 // Data Cleanse
 function dataPrep(inputArray) {
-  /* ==============================================================================================
-     The structure of tags generally looks like this:
-      - level n for the opening tag
-      - level n + 1 for the content within the tag
-      - level n for the closing tag
-       The structure for tags that edit the text style (ex. <strong>) looks like this:
-      - level n + 1 for the opening tag
-      - level n + 1 for the content
-      - level n for the closing tag
-       In order to maintain consistency with the way in which data is nested, the initial <strong>
-      tag is reduced by one to properly nest the inline content within it 
-     ==============================================================================================*/
+  var outputArray = [],
+      i = 0;
 
-  inputArray.forEach(function (element, elementIndex) {
-    // for each element..
-    if (element.children) {
+  while (inputArray.length && i < 10000) {
+    /* ==============================================================================================
+       The structure of tags generally looks like this:
+        - level n for the opening tag
+        - level n + 1 for the content within the tag
+        - level n for the closing tag
+         The structure for tags that edit the text style (ex. <strong>) looks like this:
+        - level n + 1 for the opening tag
+        - level n + 1 for the content
+        - level n for the closing tag
+         In order to maintain consistency with the way in which data is nested, the initial <strong>
+        tag is reduced by one to properly nest the inline content within it 
+       ==============================================================================================*/
+
+    if (inputArray[0].children) {
       // if element has children..
-      if (element.children.length > 1) {
+      if (inputArray[0].children.length > 1) {
         // ..and the # of children > 1..
-        element.children.forEach(function (child, i) {
+        inputArray[0].children.forEach(function (child, i) {
           // for each child..
-          if (element.children[i + 1]) {
+          if (inputArray[0].children[i + 1]) {
             // if not on the last child..
             /* if we are looking at an opening tag (nesting = 1) and it shares the same level as its
                 sibling, reduce the level on self */
-            if (child.level === element.children[i + 1].level && child.nesting === 1) child.level -= 1;
+            if (child.level === inputArray[0].children[i + 1].level && child.nesting === 1) child.level -= 1;
           }
         });
-      };
-    };
-
-    if (element.content.includes('<div class="graph">')) {
-      element.type = 'div_open';
-      element.tag = 'div';
-      element.classList = [];
-      element.level = inputArray[elementIndex - 1].level;
-      if (element.children.length > 1) {
-        element.children[1].content = [{ content: '' }];
-        element.content = [element.children[1]];
-      } else element.content = [{ content: '' }];
-
-      inputArray.splice(elementIndex - 1, 1);
+      }
     }
 
-    if (element.tag === 'h2' && element.nesting === 1) {
-      var h2Array = inputArray[elementIndex + 1].content.split(' ');
-      var name = '';
-      h2Array.forEach(function (word, i) {
-        if (i) name += '-';
-        name += word.replace(/[^a-zA-Z]/g, '');
-      });
+    /* ==============================================================================================
+       Handle Div seperators
+       ============================================================================================== */
+    if (inputArray[0].content.includes('class="graph"')) {
+      outputArray.pop(); // Get rid of last element in outputArray (p element)
 
-      var attribute = ['name', name];
-      if (element.attrs) {
-        element.attrs.push(attribute);
-      } else element.attrs = [attribute];
+      var j = 0;
+      while (inputArray[0].children.length && j < 100) {
+        var child = inputArray[0].children[0];
+
+        if (child.content.includes('<div')) {
+          child.attrs = [['class', 'graph']];
+          child.tag = 'div';
+          child.type = 'div_open';
+          child.nesting = 1;
+          child.level = 0;
+        } else if (child.content.includes('</div>')) {
+          child.tag = 'div';
+          child.type = 'div_close';
+          child.nesting = -1;
+          child.level = 0;
+        } else {
+          child.attrs.push(['class', 'img-responsive']);
+          child.children = null;
+          child.nesting = 1;
+          child.level = 1;
+        }
+
+        if (inputArray[0].children[0].nesting != -1) outputArray.push(inputArray[0].children.shift());else inputArray[0].children.shift();
+      }
+
+      inputArray.shift();
+    } else {
+      if (inputArray[0].nesting != -1) outputArray.push(inputArray.shift());else inputArray.shift();
     }
-  });
 
-  return inputArray;
+    i++;
+  }
+
+  //   if(element.tag === 'h2' && element.nesting === 1){
+  //     var h2Array = inputArray[elementIndex + 1].content.split(' ');
+  //     var name = '';
+  //     h2Array.forEach(function(word, i){
+  //       if(i) name += '-';
+  //       name += word.replace(/[^a-zA-Z]/g, '');
+  //     })
+
+  //     var attribute = ['name', name]
+  //     if(element.attrs){
+  //       element.attrs.push(attribute);
+  //     } else element.attrs = [attribute];
+  //   }
+
+  //   outputArray.push(element)
+
+  return outputArray;
 }
 
 /***/ }),

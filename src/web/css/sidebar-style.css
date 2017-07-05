@@ -50,6 +50,9 @@
   width: 220px;
 }
 
+.nav-sidebar .sub-sidebar {
+  display: none;
+}
 .nav-sidebar {
   margin-right: -10px;
   margin-top: 40px;
