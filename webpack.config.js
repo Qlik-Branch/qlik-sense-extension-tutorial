@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     app: './src/web/js/index.js',
-    p0: './src/web/js/100. Prereq Qliks Open Ecosystem/qliks-open-ecosystem.js'
+    p0: './src/web/js/100. Prereq Qliks Open Ecosystem.js'
   },
   output: {
     filename: '[name].bundle.js',

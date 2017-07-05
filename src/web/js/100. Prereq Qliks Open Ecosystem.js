@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import {graphScroll} from 'graph-scroll';
 
-import '../../css/100. Prereq Qliks Open Ecosystem/100. Prereq Qliks Open Ecosystem.css';
+import '../css/100. Prereq Qliks Open Ecosystem.css';
 
 /* Update Sidebar */
 var activeSidebarItem = document.querySelector('#sidebar .nav-sidebar .active');
@@ -22,6 +22,7 @@ h2.attr('id', (d, i) =>{
 });
 
 
+// ============== Section 0 ==============
 /* Dashboard Embed */
 var section0Graph = document.querySelector('#section-0 .graph');
 var iframeContainer = document.createElement('div');
@@ -33,6 +34,8 @@ qlikSenseIframe.src = 'https://sense-demo.qlik.com/single/?appid=372cbc85-f7fb-4
 iframeContainer.appendChild(qlikSenseIframe);
 section0Graph.appendChild(iframeContainer);
 
+
+// ============== Section 1 ==============
 /* Youtube Embed */
 var section1Graph = document.querySelector('#section-1 .graph');
 section1Graph.classList.add('embed-responsive', 'embed-responsive-16by9');
@@ -54,7 +57,13 @@ var graph5 = rightBody5.querySelector('.graph');
 var imgQix = document.querySelector('#section-5 .graph img:nth-child(1)');
 var imgArrowUp = document.querySelector('#section-5 .graph img:nth-child(2)');
 var imgArrowDown = document.querySelector('#section-5 .graph img:nth-child(3)');
+var imgMonitor = document.querySelector('#section-5 .graph img:nth-child(4)');
 var imgUser = document.querySelector('#section-5 .graph img:nth-child(5)');
+
+var iframeContainer5 = document.createElement('div'); // Create iframe div container
+iframeContainer5.classList.add('iframe-container');
+
+graph5.appendChild(iframeContainer5);
 
 /* graph-scroll */
 graphScroll()
@@ -68,6 +77,16 @@ function resize(){
   var rowWidth = document.querySelector('#section-5 .row').offsetWidth;
   var rightBody = document.querySelector('#section-5 .body-right');
   rightBody.style.width = rowWidth/2 +'px';
+
+  var monitorTop = imgMonitor.offsetTop,
+      monitorLeft = imgMonitor.offsetLeft,
+      monitorHeight = imgMonitor.offsetHeight,
+      monitorWidth = imgMonitor.offsetWidth;
+console.log('test');
+  iframeContainer5.style.top = (monitorTop + monitorHeight*0.048) +'px';
+  iframeContainer5.style.left = (monitorLeft + monitorWidth*0.039) +'px';
+  iframeContainer5.style.width = (monitorWidth - monitorWidth*2*0.039) +'px';
+  // iframeContainer5.style.height = (monitorHeight - monitorHeight*0.5) +'px';
 }
 resize();
 

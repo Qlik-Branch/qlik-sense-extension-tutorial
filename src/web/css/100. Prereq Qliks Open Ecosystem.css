@@ -95,6 +95,14 @@
   top: auto;
 }
 
+#section-5 .graph .iframe-container {
+  position: absolute;
+  /*width: 84.8%;
+  height: 64.2%;*/
+  border: none;
+  background-color: blue;
+}
+
 #section-7 .body-right,
 #section-8 .body-right,
 #section-9 .body-right {
