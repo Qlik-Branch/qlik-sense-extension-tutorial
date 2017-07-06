@@ -1,3 +1,6 @@
+#sidebar .nav-sidebar .sub-sidebar{
+  display: none;
+}
 #sidebar .nav-sidebar .sublist-0{
   display: block;
 }

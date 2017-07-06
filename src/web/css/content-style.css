@@ -66,10 +66,43 @@ body {
 }
 .content .section {
   margin-top: 100px;
-  /*margin-bottom: 25px;*/
 }
 
-/* ========= Images ========= */
+/* ========= Graphs ========= */
+#sidebar .nav-sidebar .sublist-1{
+  display: block;
+}
+.section {
+  position: relative;
+}
+.body-left {
+  margin-top: 500px;
+}
+#section-0 .body-left {
+  margin-top: 0;
+}
+.body-right {
+  position: absolute;
+  padding-top: 200px;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+}
+#section-0 .body-right {
+  padding-top: 0;
+}
+.graph-scroll-fixed .body-right {
+  position: fixed;
+  right: calc(50% - 47px/2);
+  transform: translateX(50%);
+}
+.graph-scroll-below .body-right {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 0;
+  top: auto;
+}
 
 /* ========= Media =========*/
 @media(min-width: 768px){
@@ -83,6 +116,18 @@ body {
   .content .section-list .body-right {
     float: right;
   }
+  .body-right {
+    right: 0;
+    transform: translateX(0);
+  }
+  .graph-scroll-fixed .body-right {
+    right: 0;
+    transform: translateX(0);
+  }
+  .graph-scroll-below .body-right {
+    right: 0;
+    transform: translateX(0);
+  }
 }
 @media(min-width: 992px) {
   .main-content {
@@ -92,5 +137,8 @@ body {
     width: calc(100% - 180px);
     margin-left: 90px;
     margin-right: 90px;
+  }
+  .graph-scroll-fixed .body-right {
+    right: 90px;
   }
 }

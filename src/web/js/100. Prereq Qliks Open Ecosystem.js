@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import activateSidebar from './sidebar.js';
 import {graphScroll} from 'graph-scroll';
+import scrollygraph from './scrollygraph.js';
 // import RxQ from 'RxQ';
 
 import '../css/100. Prereq Qliks Open Ecosystem.css';
@@ -14,24 +15,9 @@ var resizeSections = [
 // ============== Sidebar ==============
 activateSidebar(0);
 
-// applyGraphScroll('#section-1');
-
-// ============== Functions ==============
-
-/* On window resize, update width of right section */
-window.addEventListener('resize', resize);
-function resize(){
-  resizeSections.forEach((section) =>{
-    var rowWidth = document.querySelector(section +' .row').offsetWidth;
-    var bodyRight = document.querySelector(section +' .body-right');
-    bodyRight.style.width = rowWidth/2 +'px';
-  })
-}
-resize();
+scrollygraph(resizeSections);
 
 
-/* On scroll */
-/* On scroll, update opacity of images */
 var section5 = document.querySelector('#section-3');
 var rightBody5 = document.querySelector('#section-3 .body-right');
 var graph5 = rightBody5.querySelector('.graph');
@@ -42,6 +28,7 @@ var imgMonitor = document.querySelector('#section-3 .graph img:nth-child(4)');
 var imgUser = document.querySelector('#section-3 .graph img:nth-child(5)');
 window.addEventListener('scroll', onscroll);
 function onscroll(){
+
   var section5Top = section5.getBoundingClientRect().top;
   var userScale = d3.scaleLinear()
     .domain([-300, -600])
@@ -65,19 +52,6 @@ function onscroll(){
   imgArrowDown.style.opacity = arrowDownScale(section5Top);
 }
 onscroll();
-
-
-/* Apply graph-scroll */
-function applyGraphScroll(sections){
-  sections.forEach((section) =>{
-    graphScroll()
-    .container(d3.select(section))
-    .graph(d3.select(section +' .body-right'))
-    .sections(d3.selectAll(section +' .body-left > *'));
-  })
-}
-
-window.onload = function(){applyGraphScroll(resizeSections)};
 
 
 // ============== Section 0 ==============
