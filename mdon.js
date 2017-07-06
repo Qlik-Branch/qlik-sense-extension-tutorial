@@ -1370,8 +1370,12 @@ function compileMarkdown(inputMarkdown) {
 
   headerHtml += (0, _generateHTML2.default)(chapter.header);
   chapter.sections.forEach(function (section) {
+    var ids = '';
+    section.graph[0].attrs.forEach(function (attr) {
+      if (attr[0] === 'id') ids += attr[1];
+    });
     bodyHtml += '<div id="section-' + section.section + '"';
-    bodyHtml += 'class="section">';
+    bodyHtml += 'class="section ' + ids + '">';
     // if(section.content.length > 0){
     //   if(section.img && section.content[0].tag === 'ol'){
     //     bodyHtml += ' section-list">';
@@ -10150,6 +10154,10 @@ function dataPrep(inputArray) {
 
         if (child.content.includes('<div')) {
           child.attrs = [['class', 'graph']];
+          if (child.content.includes('id=')) {
+            var ids = child.content.split('id=')[1].split('"')[1];
+            child.attrs.push(['id', ids]);
+          }
           child.tag = 'div';
           child.type = 'div_open';
           child.nesting = 1;

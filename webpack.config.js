@@ -6,7 +6,8 @@ module.exports = {
   entry: {
     app: './src/web/js/index.js',
     p0: './src/web/js/100. Prereq Qliks Open Ecosystem.js',
-    p1: './src/web/js/101. What Are Extensions.js'
+    p1: './src/web/js/101. What Are Extensions.js',
+    p2: './src/web/js/102. Hello World.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -57,6 +58,12 @@ module.exports = {
       title: 'What Are Extensions',
       chunks: ['app', 'p1']
     }),
+    new HtmlWebpackPlugin({
+      template: 'src/web/html/102. Hello World/102. Hello World.ejs',
+      filename: '102. Hello World.html',
+      title: 'Hello World',
+      chunks: ['app', 'p2']
+    })
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor'
     // })

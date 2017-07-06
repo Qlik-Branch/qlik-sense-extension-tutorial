@@ -1,0 +1,50 @@
+#sidebar .nav-sidebar .sub-sidebar{
+  display: none;
+}
+#sidebar .nav-sidebar .sublist-2{
+  display: block;
+}
+
+.static-dyn-prop-diagram .graph {
+  position: relative;
+}
+.static-dyn-prop-diagram .body-left {
+  padding-bottom: 400px;
+}
+.property-label {
+  font-family: 'Open Sans';
+  font-size: 16px;
+}
+.number-label-left {
+  text-anchor: end;
+}
+.static-dyn-prop-diagram img {
+  position: absolute;
+  width: 12%;
+}
+.static-dyn-prop-diagram .static-line {
+  stroke-width: 1;
+  stroke: black;
+}
+.dynamic-circle {
+  fill: none;
+  stroke: black;
+  stroke-dasharray: 2, 4;
+}
+.dynamic-line-1,
+.dynamic-line-2 {
+  stroke-width: 1;
+  stroke: black;
+  stroke-dasharray: 2, 4;
+}
+.dynamic-line-1-fill {
+  stroke-width: 1.5;
+  stroke: black;
+}
+.dynamic-circle-fill {
+  stroke: black;
+}
+.dynamic-line-2-fill {
+  stroke-width: 1.5;
+  stroke: black;
+}

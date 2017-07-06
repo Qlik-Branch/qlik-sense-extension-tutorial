@@ -1,3 +1,10 @@
+#sidebar .nav-sidebar .sub-sidebar{
+  display: none;
+}
+#sidebar .nav-sidebar .sublist-1{
+  display: block;
+}
+
 #section-1 .body-right,
 #section-2 .body-right {
   opacity: 0;
