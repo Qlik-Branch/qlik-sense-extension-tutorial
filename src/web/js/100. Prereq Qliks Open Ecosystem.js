@@ -1,96 +1,45 @@
 import * as d3 from 'd3';
+import activateSidebar from './sidebar.js';
 import {graphScroll} from 'graph-scroll';
+// import RxQ from 'RxQ';
 
 import '../css/100. Prereq Qliks Open Ecosystem.css';
 
-/* Update Sidebar */
-var activeSidebarItem = document.querySelector('#sidebar .nav-sidebar .active');
-activeSidebarItem.classList.remove('active');
-var activeGlyphicon = document.querySelector('.glyphicon');
-activeGlyphicon.classList.remove('glyphicon-menu-down');
-activeGlyphicon.classList.add('glyphicon-menu-right');
+var resizeSections = [
+  '#section-1',
+  '#section-2',
+  '#section-3'
+];
 
-var sidebarItem = document.querySelector('#sidebar .nav-sidebar li:nth-child(1)');
-sidebarItem.classList.add('active');
-var sidebarGlyphicon = sidebarItem.querySelector('.glyphicon');
-sidebarGlyphicon.classList.remove('glyphicon-menu-right');
-sidebarGlyphicon.classList.add('glyphicon-menu-down');
+// ============== Sidebar ==============
+activateSidebar(0);
 
-var h2 = d3.selectAll('#body-content h2');
-h2.attr('id', (d, i) =>{
-  return 'h2-' +i;
-});
+// applyGraphScroll('#section-1');
 
-
-// ============== Section 0 ==============
-/* Dashboard Embed */
-var section0Graph = document.querySelector('#section-0 .graph');
-var iframeContainer = document.createElement('div');
-iframeContainer.classList.add('iframe-container');
-
-var qlikSenseIframe = document.createElement('iframe');
-qlikSenseIframe.src = 'https://sense-demo.qlik.com/single/?appid=372cbc85-f7fb-4db6-a620-9a5367845dce&sheet=LChBs&opt=currsel&select=clearall';
-
-iframeContainer.appendChild(qlikSenseIframe);
-section0Graph.appendChild(iframeContainer);
-
-
-// ============== Section 1 ==============
-/* Youtube Embed */
-var section1Graph = document.querySelector('#section-1 .graph');
-section1Graph.classList.add('embed-responsive', 'embed-responsive-16by9');
-
-var youtubeIframe = document.createElement('iframe');
-youtubeIframe.src = 'https://www.youtube.com/embed/85QHuNNeaCg?ecver=1';
-youtubeIframe.classList.add('embed-responsive-item');
-youtubeIframe.setAttribute('frameborder', 0);
-youtubeIframe.setAttribute('allowfullscreen', '');
-
-section1Graph.appendChild(youtubeIframe);
-
-
-// ============== Section 5 ==============
-/* Get elements */
-var section5 = document.querySelector('#section-5');
-var rightBody5 = document.querySelector('#section-5 .body-right');
-var graph5 = rightBody5.querySelector('.graph');
-var imgQix = document.querySelector('#section-5 .graph img:nth-child(1)');
-var imgArrowUp = document.querySelector('#section-5 .graph img:nth-child(2)');
-var imgArrowDown = document.querySelector('#section-5 .graph img:nth-child(3)');
-var imgMonitor = document.querySelector('#section-5 .graph img:nth-child(4)');
-var imgUser = document.querySelector('#section-5 .graph img:nth-child(5)');
-
-var iframeContainer5 = document.createElement('div'); // Create iframe div container
-iframeContainer5.classList.add('iframe-container');
-
-graph5.appendChild(iframeContainer5);
-
-/* graph-scroll */
-graphScroll()
-  .container(d3.select(section5))
-  .graph(d3.select(rightBody5))
-  .sections(d3.selectAll('#section-5 .body-left > p'));
+// ============== Functions ==============
 
 /* On window resize, update width of right section */
 window.addEventListener('resize', resize);
 function resize(){
-  var rowWidth = document.querySelector('#section-5 .row').offsetWidth;
-  var rightBody = document.querySelector('#section-5 .body-right');
-  rightBody.style.width = rowWidth/2 +'px';
-
-  var monitorTop = imgMonitor.offsetTop,
-      monitorLeft = imgMonitor.offsetLeft,
-      monitorHeight = imgMonitor.offsetHeight,
-      monitorWidth = imgMonitor.offsetWidth;
-console.log('test');
-  iframeContainer5.style.top = (monitorTop + monitorHeight*0.048) +'px';
-  iframeContainer5.style.left = (monitorLeft + monitorWidth*0.039) +'px';
-  iframeContainer5.style.width = (monitorWidth - monitorWidth*2*0.039) +'px';
-  // iframeContainer5.style.height = (monitorHeight - monitorHeight*0.5) +'px';
+  resizeSections.forEach((section) =>{
+    var rowWidth = document.querySelector(section +' .row').offsetWidth;
+    var bodyRight = document.querySelector(section +' .body-right');
+    bodyRight.style.width = rowWidth/2 +'px';
+  })
 }
 resize();
 
+
+/* On scroll */
 /* On scroll, update opacity of images */
+var section5 = document.querySelector('#section-3');
+var rightBody5 = document.querySelector('#section-3 .body-right');
+var graph5 = rightBody5.querySelector('.graph');
+var imgQix = document.querySelector('#section-3 .graph img:nth-child(1)');
+var imgArrowUp = document.querySelector('#section-3 .graph img:nth-child(2)');
+var imgArrowDown = document.querySelector('#section-3 .graph img:nth-child(3)');
+var imgMonitor = document.querySelector('#section-3 .graph img:nth-child(4)');
+var imgUser = document.querySelector('#section-3 .graph img:nth-child(5)');
 window.addEventListener('scroll', onscroll);
 function onscroll(){
   var section5Top = section5.getBoundingClientRect().top;
@@ -116,3 +65,47 @@ function onscroll(){
   imgArrowDown.style.opacity = arrowDownScale(section5Top);
 }
 onscroll();
+
+
+/* Apply graph-scroll */
+function applyGraphScroll(sections){
+  sections.forEach((section) =>{
+    graphScroll()
+    .container(d3.select(section))
+    .graph(d3.select(section +' .body-right'))
+    .sections(d3.selectAll(section +' .body-left > *'));
+  })
+}
+
+window.onload = function(){applyGraphScroll(resizeSections)};
+
+
+// ============== Section 0 ==============
+/* Create iframe container */
+var graph0 = document.querySelector('#section-0 .graph');
+var iframeContainer = document.createElement('div');
+iframeContainer.classList.add('iframe-container');
+
+/* Define iframe src url */
+var qlikSenseIframe = document.createElement('iframe');
+qlikSenseIframe.src = 'https://sense-demo.qlik.com/single/?appid=372cbc85-f7fb-4db6-a620-9a5367845dce&sheet=LChBs&opt=currsel';
+
+/* Append iframe to body */
+iframeContainer.appendChild(qlikSenseIframe);
+graph0.appendChild(iframeContainer);
+
+
+// ============== Section 1 ==============
+/* Add responsive embed class to graph */
+var graph1 = document.querySelector('#section-1 .graph');
+graph1.classList.add('embed-responsive', 'embed-responsive-16by9');
+
+/* Create iframe */
+var youtubeIframe = document.createElement('iframe');
+youtubeIframe.src = 'https://www.youtube.com/embed/85QHuNNeaCg?ecver=1';
+youtubeIframe.classList.add('embed-responsive-item');
+youtubeIframe.setAttribute('frameborder', 0);
+youtubeIframe.setAttribute('allowfullscreen', '');
+
+/* Append iframe to graph */
+graph1.appendChild(youtubeIframe);

@@ -39,6 +39,7 @@
     "graph-scroll": "^1.0.1",
     "jquery": "^3.2.1",
     "markdown-it": "^8.3.1",
+    "rxq": "^0.6.7",
     "save-dev": "^2.0.0"
   }
 }

@@ -5,7 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     app: './src/web/js/index.js',
-    p0: './src/web/js/100. Prereq Qliks Open Ecosystem.js'
+    p0: './src/web/js/100. Prereq Qliks Open Ecosystem.js',
+    p1: './src/web/js/101. What Are Extensions.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -53,7 +54,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/web/html/101. What Are Extensions/101. What Are Extensions.ejs',
       filename: '101. What Are Extensions.html',
-      title: 'What Are Extensions'
+      title: 'What Are Extensions',
+      chunks: ['app', 'p1']
     }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor'

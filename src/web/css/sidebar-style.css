@@ -36,6 +36,7 @@
 .sidebar-label {
   float: left;
   margin-top: 6px;
+  margin-bottom: 16px;
   margin-left: 10px;
   margin-right: 10px;
   font-family: 'Roboto Slab';
@@ -90,6 +91,8 @@
 }
 
 .sidebar .sub-sidebar a {
+  font-family: "Open Sans";
   padding-left: 60px;
+  font-weight: 300;
   color: #DFDFDF;
 }
