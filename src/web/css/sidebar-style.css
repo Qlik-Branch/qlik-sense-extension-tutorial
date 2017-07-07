@@ -71,8 +71,8 @@
   color: #fff;
 }
 .nav-sidebar > .active > a,
-.nav > li > a:hover,
-.nav > li > a:focus {
+#sidebar .nav > li > a:hover,
+#sidebar .nav > li > a:focus {
   background-color: #353D43;
 }
 @media(min-width: 992px) {

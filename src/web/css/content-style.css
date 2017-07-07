@@ -28,7 +28,7 @@ body {
 }
 
 /* ========= Body =========*/
-.content .body-left h2 {
+.content h2 {
   margin-top: 0;
   margin-bottom: 18px;
   font-family: Raleway;
@@ -37,21 +37,21 @@ body {
   font-style: normal;
   color: #36B7CF;
 }
-.content .body-left h3 {
+.content h3 {
   font-family: Raleway;
   font-size: 20px;
   font-weight: 500;
   font-style: normal;
   color: #36B7CF;
 }
-.content .body-left h4 {
+.content h4 {
   font-family: Raleway;
   font-size: 18px;
   font-weight: 500;
   font-style: normal;
   color: #36B7CF;
 }
-.content .body-left p {
+.content p {
   font-family: 'Open Sans';
   font-size: 16px;
   font-weight: 400;

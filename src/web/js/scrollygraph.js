@@ -48,5 +48,8 @@ export default function scrollygraph(sectionList){
   /* Call graph-scroll when page loads. Need to wait until after full page is loaded,
       otherwise, graph-scroll function may not get updated attributes when it is first
       applied */
-  window.onload = function(){applyGraphScroll(sectionList)};
+  window.onload = function(){
+    applyGraphScroll(sectionList);
+    resize();
+  };
 }

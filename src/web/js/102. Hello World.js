@@ -1,13 +1,9 @@
 import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
-import * as d3 from 'd3';
-import ace from 'brace';
-import 'brace/mode/javascript';
-import 'brace/theme/solarized_light';
-
-import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
+import aceEditor from './ace-editor.js';
 
 import '../css/102. Hello World.css';
+import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
 
 var sectionList = [
   '.resource-list-design',
@@ -15,56 +11,211 @@ var sectionList = [
   '.container-and-properties',
   '.generic-object-properties',
   '.static-dyn-prop-diagram',
-  '.static-dyn-prop-interactive'
+  '.static-dyn-prop-interactive',
+  '.qext-editor',
+  '.js-editor',
+  '.initial-properties-editor',
+  '.definition-editor',
+  '.def-initprops-editor'
 ];
 
 scrollygraph(sectionList);
 // ============== Sidebar ==============
 activateSidebar(2);
 
+
+// ============== Resource List ==============
+var resourceListContainer = document.querySelector('.resource-list-design .graph');
+var resourceList = 
+`<h3>Resources</h3>
+<ul class="nav nav-pills">
+  <li class="active"><a data-toggle="pill" href="#beginner">Beginner</a></li>
+  <li><a data-toggle="pill" href="#intermediate">Intermediate</a></li>
+  <li><a data-toggle="pill" href="#expert">Expert</a></li>
+</ul>
+<div class="tab-content">
+  <div id="beginner" class="tab-pane fade in active">
+    <h4>HTML5 & CSS</h4>
+    <a href="https://www.codecademy.com/learn/learn-html-css">Learn HTML & CSS: Part I | Codecademy</a>
+    <hr>
+    <h4>JavaScript</h4>
+    <a href="https://www.codecademy.com/learn/javascript">JavaScript | Codecademy</a>
+    <hr>
+    <h4>JSON</h4>
+    <a href="https://www.codecademy.com/courses/javascript-beginner-en-xTAfX/0/1">Meet JSON | Codecademy</a>
+    </br>
+    <a href="https://www.digitalocean.com/community/tutorials/how-to-work-with-json-in-javascript">How To Work with JSON in JavaScript | DigitalOcean</a>
+    <hr>
+  </div>
+  <div id="intermediate" class="tab-pane fade in">
+    <h4>HTML5 & CSS</h4>
+    <a href="http://learn.shayhowe.com/html-css/">Learn to Code HTML & CSS</a>
+    <hr>
+    <h4>JavaScript</h4>
+    <a href="https://javascript.info/">The Modern JavaScript Tutorial</a>
+    </br>
+    <a href="http://eloquentjavascript.net/">Eloquent JavaScript</a>
+    <hr>
+    <h4>JSON</h4>
+    <a href="https://www.copterlabs.com/json-what-it-is-how-it-works-how-to-use-it/">JSON: What It Is, How It Works, & How to Use It | Copter Labs</a>
+    <hr>
+  </div>
+  <div id="expert" class="tab-pane fade in">
+    <h4>HTML5</h4>
+    <a href="http://learn.shayhowe.com/advanced-html-css/">Learn to Code Advanced HTML & CSS</a>
+    <hr>
+    <h4>JavaScript</h4>
+    <a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">JavaScript Promises: an Introduction | Web | Google Developers]</a>
+    <hr>
+  </div>
+</div>`
+resourceListContainer.innerHTML = resourceList;
+
+
 staticDynPropDiagram();
 
-var qextEditorGraph = document.querySelector('.qext-editor .graph');
-var qextEditorElement = document.createElement('div');
-qextEditorElement.setAttribute('id', 'qext-editor');
-// qextEditorElement.innerText =`
-//   {
-//     "name": "My Table",
-//     "description": "My first extension",
-//     "type": "visualization",
-//     "version": "0.0.1",
-//     "author": "YOUR NAME GOES HERE"
-//   }`;
+// QEXT 
+var qextJson = 
+`{
+  "name": "My Table",
+  "description": "My first extension",
+  "type": "visualization",
+  "version": "0.0.1",
+  "author": "YOUR NAME GOES HERE"
+}`
 
-qextEditorGraph.appendChild(qextEditorElement);
+aceEditor('qext-editor', 'json', qextJson);
 
-// var qextEditorAce = ace.edit('qext-editor');
-// qextEditorAce.getSession().setMode('ace/mode/javascript');
-// qextEditorAce.setTheme('ace/theme/solarized_light');
-// qextEditorAce.setValue([
-//   '{',
-//   ' "name": "My Table",',
-//   ' "description": "My first extension",',
-//   ' "type": "visualization",',
-//   ' "version": "0.0.1",',
-//   ' "author": "YOUR NAME GOES HERE"',
-//   '}'
-// ]).join('\n');
-// var ace = require('brace');
-// require('brace/mode/json');
-// require('brace/theme/solarized_light');
 
-var editor = ace.edit('qext-editor');
-editor.getSession().setMode('ace/mode/javascript');
-editor.setTheme('ace/theme/solarized_light');
-editor.setValue([
-    '{'
-  , ' "language": "JSON",'
-  , ' "foo": "bar",'
-  , ' "trailing": "comma",'
-  , '}'
-  ].join('\n')
-);
-editor.clearSelection();
-// qextEditorAce.setTheme('ace/theme/monokai');
-// qextEditorAce.getSession().setMode('ace/mode/javascript');
+// Javascript
+var js = 
+`define([], function() {
+	return {};
+});`
+
+aceEditor('js-editor', 'javascript', js);
+
+
+// Initial Properties
+var initialProperties =
+`define([], function() {
+	var myProps = {
+		textColor: "black"
+	};
+
+	return {
+		initialProperties: myProps
+	};
+});`
+
+aceEditor('initial-properties-editor', 'javascript', initialProperties);
+
+
+// Definition
+var definition =
+`var myDefinition = {
+	type: "items",
+		component: "accordions",
+		items: {
+			settings: {
+				uses: "settings"
+			}
+		}
+	}
+};`
+
+aceEditor('definition-editor', 'javascript', definition);
+
+
+// Initial Props Definition
+var defInitProps =
+`define([], function() {
+	var myProps = {
+		textColor: "black"
+	};
+
+	var myDefinition = {
+		type: "items",
+		component: "accordions",
+		items: {
+			settings: {
+				uses: "settings"
+			}
+		}
+	};
+
+	return {
+		initialProperties: myProps,
+		definition: myDefinition
+	};
+});`
+
+aceEditor('def-initprops-editor', 'javascript', defInitProps);
+
+
+// Paint
+var paint =
+`define([], function() {
+  var myPaint = function($element, layout) {
+    // Get the text color value
+    var textColor = layout.textColor;
+
+    // Clear the previous contents of the container so we start from scratch each time
+    $element.html("");
+
+    // Create a span
+    var span = document.createElement("span");
+
+    // Set text color
+    span.style.color = textColor;
+    
+    // Add message
+    span.innerHTML = "hello, world";
+    
+    // Append span to the container
+    $element.append(span);
+  }
+
+  return myPaint;
+});`;
+
+aceEditor('paint-editor', 'javascript', paint);
+
+
+// JS 2
+var js2 = 
+`define([], function() {
+	// ...
+	return {
+		initialProperties: myProps,
+		definition: myDefinition,
+		paint: myPaint
+	};
+}`;
+
+aceEditor('js-editor-2', 'javascript', js2);
+
+
+// Support
+var support = 
+`var mySupport = {
+	snapshot: true,
+	exportData: true 
+};`;
+
+aceEditor('support-editor', 'javascript', support);
+
+
+// JS 3
+var js3 = 
+`define([], function() {
+	// ...
+	return {
+		initialProperties: myProps,
+		definition: myDefinition,
+		paint: myPaint,
+		support: mySupport
+	};
+}`;
+
+aceEditor('js-editor-3', 'javascript', js3);
