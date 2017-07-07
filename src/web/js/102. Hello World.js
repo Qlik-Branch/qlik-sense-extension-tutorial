@@ -4,6 +4,7 @@ import aceEditor from './ace-editor.js';
 
 import '../css/102. Hello World.css';
 import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
+import staticDynPropInteractive from './102/static-dyn-prop-interactive.js';
 
 var sectionList = [
   '.resource-list-design',
@@ -19,10 +20,15 @@ var sectionList = [
   '.def-initprops-editor'
 ];
 
-scrollygraph(sectionList);
 // ============== Sidebar ==============
 activateSidebar(2);
 
+document.querySelector('body').onload = function(){
+    scrollygraph(sectionList);
+    staticDynPropDiagram();
+    staticDynPropInteractive('.static-dyn-prop-interactive');
+    scrollygraph(sectionList);
+};
 
 // ============== Resource List ==============
 var resourceListContainer = document.querySelector('.resource-list-design .graph');
@@ -72,7 +78,7 @@ var resourceList =
 resourceListContainer.innerHTML = resourceList;
 
 
-staticDynPropDiagram();
+
 
 // QEXT 
 var qextJson = 
