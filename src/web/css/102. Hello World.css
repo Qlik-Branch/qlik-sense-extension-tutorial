@@ -7,7 +7,7 @@
 
 .ace_editor {
   width: 100%;
-  height: 350px;
+  height: 400px;
 }
 
 .my-table-folder .body-right {
@@ -15,7 +15,7 @@
 }
 
 .container-and-properties .body-left {
-  padding-bottom: 150px;
+  padding-bottom: 60px;
 }
 
 .static-dyn-prop-interactive .body-left {
@@ -37,4 +37,56 @@
 .static-dyn-prop-interactive .dynamic-line-2-fill {
   stroke-width: 1.5;
   stroke: #36B7CF;
+}
+
+.qext-editor .body-left {
+  padding-bottom: 100px;
+}
+
+.js-editor .body-left {
+  padding-bottom: 100px;
+}
+
+.initial-properties-editor .body-left {
+  padding-bottom: 100px;
+}
+
+.definition-editor .body-left {
+  padding-bottom: 100px;
+}
+
+.def-initprops-editor .body-left {
+  padding-bottom: 200px;
+}
+
+.paint-editor .body-left {
+  padding-bottom: 100px;
+}
+
+.js-editor-2 .body-left {
+  padding-bottom: 200px;
+}
+
+.support-editor .body-left {
+  padding-bottom: 100px;
+}
+
+.js-editor-3 .body-left {
+  padding-bottom: 200px;
+}
+
+.qlik-sense-desktop .body-left {
+  padding-bottom: 100px;
+}
+
+.qsd-in-browser .body-left {
+  padding-bottom: 100px;
+}
+
+.dev-tools .body-left {
+  padding-bottom: 100px;
+}
+
+.disable-cache .body-left {
+  padding-bottom: 20px;
 }

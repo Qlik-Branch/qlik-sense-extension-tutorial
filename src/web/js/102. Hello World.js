@@ -17,7 +17,16 @@ var sectionList = [
   '.js-editor',
   '.initial-properties-editor',
   '.definition-editor',
-  '.def-initprops-editor'
+  '.def-initprops-editor',
+  '.paint-editor',
+  '.js-editor-2',
+  '.support-editor',
+  '.js-editor-3',
+  '.qlik-sense-desktop',
+  '.qsd-in-browser',
+  '.dev-tools',
+  '.disable-cache',
+  '.extension'
 ];
 
 // ============== Sidebar ==============
