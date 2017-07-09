@@ -1,3 +1,4 @@
+/* Activate Sidebar Selection */
 #sidebar .nav-sidebar .sub-sidebar{
   display: none;
 }
@@ -5,15 +6,12 @@
   display: block;
 }
 
-.section {
+.embedded-dashboard .graph {
   position: relative;
 }
 
-#section-0 .graph {
-  position: relative;
-}
-
-#section-0 .graph .iframe-container {
+/* Align embedded iframe dashboard in monitor */
+.embedded-dashboard .graph .iframe-container {
   position: absolute;
   top: 4.8%;
   left: 3.9%;
@@ -22,7 +20,7 @@
   border: none;
 }
 
-#section-0 .graph .iframe-container iframe {
+.embedded-dashboard .graph .iframe-container iframe {
   position: relative;
   top: -50%;
   left: -50%;
@@ -30,111 +28,4 @@
   height: 200%;
   border: none;
   transform: scale(0.5, 0.5);
-}
-
-.body-left {
-  margin-top: 500px;
-}
-.body-right {
-  position: absolute;
-  padding-top: 200px;
-  top: 0;
-  right: 50%;
-  transform: translateX(50%);
-}
-.graph-scroll-fixed .body-right {
-  position: fixed;
-  right: calc(50% - 47px/2);
-  transform: translateX(50%);
-}
-.graph-scroll-below .body-right {
-  position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  bottom: 0;
-  top: auto;
-}
-
-#section-0 .body-left {
-  margin-top: 0;
-}
-#section-0 .body-right {
-  padding-top: 0;
-  position: relative;
-}
-#section-3 .body-right {
-  padding-top: 0;
-}
-
-#section-3 p {
-  margin-bottom: 900px;
-  background-color: rgba(200, 200, 200, 0.8);
-}
-#section-3 p:first-child {
-  background-color: rgba(0, 0, 0, 0);
-}
-#section-3 p:last-child {
-  margin-bottom: 0;
-}
-#section-3 img {
-  margin: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-#section-3 img:nth-child(1) {
-  opacity: 0;
-}
-#section-3 img:nth-child(2) {
-  width: 20%;
-  max-width: 80px;
-  opacity: 0;
-}
-#section-3 img:nth-child(3) {
-  width: 20%;
-  max-width: 80px;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  opacity: 0;
-}
-#section-3 img:nth-child(4) {
-  width: 100%;
-  max-width: 500px;
-}
-#section-3 img:nth-child(5) {
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
-  opacity: 0;
-}
-
-
-#section-7 .body-right,
-#section-8 .body-right,
-#section-9 .body-right {
-  margin-top: 20px;
-}
-
-@media(min-width: 768px){
-  #section-3 p {
-    background-color: rgba(0, 0, 0, 0);
-  }
-
-  .body-right {
-    right: 0;
-    transform: translateX(0);
-  }
-  .graph-scroll-fixed .body-right {
-    right: 0;
-    transform: translateX(0);
-  }
-  .graph-scroll-below .body-right {
-    right: 0;
-    transform: translateX(0);
-  }
-}
-@media(min-width: 992px){
-  .graph-scroll-fixed .body-right {
-    right: 90px;
-  }
 }

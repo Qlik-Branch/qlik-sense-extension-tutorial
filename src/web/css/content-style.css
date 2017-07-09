@@ -82,21 +82,24 @@ body {
   position: absolute;
   padding-top: 200px;
   top: 0;
-  right: 50%;
-  transform: translateX(50%);
+  right: 0;
+  transform: translateX(0);
+  -ms-transform: translateX(0);
+  -webkit-transform: translateY(0);
 }
 #section-0 .body-right {
   padding-top: 0;
+  transform: translateX(0);
+  -ms-transform: translateX(0);
+  -webkit-transform: translateY(0);
 }
 .graph-scroll-fixed .body-right {
   position: fixed;
-  right: calc(50% - 47px/2);
-  transform: translateX(50%);
+  right: 0;
 }
 .graph-scroll-below .body-right {
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
+  right: 0;
   bottom: 0;
   top: auto;
 }
@@ -109,21 +112,6 @@ body {
     transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-  }
-  .content .section-list .body-right {
-    float: right;
-  }
-  .body-right {
-    right: 0;
-    transform: translateX(0);
-  }
-  .graph-scroll-fixed .body-right {
-    right: 0;
-    transform: translateX(0);
-  }
-  .graph-scroll-below .body-right {
-    right: 0;
-    transform: translateX(0);
   }
 }
 @media(min-width: 992px) {

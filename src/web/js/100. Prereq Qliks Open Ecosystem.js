@@ -2,59 +2,29 @@ import * as d3 from 'd3';
 import activateSidebar from './sidebar.js';
 import {graphScroll} from 'graph-scroll';
 import scrollygraph from './scrollygraph.js';
-// import RxQ from 'RxQ';
 
+import scrollyQix from './100/scrollyQix.js';
+import openEcosystem from './100/openEcosystem.js';
 import '../css/100. Prereq Qliks Open Ecosystem.css';
 
-var resizeSections = [
-  '#section-1',
-  '#section-2',
-  '#section-3'
+var sectionList = [
+  '.youtube-video',
+  '.self-service',
+  '.qix-interaction',
+  '.open-ecosystem'
 ];
 
 // ============== Sidebar ==============
 activateSidebar(0);
 
-scrollygraph(resizeSections);
-
-
-var section5 = document.querySelector('#section-3');
-var rightBody5 = document.querySelector('#section-3 .body-right');
-var graph5 = rightBody5.querySelector('.graph');
-var imgQix = document.querySelector('#section-3 .graph img:nth-child(1)');
-var imgArrowUp = document.querySelector('#section-3 .graph img:nth-child(2)');
-var imgArrowDown = document.querySelector('#section-3 .graph img:nth-child(3)');
-var imgMonitor = document.querySelector('#section-3 .graph img:nth-child(4)');
-var imgUser = document.querySelector('#section-3 .graph img:nth-child(5)');
-window.addEventListener('scroll', onscroll);
-function onscroll(){
-
-  var section5Top = section5.getBoundingClientRect().top;
-  var userScale = d3.scaleLinear()
-    .domain([-300, -600])
-    .range([0, 1]);
-
-  var arrowUpScale = d3.scaleLinear()
-    .domain([-900, -1200, -1500, -1550])
-    .range([0, 1, 1, 0]);
-
-  var imgQixScale = d3.scaleLinear()
-    .domain([-1200, -1500])
-    .range([0, 1]);
-
-  var arrowDownScale = d3.scaleLinear()
-    .domain([-2000, -2300])
-    .range([0, 1]);
-
-  imgUser.style.opacity = userScale(section5Top);
-  imgArrowUp.style.opacity = arrowUpScale(section5Top);
-  imgQix.style.opacity = imgQixScale(section5Top);
-  imgArrowDown.style.opacity = arrowDownScale(section5Top);
+document.querySelector('body').onload = function(){
+  scrollyQix('.qix-interaction');
+  openEcosystem('.open-ecosystem');
+  scrollygraph(sectionList);
 }
-onscroll();
 
 
-// ============== Section 0 ==============
+// ============== Embedded Dashboard ==============
 /* Create iframe container */
 var graph0 = document.querySelector('#section-0 .graph');
 var iframeContainer = document.createElement('div');
@@ -69,7 +39,7 @@ iframeContainer.appendChild(qlikSenseIframe);
 graph0.appendChild(iframeContainer);
 
 
-// ============== Section 1 ==============
+// ============== Embed Youtube ==============
 /* Add responsive embed class to graph */
 var graph1 = document.querySelector('#section-1 .graph');
 graph1.classList.add('embed-responsive', 'embed-responsive-16by9');

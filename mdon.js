@@ -1343,7 +1343,7 @@ var md = new _markdownIt2.default();
 function compileMarkdown(inputMarkdown) {
   // =============== Testing ===============
   // var parse2 = md.parse(inputMarkdown);
-  // dataPrep(parse2);
+  // var preppedData2 = dataPrep(parse2);
   // var nestedData2 = nestData(parse2);
 
   // =============== Markdown-It ===============
@@ -1381,12 +1381,12 @@ function compileMarkdown(inputMarkdown) {
     //     bodyHtml += ' section-list">';
     //   } else bodyHtml += '">';
     // } else bodyHtml += '">';
-    bodyHtml += '<div class="row">\n          <div class="col-sm-6 col-md-6 col-lg-6 body-left">\n    ';
+    bodyHtml += '<div class="row">\n          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">\n    ';
     bodyHtml += (0, _generateHTML2.default)(section.content);
     bodyHtml += '</div>';
 
     if (section.graph) {
-      bodyHtml += '<div class="col-sm-6 col-md-6 col-lg-6 body-right">';
+      bodyHtml += '<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right">';
       bodyHtml += (0, _generateHTML2.default)(section.graph);
       bodyHtml += '</div>';
     }
@@ -10168,7 +10168,10 @@ function dataPrep(inputArray) {
           child.nesting = -1;
           child.level = 0;
         } else {
-          child.attrs.push(['class', 'img-responsive']);
+          var source = child.attrs[0][1].split('/');
+          var id = source[source.length - 1].split('.')[0];
+
+          child.attrs.push(['class', 'img-responsive ' + id]);
           child.children = null;
           child.nesting = 1;
           child.level = 1;

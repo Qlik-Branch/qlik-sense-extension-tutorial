@@ -1,0 +1,57 @@
+.qix-interaction .body-right {
+  padding-top: 0;
+}
+.qix-interaction .body-right .graph {
+  width: 100%;
+  height: 100%;
+}
+.qix-interaction p {
+  margin-bottom: 900px;
+}
+.qix-interaction p:last-child {
+  margin-bottom: 0;
+}
+.qix-interaction .graph {
+  position: relative;
+}
+.qix-interaction .graph img,
+.qix-interaction .graph .arrow-div {
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.qix-interaction .graph > img:first-child {
+  max-height: 15%;
+  padding-bottom: 0;
+}
+.qix-interaction .graph .arrow-div {
+  width: 100%;
+  height: 15%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.qix-interaction .graph > img:nth-child(3) {
+  max-height: 35%;
+  padding-top: 0;
+}
+.qix-interaction .graph > img:nth-child(4) {
+  max-height: 35%;
+  padding-top: 0;
+}
+.qix-interaction .graph .user-div {
+  height: 30%;
+}
+.qix-interaction .graph .user-div img:first-child {
+  position: relative;
+  left: -20%;
+  height: 40%;
+}
+.qix-interaction .graph .user-div img:nth-child(2) {
+  height: 40%;
+}
+
+.qix-interaction .graph .line {
+  stroke-width: 2px;
+  stroke: #43C9DF;
+  stroke-dasharray: 2, 4;
+}

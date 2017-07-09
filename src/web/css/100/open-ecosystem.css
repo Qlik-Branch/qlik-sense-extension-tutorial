@@ -1,0 +1,60 @@
+.open-ecosystem h3 {
+  padding-top: 500px;
+}
+.open-ecosystem .body-left {
+  padding-bottom: 400px;
+}
+
+.open-ecosystem h3:first-of-type {
+  padding-top: 0;
+}
+
+.open-ecosystem .body-right {
+  position: relative;
+  padding-top: 0;
+}
+.open-ecosystem .graph {
+  position: relative;
+}
+.open-ecosystem .graph > img:first-child {
+  max-width: 70%;
+  padding-top: 15px;
+}
+.open-ecosystem .graph > img:nth-child(2) {
+  position: absolute;
+}
+.open-ecosystem .graph > img:nth-child(3) {
+  position: absolute;
+}
+.open-ecosystem .graph > img:nth-child(4) {
+  position: absolute;
+}
+
+.open-ecosystem .graph .div-container {
+  position: absolute;
+  width: 100%;
+}
+
+.open-ecosystem .graph .big-circle {
+  fill: #4A90E2;
+}
+.open-ecosystem .graph .small-circle {
+  fill: #36B7CF;
+}
+.open-ecosystem .graph .text {
+  font-family: 'Open Sans';
+  font-size: 11px;
+  font-weight: bold;
+  text-anchor: middle;
+  fill: white;
+}
+.open-ecosystem .graph .big-line {
+  stroke-width: 2;
+  stroke: #4A90E2;
+  stroke-dasharray: 2;
+}
+.open-ecosystem .graph .small-line {
+  stroke-width: 2;
+  stroke: #36B7CF;
+  stroke-dasharray: 2;
+}
