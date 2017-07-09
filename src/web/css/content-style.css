@@ -96,6 +96,8 @@ body {
 .graph-scroll-fixed .body-right {
   position: fixed;
   right: 0;
+  left: calc(47px + 0.5*(100% - 47px));
+  width: calc(0.5*(100% - 47px))
 }
 .graph-scroll-below .body-right {
   position: absolute;
@@ -106,13 +108,13 @@ body {
 
 /* ========= Media =========*/
 @media(min-width: 768px){
-  .content .section-list .body-left {
+  /*.content .section-list .body-left {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-  }
+  }*/
 }
 @media(min-width: 992px) {
   .main-content {
@@ -124,6 +126,7 @@ body {
     margin-right: 90px;
   }
   .graph-scroll-fixed .body-right {
-    right: 90px;
+    left: calc(220px + 0.50*(100% - 220px));
+    width: calc(0.5*(100% - 400px))
   }
 }

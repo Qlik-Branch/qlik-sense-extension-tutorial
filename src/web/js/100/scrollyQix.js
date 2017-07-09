@@ -44,7 +44,8 @@ export default function scrollyQix(section){
 
   svg.attr('onload', function(){
     resize();
-  })
+  });
+  
   // ============== Resize ==============
   window.addEventListener('resize', function(){resize()});
   function resize(){
@@ -61,7 +62,7 @@ export default function scrollyQix(section){
     lineDown
       .attr('x1', svgWidth*(13/24))
       .attr('y1', 0)
-      .attr('x2', svgWidth*(13/24))
+      .attr('x2', svgWidth*(13/24));
   };
   resize();
 

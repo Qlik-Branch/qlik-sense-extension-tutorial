@@ -23,7 +23,6 @@ document.querySelector('body').onload = function(){
   scrollygraph(sectionList);
 }
 
-
 // ============== Embedded Dashboard ==============
 /* Create iframe container */
 var graph0 = document.querySelector('#section-0 .graph');
