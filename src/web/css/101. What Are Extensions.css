@@ -5,18 +5,40 @@
   display: block;
 }
 
-#section-1 .body-right,
-#section-2 .body-right {
-  opacity: 0;
+.ext-navigation .body-left {
+  padding-bottom: 100px;
 }
 
-#section-7 .body-right,
-#section-9 .body-right,
-#section-10 .body-right {
-  padding-top: 20px;
+.ext-resize .body-left {
+  padding-bottom: 150px;
 }
 
-#section-7 .body-right img,
-#section-10 .body-right img {
-  max-height: 500px;
+.sense-sankey-download .body-left {
+  padding-bottom: 90px;
+}
+
+.sense-sankey-folder .body-left {
+  padding-bottom: 30px;
+}
+
+.sense-sankey-custom-objects .graph img {
+  max-height: 350px;
+}
+.sense-sankey-custom-objects .body-left {
+  padding-bottom: 200px;
+}
+
+.import-extensions .body-left {
+  padding-bottom: 100px;
+}
+
+.sense-sankey-custom-objects2 .graph img {
+  max-height: 350px;
+}
+.sense-sankey-custom-objects2 .body-left {
+  padding-bottom: 200px;
+}
+
+.drag-drop-ext .body-left {
+  padding-bottom: 100px;
 }
