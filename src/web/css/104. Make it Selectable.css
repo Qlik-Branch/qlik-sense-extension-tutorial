@@ -1,0 +1,60 @@
+#sidebar .nav-sidebar .sub-sidebar{
+  display: none;
+}
+#sidebar .nav-sidebar .sublist-4{
+  display: block;
+}
+
+.ace_editor {
+  width: 100%;
+  height: 400px;
+}
+
+.field-indices .body-left {
+  padding-bottom: 100px;
+}
+
+.hypercube-table-annotated .body-left {
+  padding-bottom: 100px;
+}
+
+.select-values-editor .ace_editor {
+  height: 50px;
+}
+.select-values-editor .body-right {
+  padding-bottom: 20px;
+}
+
+.pre-selection .body-left {
+  padding-bottom: 100px;
+}
+
+.post-selection .body-left {
+  padding-bottom: 60px;
+}
+
+.paint-editor .ace_editor {
+  height: 200px;
+}
+.paint-editor .body-left {
+  padding-bottom: 80px;
+}
+
+.paint-editor-2 .ace_editor {
+  height: 450px;
+}
+.paint-editor-2 .body-left {
+  padding-bottom: 200px;
+}
+
+.paint-editor-3 .body-left {
+  padding-bottom: 200px;
+}
+
+.paint-editor-4 .body-left {
+  padding-bottom: 200px;
+}
+
+.extension-selection .body-left {
+  padding-bottom: 50px;
+}

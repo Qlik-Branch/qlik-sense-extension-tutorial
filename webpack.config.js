@@ -8,7 +8,8 @@ module.exports = {
     p0: './src/web/js/100. Prereq Qliks Open Ecosystem.js',
     p1: './src/web/js/101. What Are Extensions.js',
     p2: './src/web/js/102. Hello World.js',
-    p3: './src/web/js/103. Make it Data Driven.js'
+    p3: './src/web/js/103. Make it Data Driven.js',
+    p4: './src/web/js/104. Make it Selectable.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -70,6 +71,12 @@ module.exports = {
       filename: '103. Make it Data Driven.html',
       title: 'Make it Data Driven',
       chunks: ['app', 'p3']
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/web/html/104. Make it Selectable/104. Make it Selectable.ejs',
+      filename: '104. Make it Selectable.html',
+      title: 'Make it Selectable',
+      chunks: ['app', 'p4']
     })
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor'

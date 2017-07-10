@@ -14,6 +14,10 @@ export default function aceEditor(section, language, text){
   editor.getSession().setMode('ace/mode/' +language);
   editor.$blockScrolling = Infinity;
   editor.session.setUseWorker(false);
+  editor.session.setOptions({
+    tabSize: 2,
+    useSoftTabs: true
+  })
   editor.setTheme('ace/theme/tomorrow_night');
   editor.setReadOnly(true);
   editor.setValue(text);
