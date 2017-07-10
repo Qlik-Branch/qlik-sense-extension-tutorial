@@ -1,0 +1,74 @@
+#sidebar .nav-sidebar .sub-sidebar{
+  display: none;
+}
+#sidebar .nav-sidebar .sublist-3{
+  display: block;
+}
+
+.ace_editor {
+  width: 100%;
+  height: 400px;
+}
+
+.create-extension .body-left {
+  padding-bottom: 100px;
+}
+
+.paint-extension .body-left {
+  padding-bottom: 30px;
+}
+
+.resize-extension .body-left {
+  padding-bottom: 70px;
+}
+
+.definition-editor .body-left {
+  padding-bottom: 100px;
+}
+
+.add-dimension .body-left {
+  padding-bottom: 100px;
+}
+
+.definition-editor-2 .body-left {
+  padding-bottom: 100px;
+}
+
+.q-matrix .body-left {
+  padding-bottom: 100px;
+}
+
+.q-matrix-row .body-left {
+  padding-bottom: 100px;
+}
+
+.q-matrix-cell .body-left {
+  padding-bottom: 100px;
+}
+
+.paint-editor .body-left {
+  padding-bottom: 150px;
+}
+
+.paint-editor-2 .body-left {
+  padding-bottom: 150px;
+}
+
+.paint-editor-3 .body-left {
+  padding-bottom: 150px;
+}
+
+.headers .body-left {
+  padding-bottom: 100px;
+}
+
+.paint-editor-4 .body-left {
+  padding-bottom: 150px;
+}
+.paint-editor-4 .ace_editor {
+  height: 475px;
+}
+
+.ext-table .body-left {
+  padding-bottom: 100px;
+}
