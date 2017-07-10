@@ -9,7 +9,8 @@ module.exports = {
     p1: './src/web/js/101. What Are Extensions.js',
     p2: './src/web/js/102. Hello World.js',
     p3: './src/web/js/103. Make it Data Driven.js',
-    p4: './src/web/js/104. Make it Selectable.js'
+    p4: './src/web/js/104. Make it Selectable.js',
+    p5: './src/web/js/105. Make it Stylish.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -77,6 +78,12 @@ module.exports = {
       filename: '104. Make it Selectable.html',
       title: 'Make it Selectable',
       chunks: ['app', 'p4']
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/web/html/105. Make it Stylish/105. Make it Stylish.ejs',
+      filename: '105. Make it Stylish.html',
+      title: 'Make it Stylish',
+      chunks: ['app', 'p5']
     })
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor'

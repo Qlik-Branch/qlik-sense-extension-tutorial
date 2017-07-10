@@ -1,0 +1,11 @@
+#sidebar .nav-sidebar .sub-sidebar{
+  display: none;
+}
+#sidebar .nav-sidebar .sublist-5{
+  display: block;
+}
+
+.ace_editor {
+  width: 100%;
+  height: 400px;
+}

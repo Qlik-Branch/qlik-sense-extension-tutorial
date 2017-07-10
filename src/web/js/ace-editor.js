@@ -1,6 +1,7 @@
 import '../../../node_modules/ace-builds/src-min-noconflict/ace.js';
 import '../../../node_modules/ace-builds/src-min-noconflict/mode-json.js';
 import '../../../node_modules/ace-builds/src-min-noconflict/mode-javascript.js';
+import '../../../node_modules/ace-builds/src-min-noconflict/mode-css.js';
 import '../../../node_modules/ace-builds/src-min-noconflict/theme-tomorrow_night.js';
 
 export default function aceEditor(section, language, text){
