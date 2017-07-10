@@ -1,5 +1,5 @@
-import '../css/sidebar-style.css';
-import '../css/content-style.css';
+import '../sass/sidebar-style.scss';
+import '../sass/content-style.scss';
 
 import * as d3 from 'd3';
 import {graphScroll} from 'graph-scroll';

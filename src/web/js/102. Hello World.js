@@ -2,7 +2,7 @@ import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
-import '../css/102. Hello World.css';
+import '../sass/102. Hello World.scss';
 import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
 import staticDynPropInteractive from './102/static-dyn-prop-interactive.js';
 

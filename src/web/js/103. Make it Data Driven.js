@@ -2,7 +2,7 @@ import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
-import '../css/103. Make it Data Driven.css';
+import '../sass/103. Make it Data Driven.scss';
 
 var sectionList = [
   '.create-extension',

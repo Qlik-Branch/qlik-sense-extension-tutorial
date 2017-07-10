@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import '../../css/100/open-ecosystem.css';
+import '../../sass/100/open-ecosystem.scss';
 
 export default function openEcosystem(section){
   var graph = document.querySelector(section +' .body-right .graph');

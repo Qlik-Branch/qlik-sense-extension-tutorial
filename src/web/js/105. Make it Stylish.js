@@ -2,7 +2,7 @@ import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
-import '../css/105. Make it Stylish.css';
+import '../sass/105. Make it Stylish.scss';
 
 var sectionList = [
 	'.files-with-stylesheet',

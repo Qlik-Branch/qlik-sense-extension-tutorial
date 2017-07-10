@@ -2,7 +2,7 @@ import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
-import '../css/106. Make it Responsive.css';
+import '../sass/106. Make it Responsive.scss';
 
 var sectionList = [
 	'.css-editor',

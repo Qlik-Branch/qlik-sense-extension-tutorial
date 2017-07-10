@@ -1,7 +1,7 @@
 import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
 
-import '../css/101. What Are Extensions.css';
+import '../sass/101. What Are Extensions.scss';
 
 var sectionList = [
   '#section-1',

@@ -2,7 +2,7 @@ import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
-import '../css/108. Make it Scalable.css';
+import '../sass/108. Make it Scalable.scss';
 
 var sectionList = [
   '.definition-editor',

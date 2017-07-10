@@ -2,7 +2,7 @@ import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
-import '../css/107. Make it Universal.css';
+import '../sass/107. Make it Universal.scss';
 
 var sectionList = [
   '.print-service-editor',

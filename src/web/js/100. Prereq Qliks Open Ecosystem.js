@@ -5,7 +5,7 @@ import scrollygraph from './scrollygraph.js';
 
 import scrollyQix from './100/scrollyQix.js';
 import openEcosystem from './100/openEcosystem.js';
-import '../css/100. Prereq Qliks Open Ecosystem.css';
+import '../sass/100. Prereq Qliks Open Ecosystem.scss';
 
 var sectionList = [
   '.youtube-video',

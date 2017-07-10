@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import '../../css/102/static-dyn-prop-interactive.css';
+import '../../sass/102/static-dyn-prop-interactive.scss';
 
 export default function staticDynPropInteractive(section){
   // Get Graph Container

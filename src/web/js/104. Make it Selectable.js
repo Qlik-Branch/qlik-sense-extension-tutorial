@@ -2,7 +2,7 @@ import activateSidebar from './sidebar.js';
 import scrollygraph from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
-import '../css/104. Make it Selectable.css';
+import '../sass/104. Make it Selectable.scss';
 
 var sectionList = [
 	'.field-indices',

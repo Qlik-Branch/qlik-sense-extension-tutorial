@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import '../../css/100/scrolly-qix.css';
+import '../../sass/100/scrolly-qix.scss';
 
 export default function scrollyQix(section){
   /* Size Animation container */

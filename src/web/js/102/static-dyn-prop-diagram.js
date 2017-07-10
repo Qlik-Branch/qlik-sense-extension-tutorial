@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import '../../css/102/static-dyn-prop-diagram.css';
+import '../../sass/102/static-dyn-prop-diagram.scss';
 
 export default function staticDynPropDiagram(){
   // ============== Static Dyn Diagram ==============
