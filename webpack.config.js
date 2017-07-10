@@ -11,7 +11,9 @@ module.exports = {
     p3: './src/web/js/103. Make it Data Driven.js',
     p4: './src/web/js/104. Make it Selectable.js',
     p5: './src/web/js/105. Make it Stylish.js',
-    p6: './src/web/js/106. Make it Responsive.js'
+    p6: './src/web/js/106. Make it Responsive.js',
+    p7: './src/web/js/107. Make it Universal.js',
+    p8: './src/web/js/108. Make it Scalable.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -91,6 +93,18 @@ module.exports = {
       filename: '106. Make it Responsive.html',
       title: 'Make it Responsive',
       chunks: ['app', 'p6']
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/web/html/107. Make it Universal/107. Make it Universal.ejs',
+      filename: '107. Make it Universal.html',
+      title: 'Make it Universal',
+      chunks: ['app', 'p7']
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/web/html/108. Make it Scalable/108. Make it Scalable.ejs',
+      filename: '108. Make it Scalable.html',
+      title: 'Make it Scalable',
+      chunks: ['app', 'p8']
     })
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor'
