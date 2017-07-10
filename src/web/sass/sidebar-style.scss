@@ -40,6 +40,7 @@
   margin-left: 10px;
   margin-right: 10px;
   font-family: 'Roboto Slab';
+  font-weight: 300;
   font-size: 18px;
   color: white;
 }
@@ -62,7 +63,7 @@
 }
 .nav-sidebar > li > a {
   font-family: 'Open Sans';
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   font-size: 14px;
   width: 220px;
@@ -74,6 +75,7 @@
 #sidebar .nav > li > a:hover,
 #sidebar .nav > li > a:focus {
   background-color: #353D43;
+  border-left: 3px solid #6EE8FC;
 }
 @media(min-width: 992px) {
   .sidebar {

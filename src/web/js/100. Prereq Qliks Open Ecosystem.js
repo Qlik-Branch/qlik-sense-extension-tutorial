@@ -8,7 +8,7 @@ import openEcosystem from './100/openEcosystem.js';
 import '../sass/100. Prereq Qliks Open Ecosystem.scss';
 
 var sectionList = [
-  '.youtube-video',
+  // '.youtube-video',
   '.self-service',
   '.qix-interaction',
   '.open-ecosystem'

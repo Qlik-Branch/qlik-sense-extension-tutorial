@@ -6,26 +6,50 @@
   display: block;
 }
 
-.embedded-dashboard .graph {
-  position: relative;
+/* Adjust Header */
+.content .header p:first-of-type {
+  font-family: "Raleway";
+  font-size: 20px;
+  color: #565555;
+  font-weight: normal;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  margin-bottom: 33px;
 }
 
-/* Align embedded iframe dashboard in monitor */
-.embedded-dashboard .graph .iframe-container {
-  position: absolute;
-  top: 4.8%;
-  left: 3.9%;
-  width: 92.2%;
-  height: 64.2%;
-  border: none;
+.embedded-dashboard {
+  .graph {
+    position: relative;
+
+    img {
+      width: 100%;
+      max-width: 550px;
+    }
+
+    .iframe-container {
+      position: absolute;
+      top: 4.8%;
+      left: 3.9%;
+      width: 92.2%;
+      max-width: 505px;
+      height: 64.2%;
+      border: none;
+
+      iframe {
+        position: relative;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        border: none;
+        transform: scale(0.5, 0.5);
+      }
+    }
+  }
 }
 
-.embedded-dashboard .graph .iframe-container iframe {
-  position: relative;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  border: none;
-  transform: scale(0.5, 0.5);
-}
+// .youtube-video {
+//   .body-right {
+//     padding-top: 300px;
+//   }
+// }

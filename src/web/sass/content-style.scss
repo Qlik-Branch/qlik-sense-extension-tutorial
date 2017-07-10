@@ -1,6 +1,12 @@
 $FontPathOpenSans: "../../../node_modules/npm-font-open-sans/fonts/";
 @import "../../../node_modules/npm-font-open-sans/open-sans";
 
+$FontPath: "../../../node_modules/roboto-slab-fontface-kit/fonts/";
+@import "../../../node_modules/roboto-slab-fontface-kit/roboto-slab";
+
+$raleway-font-path: '../../../node_modules/fonts-raleway/fonts/fonts-raleway';
+@import "../../../node_modules/fonts-raleway/scss/raleway";
+
 /* ========= Container =========*/
 body {
   overflow-x: hidden;
@@ -22,7 +28,7 @@ body {
 .content .header p {
   font-family: "Open Sans";
   font-weight: 300;
-  /*font-style: italic;*/
+  padding: 15px 26px 17px 24px;
   background-color: rgba(54,183,207,0.07);
 }
 .content .header hr {
@@ -78,14 +84,14 @@ body {
   position: relative;
 }
 .body-left {
-  margin-top: 500px;
+  margin-top: 300px;
 }
 #section-0 .body-left {
   margin-top: 0;
 }
 .body-right {
   position: absolute;
-  padding-top: 200px;
+  padding-top: 300px;
   top: 0;
   right: 0;
   transform: translateX(0);
