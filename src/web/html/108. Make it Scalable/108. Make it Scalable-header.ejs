@@ -1,0 +1,184 @@
+<h1>108. Make it Scalable</h1><p>Learning goal: Review strategies for using larger volumes of data within an extension</p><p>In chapter 102, we discussed configuring our HyperCubeDef with a qInitialDataFetch property that limited how many rows and columns our layout would pull. Qlik Sense limits us to 10,000 cells per data page, which is why we set our previous initial data fetch to 10 columns and 1,000 rows. What if we have more data than that though?</p><p>The answer is that we can have Qlik Sense calculate multiple pages of data for us. So if we have 2,500 rows that we want to pull from the previous example, we could ask for a page of the first 1,000 records, a page for the next 1,00 records, and then a page for the last 500 records. Pages are defined in the JSON format we saw before:</p><ul><li><p>qTop: the row to start at</p></li><li><p>qLeft: the column to start at</p></li><li><p>qWidth: number of columns</p></li><li><p>qHeight: number of rows</p></li></ul><p>We can write out the page definitions for our previous example of 2,500 rows like so:</p>[
+	{
+		qTop: 0,
+		qLeft: 0,
+		qWidth: 5,
+		qHeight: 1000
+	},
+	{
+		qTop: 1000,
+		qLeft: 0,
+		qWidth: 5,
+		qHeight: 1000
+	},
+	{
+		qTop: 2000,
+		qLeft: 0,
+		qWidth: 5,
+		qHeight: 500
+	}
+]
+<p>How do we get these pages though? In our my-table extension, we rely on the initial data fetch property to populate our layout with this data each time. If we want to pull data pages ourselves, <a href="http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/BackendAPI/getdata-method.htm">we can use the Backend API’s getData method/</a>. This method accepts an array of page definitions and will return a Promise for the resulting qMatrices. Note that this call still has the 10,000 cell limit, so we can’t just pass all of our pages to it at once. We will need to make the call multiple times if we want to exceed 10,000 cells.</p><p>Generally, there are 3 approaches to exceeding the cell limit:</p><ol><li><p>Using paging or scrolling to fetch additional data on demand, replacing the current data in view</p><ol><li><p>Pros: We only render as much data as is needed at any given time, improving performance in the browser which doesn’t work well with large data sets</p></li><li><p>Cons: We may want to see all of the data as part of our visualization</p></li></ol></li><li><p>Run multiple getData calls in parallel and render when all the results are complete</p><ol><li><p>Pros: We get all of the data back as fast as possible</p></li><li><p>Cons: Running all of those calls in parallel can be hard for Qlik to process and produce a bottleneck</p></li></ol></li><li><p>Run multiple getData calls in sequence and render either when as the data comes back or when all the data is complete</p><ol><li><p>Pros: We get all of the data back</p></li><li><p>Cons: It may take longer to finish since the data fetching calls are staggered</p></li></ol></li></ol><p>We recommend approach 1 over the others when possible. Let’s walk through an example implementation with our extension.</p><h2>Paging the Data</h2><p>If our table exceeds 1,000 rows, it will cut off values. When this happens, let’s add paging buttons to the extension that will allow us to go from page to page. If I have 2,500 records for example, I will get 3 buttons - 1 for Page 1 (rows 0 - 999), 1 for Page 2 (rows 1,000 - 1,999), and 1 for Page 3 (rows 2,000 - 2,499). When I click a page button, the extension will fetch the data for that page and update the table.</p><h3>Create <thead> and <tbody> elements</h3><p>Currently, our extension just appends rows directly onto our table. However, we are going to be changing out the rows in the body of the table on the fly. Therefore, we need to separate the table rows into groups based on header and body rows so that we can easily add and remove elements from the right place. First, let’s add the thead and tbody elements:</p><p><em>paint.js</em></p>// Create a table
+var table = document.createElement("table");
+
+// Create a table head and body 
+var thead = document.createElement("thead");
+var tbody = document.createElement("tbody");
+table.appendChild(thead);
+table.appendChild(tbody);
+<p>Next, let’s update all code that added rows directly to the table. Instead of appending to the table, let’s append header rows to thead and body rows to tbody:</p><p><em>paint.js</em></p>// Add the header row to the table
+thead.appendChild(hRow);
+
+...
+
+// append the row to the table body
+tbody.appendChild(tr);
+<h3>Create a separate function for rendering the table body rows</h3><p>Since we will be rendering the table body rows based on different sets of data when users click, we need to break out that section of code into it’s own function that can be run multiple times. We will give this function an input for the qMatrix that should be rendered. It will also clear out the tbody before adding new rows to it:</p><p><em>paint.js</em></p>function render(qMatrix) {
+    // Clear the tbody
+    tbody.innerHTML = "";
+
+    // Iterate through each row of the qMatrix
+    for(var row = 0; row < qMatrix.length; row++) {
+        // Get current row data
+        var currentRow = qMatrix[row];
+        // Create a row
+        var tr = document.createElement("tr");
+        // Iterate through each column of the row
+        for(var col = 0; col < currentRow.length; col++) {
+            // Get current cell data
+            var currentCell = currentRow[col];
+            // Create a cell
+            var td = document.createElement("td");
+            // Add text value to the cell
+            td.innerHTML = currentCell.qText;
+            
+            // Check if dimension, then add metadata
+            if(col < dimensionInfo.length) {
+                // Add a selectable class
+                td.className = "selectable";
+                // Add metadata for the selection
+                td.setAttribute("dim-col",col);
+                td.setAttribute("dim-index", currentCell.qElemNumber);
+            }
+            
+            // Append the cell to the row
+            tr.appendChild(td);
+        }
+        // append the row to the table body
+        tbody.appendChild(tr);
+    }
+
+    // Add click functions to ".selectable" items
+    $element.find(".selectable").on("click", function() {
+        // Get the dimension column number
+        var dimCol = parseInt(this.getAttribute("dim-col"));
+        
+        // Get the dimension value index
+        var dimInd = parseInt(this.getAttribute("dim-index"));
+
+        // Call selectValues with these values
+        backendApi.selectValues(dimCol, [dimInd],true);
+    });
+}  
+<h3>Create buttons that page based on the number of rows</h3><p>We can calculate how many pages we need based on dividing the total number of rows in our hypercube by the max page size and then rounding up to cover all rows. For example, if we have 2,500 rows and a page size of 1,000, we will need (2500 / 1000 = 2.5, rounded up) -> 3 pages. We can create a function that will fetch the right page as well as style the paged button blue on click. Finally, we can create all of the necessary buttons, name them, style them, and give them the click event handlers.</p><p>We also need to make our container scroll vertically, since we will be adding more rows than can be rendered on the page.</p><p><em>paint.js</em></p>...
+// Make the element scroll
+$element.css("overflow-y","auto");
+
+// Number of pages calculation
+var pageSize = 1000;
+var totalRows = layout.qHyperCube.qSize.qcy;
+var numberOfPages = Math.ceil(totalRows/pageSize);
+
+// Function for creating a page fetcher function based on page number
+var fetchPage = function(pageNumber) {
+    return function(evt) {
+        var page = backendApi.getData([{
+            qTop: pageNumber*pageSize,
+            qLeft: 0,
+            qWidth: 10,
+            qHeight: pageSize
+        }]);
+
+        page.then(function(data) {
+            render(data[0].qMatrix);
+        });
+
+        // reset background-color of all buttons
+        $element.find("button").css("background-color","");
+
+        // set clicked button background color
+        evt.target.style.backgroundColor = "deepskyblue";
+    }
+}
+
+// Create a button for each page
+for(var i = 0; i<numberOfPages; i++) {
+    var button = document.createElement("button");
+    button.innerHTML = "Page " + (i+1);
+    button.addEventListener("click", fetchPage(i));
+    // On init, color the first button
+    if (i === 0) button.style.backgroundColor = "deepskyblue";
+    $element.append(button);
+}
+
+
+// Create a table
+var table = document.createElement("table");
+...
+<h3>Run an initial render for the first page</h3><p>Whenever the data updates, our paint function will re-run and create a new set of page buttons and table. When that happens, we want to render the first page by default. Since our HyperCube’s initialDataFetch gets the first page, we can trigger this initial render like so:</p><p><em>paint.js</em></p>...
+var qMatrix = layout.qHyperCube.qDataPages[0].qMatrix;
+
+// Initial render
+render(qMatrix);
+...
+<p>With those code changes in place, we now can use buttons to page our extension! To better track the changes from the previous chapter, you may find the <a href="https://github.com/axisgroup/my-table/compare/107-make-it-universal...108-make-it-scalable?expand=1">GitHub comparison useful.</a></p><h2>Pulling All Pages in Parallel and in Sequence</h2><p>While we don’t recommend pulling large sets of data at once in an extension, we will share a couple of code snippets for how it can be accomplished.</p><h3>Getting Pages in Parallel</h3><p>If we want to pull all the pages simultaneously and then render when they have all completed, we can take advantage of a function called Promise.all. Promise.all takes in an array of Promises and returns a Promise that resolves when all of the inputted promises have resolved. It will resolve with an array that contains the result from each inputted Promise. Here is an example of using it to make 3 data page calls at once and run code once they have all completed:</p>var pagePromises = [
+	backendApi.getData({qTop: 0, qLeft: 0, qWidth: 5, qHeight: 1000}),
+	backendApi.getData({qTop: 1000, qLeft: 0, qWidth: 5, qHeight: 1000}),
+	backendApi.getData({qTop: 2000, qLeft: 0, qWidth: 5, qHeight: 1000})
+];
+
+Promise.all(pagePromises).then(function(pages) {
+	// do something with the array of pages, like render a chart
+});
+<h3>Getting Pages in Sequence</h3><p>If we want to pull the pages 1 at a time before rendering, we have to be a little more clever. JavaScript’s reduce function works nicely for this task: we can take an array of page definitions and go through them one by one, queuing up a new getData call each time the old one completes. We will need to store the data off somewhere.</p>var pageDefs = [
+	{
+		qTop: 0,
+		qLeft: 0,
+		qWidth: 5,
+		qHeight: 1000
+	},
+	{
+		qTop: 1000,
+		qLeft: 0,
+		qWidth: 5,
+		qHeight: 1000
+	},
+	{
+		qTop: 2000,
+		qLeft: 0,
+		qWidth: 5,
+		qHeight: 500
+	}
+];
+
+
+var pagesPr = pageDefs.reduce(function(prev, curr) {
+	// Return a new promise
+	return new Promise(function(resolve, reject) {
+		// When the previous promise is done
+		prev.then(function(accPages) {
+			// Get the new page
+			backendApi.getData(curr).then(function(newPage) {
+				// Add the latest page to the accumulated array of pages and resolve the promise with that accumulated array
+				accPages.push(newPage);
+				resolve(accPages);
+			})
+		})
+	});
+	
+}, Promise.resolve([]));
+
+pagesPr.then(function(pages) {
+	// do something with the pages
+});
+<h2>Fin</h2><h4>Recap</h4><ul><li><p>Extensions have limits on the amount of data that can be pulled at once</p></li><li><p>The Backend API’s getData function can be used to request new pages of data</p></li><li><p>Data paging can be done in response to an event, such as a button click or a scroll</p></li></ul><h4>Resources</h4><ul><li><p><a href="http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/backend-api-reference.htm">Backend API ‒ Qlik Sense</a></p></li><li><p><a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">Promises in JS</a></p></li></ul><h4>Troubleshooting Guide</h4><ul><li></li></ul>

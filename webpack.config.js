@@ -10,7 +10,8 @@ module.exports = {
     p2: './src/web/js/102. Hello World.js',
     p3: './src/web/js/103. Make it Data Driven.js',
     p4: './src/web/js/104. Make it Selectable.js',
-    p5: './src/web/js/105. Make it Stylish.js'
+    p5: './src/web/js/105. Make it Stylish.js',
+    p6: './src/web/js/106. Make it Responsive.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -84,6 +85,12 @@ module.exports = {
       filename: '105. Make it Stylish.html',
       title: 'Make it Stylish',
       chunks: ['app', 'p5']
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/web/html/106. Make it Responsive/106. Make it Responsive.ejs',
+      filename: '106. Make it Responsive.html',
+      title: 'Make it Responsive',
+      chunks: ['app', 'p6']
     })
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor'
