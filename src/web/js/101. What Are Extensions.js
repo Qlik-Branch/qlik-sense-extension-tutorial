@@ -6,7 +6,6 @@ import senseSankeyServer from './101/senseSankeyServer.js';
 import '../sass/101. What Are Extensions.scss';
 
 var sectionList = [
-  '.ext-navigation',
   '.ext-resize'
 ];
 
@@ -15,6 +14,5 @@ activateSidebar(1);
 
 
 scrollPosition(sectionList);
-scrollOpacity(sectionList);
 senseSankeyDesktop('.sense-sankey-desktop');
 senseSankeyServer('.sense-sankey-server');

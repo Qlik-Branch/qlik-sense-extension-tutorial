@@ -71,9 +71,10 @@ body {
 }
 .content .row {
   position: relative;
+  clear: both;
 }
 .content .body-right {
-  float: right;
+  // float: right;
 }
 .content .section {
   margin-top: 100px;
@@ -90,7 +91,7 @@ body {
   margin-top: 0;
 }
 .body-right {
-  position: absolute;
+  // position: absolute;
   // margin-top: 100px;
   padding-top: 100px;
   top: 0;

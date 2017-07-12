@@ -6,7 +6,7 @@
     padding-bottom: 400px;
   }
   .body-right {
-    padding-top: 100px;
+    padding-top: 0;
   }
 
   h3:first-of-type {
@@ -15,6 +15,7 @@
 
   .graph {
     position: relative;
+    height: 100%;
 
     & > img:first-child {
       max-width: 70%;

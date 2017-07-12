@@ -121,7 +121,7 @@ export default function openEcosystem(section){
     smallCircle
       .attr('cx', svgWidth*0.9)
       .attr('cy', svgHeight*0.7)
-      .attr('r', 27);
+      .attr('r', 35);
 
     smallTextExtension
       .attr('x', svgWidth*0.9)
@@ -130,9 +130,9 @@ export default function openEcosystem(section){
     smallTextMashup
       .attr('x', svgWidth*0.9)
       .attr('y', (d, i) =>{
-        if(i===0) return svgHeight*0.625;
-        else if(i===1) return svgHeight*0.625 + 15;
-        else return svgHeight*0.625 + 30;
+        if(i===0) return svgHeight*0.625 + 5;
+        else if(i===1) return svgHeight*0.625 + 20;
+        else return svgHeight*0.625 + 35;
       })
 
     var imgExtensionRight = ecosystemRect.width - ecosystemRect.width*0.024;
