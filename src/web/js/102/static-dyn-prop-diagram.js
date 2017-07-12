@@ -116,7 +116,7 @@ export default function staticDynPropDiagram(section){
     .attr('class', 'dynamic-line-1-fill');
 
   var dynamicLine1Scale = d3.scaleLinear()
-    .domain([0, -125])
+    .domain([-100, -300])
     .clamp(true);
 
   // Dynamic Circle Fill
@@ -125,12 +125,12 @@ export default function staticDynPropDiagram(section){
     .endAngle((3/2)*Math.PI);
 
   var dynamicCircleStartAngle = d3.scaleLinear()
-    .domain([-125, -250])
+    .domain([-300, -500])
     .range([(3/2)*Math.PI, (1/2)*Math.PI])
     .clamp(true);
 
   var dynamicCircleEndAngle = d3.scaleLinear()
-    .domain([-125, -250])
+    .domain([-300, -500])
     .range([(3/2)*Math.PI, (5/2)*Math.PI])
     .clamp(true);
 
@@ -142,7 +142,7 @@ export default function staticDynPropDiagram(section){
     .attr('class', 'dynamic-line-2-fill');
 
   var dynamicLine2Scale = d3.scaleLinear()
-    .domain([-250, -375])
+    .domain([-500, -700])
     .clamp(true);
 
   // ============== Resize ==============
@@ -270,7 +270,7 @@ export default function staticDynPropDiagram(section){
     dynamicLine2Fill
       .attr('x2', dynamicLine2Scale(sectionTop));
 
-    if(sectionTop <= -375) svg.select('#dynamic-number-label-1').text('532');
+    if(sectionTop <= -700) svg.select('#dynamic-number-label-1').text('532');
     else svg.select('#dynamic-number-label-1').text('?');
   }
   scroll();

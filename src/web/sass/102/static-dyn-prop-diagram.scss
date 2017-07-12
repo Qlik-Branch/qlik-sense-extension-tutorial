@@ -1,8 +1,16 @@
-$scroll-line-height: calc(375px + 100vh);
+$scroll-line-height: calc(700px + 100vh);
 
 .content .static-dyn-prop-diagram {
   height: $scroll-line-height;
   margin-top: 200px;
+
+  & + div {
+    margin-top: 0;
+
+    .body-left {
+      margin-top: 0;
+    }
+  }
 
   .row {
     top: 0;
@@ -31,12 +39,12 @@ $scroll-line-height: calc(375px + 100vh);
 
   .body-left {
     margin-top: 0;
-    padding-top: 25vh;
+    padding-top: 35vh;
   }
 
   .body-right {
     position: relative;
-    padding-top: 20vh;
+    padding-top: 30vh;
     height: 100%;
 
     .graph {

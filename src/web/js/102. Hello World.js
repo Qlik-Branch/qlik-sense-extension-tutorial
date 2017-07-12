@@ -115,7 +115,7 @@ var initialProperties =
 	};
 });`
 
-aceEditor('initial-properties-editor', 'javascript', initialProperties, 'properties.js');
+aceEditor('initial-properties-editor', 'javascript', initialProperties, 'my-table.js');
 
 
 // Definition
@@ -131,7 +131,7 @@ var definition =
 	}
 };`
 
-aceEditor('definition-editor', 'javascript', definition, 'definition');
+aceEditor('definition-editor', 'javascript', definition, 'my-table');
 
 
 // Initial Props Definition
@@ -157,36 +157,32 @@ var defInitProps =
 	};
 });`
 
-aceEditor('def-initprops-editor', 'javascript', defInitProps, 'properties.js');
+aceEditor('def-initprops-editor', 'javascript', defInitProps, 'my-table.js');
 
 
 // Paint
 var paint =
-`define([], function() {
-  var myPaint = function($element, layout) {
-    // Get the text color value
-    var textColor = layout.textColor;
+`var myPaint = function($element, layout) {
+  // Get the text color value
+  var textColor = layout.textColor;
 
-    // Clear the previous contents of the container so we start from scratch each time
-    $element.html("");
+  // Clear the previous contents of the container so we start from scratch each time
+  $element.html("");
 
-    // Create a span
-    var span = document.createElement("span");
+  // Create a span
+  var span = document.createElement("span");
 
-    // Set text color
-    span.style.color = textColor;
-    
-    // Add message
-    span.innerHTML = "hello, world";
-    
-    // Append span to the container
-    $element.append(span);
-  }
+  // Set text color
+  span.style.color = textColor;
+  
+  // Add message
+  span.innerHTML = "hello, world";
+  
+  // Append span to the container
+  $element.append(span);
+}`;
 
-  return myPaint;
-});`;
-
-aceEditor('paint-editor', 'javascript', paint, 'paint.js');
+aceEditor('paint-editor', 'javascript', paint, 'my-table.js');
 
 
 // JS 2
@@ -210,7 +206,7 @@ var support =
 	exportData: true 
 };`;
 
-aceEditor('support-editor', 'javascript', support, 'support.js');
+aceEditor('support-editor', 'javascript', support, 'my-table.js');
 
 
 // JS 3
@@ -225,4 +221,4 @@ var js3 =
 	};
 }`;
 
-aceEditor('js-editor-3', 'javascript', js3, 'paint.js');
+aceEditor('js-editor-3', 'javascript', js3, 'my-table.js');
