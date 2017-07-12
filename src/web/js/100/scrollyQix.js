@@ -1,27 +1,37 @@
 import * as d3 from 'd3';
+import {graphScroll} from 'graph-scroll';
 import '../../sass/100/scrolly-qix.scss';
 
 export default function scrollyQix(section){
-  /* Size Animation container */
-  var scrollyBodyRight = document.querySelector(section +' .body-right');
-  var scrollyQixContainer = document.querySelector(section +' .body-right .graph');
+  /* Add an invisible line width 0 width to use as the scrolling section
+      in graph-scroll */
+  var scrollLine = document.createElement('div');
+  scrollLine.classList.add('scroll-line');
+  var scrollLineContent = document.createElement('div');
+  scrollLine.appendChild(scrollLineContent);
+  document.querySelector(section).appendChild(scrollLine);
 
 
-  /* Append new div element */
+  /* Get element */
+  var bodyLeft = document.querySelector(section +' .body-left');
+  var graph = document.querySelector(section +' .body-right .graph');
+
+  /* Append element for arrows */
   var arrowDiv = document.createElement('div');
   arrowDiv.classList.add('arrow-div');
-  scrollyQixContainer.insertBefore(arrowDiv, scrollyQixContainer.children[1]);
+  graph.insertBefore(arrowDiv, graph.children[1]);
 
-  /* Append user div container */
+
+  /* Append div container to hold user images */
   var userDiv = document.createElement('div');
   userDiv.classList.add('user-div');
   for(var i=0; i<2; i++){
     userDiv.appendChild(document.querySelector(section +' .graph img:nth-child(5)'));
   };
+  graph.appendChild(userDiv);
 
-  scrollyQixContainer.appendChild(userDiv);
 
-
+  // ============= D3 =============
   // Add svg
   var svg = d3.select(arrowDiv)
     .append('svg')
@@ -42,17 +52,12 @@ export default function scrollyQix(section){
     .attr('class', 'line line-down')
     .attr('y2', 0);
 
-  svg.attr('onload', function(){
-    resize();
-  });
   
   // ============== Resize ==============
   window.addEventListener('resize', function(){resize()});
   function resize(){
     svgWidth = +svg.style('width').split('px')[0];
     svgHeight = +svg.style('height').split('px')[0];
-        
-    scrollyBodyRight.style.height = window.innerHeight +'px';
     
     lineUp
       .attr('x1', svgWidth*(11/24))
@@ -64,49 +69,27 @@ export default function scrollyQix(section){
       .attr('y1', 0)
       .attr('x2', svgWidth*(13/24));
   };
-  resize();
 
 
   // ============== Scroll ==============
-  var imgUser = document.querySelector(section +' .graph .user-div > img:nth-child(2)');
-  var imgChat = document.querySelector(section +' .graph .user-div > img:nth-child(1)');
-  var imgMonitorBefore = document.querySelector(section +' .graph > img:nth-child(3)');
-  var imgMonitorAfter = document.querySelector(section +' .graph > img:nth-child(4)');
+  var imgMonitorBefore = document.querySelector(section +' .graph > img:nth-of-type(2)');
+  var imgMonitorAfter = document.querySelector(section +' .graph > img:nth-of-type(3)');
 
-  var imgUserScale = d3.scaleLinear()
-    .domain([-300, -600])
-    .range([0, 1])
-    .clamp(true);
-  var imgChatScale = d3.scaleLinear()
-    .domain([-600, -900, -1200, -1500])
-    .range([0, 1, 1, 0])
-    .clamp(true);
+  var scrollFunctionArray = [],
+      sectionTop;
+  /* Add scroll event listener to window and pass it array of scroll functions */
+  window.addEventListener('scroll', function(){onscroll(scrollFunctionArray)})
+  /* Function to be called everytime there is scroll action. The function is
+      passed an array of functions, each of which updates the style or attribute
+      using a scale */
+  function onscroll(scrollFunctionArray){
+    // Get top position of section
+    sectionTop = document.querySelector(section).getBoundingClientRect().top;
 
-  var lineUpY2Scale = d3.scaleLinear()
-    .domain([-1300, -1900])
-    .range([svgHeight, 0])
-    .clamp(true);
-  var lineUpOpacityScale = d3.scaleLinear()
-    .domain([-2000, -2300])
-    .range([1, 0])
-    .clamp(true);
-
-  var lineDownY2Scale = d3.scaleLinear()
-    .domain([-2400, -2700])
-    .range([0, svgHeight])
-    .clamp(true);
-  
-  window.addEventListener('scroll', function(){onscroll()});
-  function onscroll(){
-    var sectionTop = document.querySelector(section).getBoundingClientRect().top;
-
-    imgUser.style.opacity = imgUserScale(sectionTop);
-    imgChat.style.opacity = imgChatScale(sectionTop);
-
-    lineUp.attr('y2', lineUpY2Scale(sectionTop));
-    lineUp.style('opacity', lineUpOpacityScale(sectionTop));
-
-    lineDown.attr('y2', lineDownY2Scale(sectionTop));
+    // Execute each function in the function array
+    scrollFunctionArray.forEach((fx) =>{
+      fx();
+    });
 
     if(sectionTop > -2700){
       imgMonitorBefore.style.display = 'block';
@@ -116,5 +99,69 @@ export default function scrollyQix(section){
       imgMonitorAfter.style.display = 'block';
     }
   }
-  onscroll();
+
+  /* Function to add a scaling function to function array. This function
+      generates a scale and defines how the element property should be
+      updated in relation to that scale */
+  function addScrollListener(d3Element, type, property, domain, range){
+    // Define the scale
+    var scale = d3.scaleLinear()
+      .domain(domain)
+      .range(range)
+      .clamp(true);
+
+    // Add the scaling effect to the function array
+    scrollFunctionArray.push(function scroll(){
+      d3Element[type](property, scale(sectionTop));
+    });
+  }
+
+  // User Img
+  addScrollListener(d3.select(section +' .graph .user-div > img:nth-of-type(2)'),
+    'style', 'opacity', [-300, -600], [0, 1]);
+  // Chat Img
+  addScrollListener(d3.select(section +' .graph .user-div > img:first-of-type'),
+    'style', 'opacity', [-600, -900, -1200, -1500], [0, 1, 1, 0]);
+  // Line Up y2
+  addScrollListener(lineUp, 'attr', 'y2', [-1300, -1900], [svgHeight, 0]);
+  // Line Up Opacity
+  addScrollListener(lineUp, 'style', 'opacity', [-2000, -2700], [1, 0]);
+  // Line Down y2
+  addScrollListener(lineDown, 'attr', 'y2', [-2400, -2700], [0, svgHeight]);
+
+  // p1 Opacity
+  addScrollListener(d3.select(section +' .body-left > p:first-of-type'),
+    'style', 'opacity', [-300, -400], [0, 1]);
+  // p1 Color
+  addScrollListener(d3.select(section +' .body-left > p:first-of-type'),
+    'style', 'color', [-1300, -1400], ['#565555', '#ddd']);
+
+  // p2 Opacity
+  addScrollListener(d3.select(section +' .body-left > p:nth-of-type(2)'),
+    'style', 'opacity', [-1300, -1400], [0, 1]);
+  // p2 Color
+  addScrollListener(d3.select(section +' .body-left > p:nth-of-type(2)'),
+    'style', 'color', [-2100, -2200], ['#565555', '#ddd']);
+
+  // p3 Opacity
+  addScrollListener(d3.select(section +' .body-left > p:nth-of-type(3)'),
+    'style', 'opacity', [-2100, -2200], [0, 1]);
+  // p3 Color
+  addScrollListener(d3.select(section +' .body-left > p:nth-of-type(3)'),
+    'style', 'color', [-2700, -2800], ['#565555', '#ddd']);
+
+  // p4 Opacity
+  addScrollListener(d3.select(section +' .body-left > p:nth-of-type(4)'),
+    'style', 'opacity', [-2700, -2800], [0, 1]);
+
+  onscroll(scrollFunctionArray);
+  resize();
+
+  window.onload = function(){
+    graphScroll()
+      .container(d3.select(section))
+      .graph(d3.select(section +' .row'))
+      .sections(d3.selectAll(section +' .scroll-line'));
+  }
+
 }

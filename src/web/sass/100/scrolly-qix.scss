@@ -1,57 +1,113 @@
-.qix-interaction .body-right {
-  padding-top: 0;
-}
-.qix-interaction .body-right .graph {
-  width: 100%;
-  height: 100%;
-}
-.qix-interaction p {
-  margin-bottom: 900px;
-}
-.qix-interaction p:last-child {
-  margin-bottom: 0;
-}
-.qix-interaction .graph {
-  position: relative;
-}
-.qix-interaction .graph img,
-.qix-interaction .graph .arrow-div {
-  margin: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.qix-interaction .graph > img:first-child {
-  max-height: 15%;
-  padding-bottom: 0;
-}
-.qix-interaction .graph .arrow-div {
-  width: 100%;
-  height: 15%;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.qix-interaction .graph > img:nth-child(3) {
-  max-height: 35%;
-  padding-top: 0;
-}
-.qix-interaction .graph > img:nth-child(4) {
-  max-height: 35%;
-  padding-top: 0;
-}
-.qix-interaction .graph .user-div {
-  height: 30%;
-}
-.qix-interaction .graph .user-div img:first-child {
-  position: relative;
-  left: -20%;
-  height: 40%;
-}
-.qix-interaction .graph .user-div img:nth-child(2) {
-  height: 40%;
-}
+$scroll-line-height: 4000px;
 
-.qix-interaction .graph .line {
-  stroke-width: 2px;
-  stroke: #43C9DF;
-  stroke-dasharray: 2, 4;
+.qix-interaction {
+  height: $scroll-line-height;
+
+  .row {
+    top: 0;
+    float: left;
+  }
+
+  &.graph-scroll-fixed .row {
+    position: fixed;
+    left: 47px;
+    width: calc(100% - 32px);
+    padding-left: 15px;
+  }
+
+  &.graph-scroll-below .row {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: auto;
+  }
+
+  .body-left {
+    margin-top: 0;
+    padding-top: 40%;
+    // transform: translateY(-25%);
+  }
+
+  .body-right {
+    position: relative;
+    padding-top: 0;
+    height: 100%;
+
+    .graph {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      img,
+      .arrow-div {
+        margin: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .arrow-div {
+        width: 100%;
+        height: 15%;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      & > img:first-of-type {
+        max-height: 15%;
+        padding-bottom: 0;
+      }
+
+      & > img:nth-of-type(2),
+      & > img:nth-of-type(3) {
+        max-height: 35%;
+        padding-top: 0;
+      }
+
+      .user-div {
+        height: 30%;
+
+        img:first-of-type {
+          position: relative;
+          left: -20%;
+          height: 40%;
+        }
+
+        img:nth-of-type(2) {
+          height: 40%;
+        }
+      }
+
+      .line {
+        stroke-width: 2px;
+        stroke: #43C9DF;
+        stroke-dasharray: 2, 4;
+      }
+    }
+  }
+
+  .scroll-line {
+    position: relative;
+    top: 0;
+    width: 0;
+    height: $scroll-line-height;
+    float: left;
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.graph-scroll-fixed .body-right {
+    position: relative;
+    right: 0;
+    left: 0;
+    width: 50%;
+  }
+  &.graph-scroll-below .body-right {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    top: auto;
+  }
 }
