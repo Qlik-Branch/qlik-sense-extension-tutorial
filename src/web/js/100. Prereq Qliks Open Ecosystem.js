@@ -9,18 +9,17 @@ import '../sass/100. Prereq Qliks Open Ecosystem.scss';
 
 var sectionList = [
   '.self-service',
-  '.qix-interaction',
   '.open-ecosystem'
 ];
 
 // ============== Sidebar ==============
 activateSidebar(0);
 
-document.querySelector('body').onload = function(){
-  scrollygraph(sectionList);
-  scrollyQix('.qix-interaction');
-  openEcosystem('.open-ecosystem');
-}
+var selfService = document.querySelector('.self-service');
+
+openEcosystem('.open-ecosystem');
+scrollygraph(sectionList);
+scrollyQix('.qix-interaction');
 
 // ============== Embedded Dashboard ==============
 /* Create iframe container */
@@ -51,5 +50,3 @@ youtubeIframe.setAttribute('allowfullscreen', '');
 
 /* Append iframe to graph */
 graph1.appendChild(youtubeIframe);
-
-

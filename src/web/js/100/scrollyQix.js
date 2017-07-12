@@ -157,11 +157,10 @@ export default function scrollyQix(section){
   onscroll(scrollFunctionArray);
   resize();
 
-  window.onload = function(){
+  window.addEventListener('load', function(){
     graphScroll()
       .container(d3.select(section))
       .graph(d3.select(section +' .row'))
       .sections(d3.selectAll(section +' .scroll-line'));
-  }
-
+  });
 }

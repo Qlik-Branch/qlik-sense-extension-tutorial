@@ -30,7 +30,7 @@ export default function scrollygraph(sectionList){
     })
   } 
   
-  // window.onload = function(){
+  window.addEventListener('load', function(){
     applyGraphScroll(sectionList);
-  // }
+  });
 }

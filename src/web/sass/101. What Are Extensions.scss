@@ -1,8 +1,22 @@
-#sidebar .nav-sidebar .sub-sidebar{
-  display: none;
+/* Activate Sidebar Selection */
+#sidebar .nav-sidebar{
+  .sub-sidebar{
+    display: none;
+  }
+
+  .sublist-1{
+    display: block;
+  }
 }
-#sidebar .nav-sidebar .sublist-1{
-  display: block;
+
+.content .header p:first-of-type {
+  font-family: "Raleway";
+  font-size: 20px;
+  color: #565555;
+  font-weight: normal;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  margin-bottom: 33px;
 }
 
 .ext-navigation .body-left {

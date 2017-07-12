@@ -14,6 +14,6 @@ var sectionList = [
   '#section-11'
 ];
 
-scrollygraph(sectionList);
+window.onload = function(){scrollygraph(sectionList)}
 // ============== Sidebar ==============
 activateSidebar(1);
