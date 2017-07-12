@@ -119,6 +119,37 @@ body {
   top: auto;
 }
 
+/* ========= Ace Editor ========= */
+.ace_editor {
+  .ace_gutter,
+  .ace_scroller {
+    padding-top: 10px;
+  }
+
+  .ace_gutter {
+    border-left: 5px solid #36B7CF;
+
+    .ace_fold-widget {
+      display: none;
+    }
+  }
+
+  .copy-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 54px;
+    height: 24px;
+    background-color: #36B7CF;
+    color: white;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 24px;
+  }
+}
+
 /* ========= Media =========*/
 @media(min-width: 768px){
   /*.content .section-list .body-left {

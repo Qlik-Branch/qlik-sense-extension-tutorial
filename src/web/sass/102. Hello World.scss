@@ -64,12 +64,24 @@
   }
 }
 
-.qext-editor .body-left {
-  padding-bottom: 100px;
+.qext-editor,
+.js-editor,
+.initial-properties-editor {
+  .body-right {
+    padding-top: 58px;
+  }
 }
 
-.js-editor .body-left {
-  padding-bottom: 100px;
+.qext-editor {
+  .body-left {
+    padding-bottom: 100px;
+  }
+}
+
+.js-editor {
+  .body-left {
+    padding-bottom: 100px;
+  }
 }
 
 .initial-properties-editor .body-left {

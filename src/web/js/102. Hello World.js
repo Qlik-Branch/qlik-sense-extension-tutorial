@@ -12,15 +12,15 @@ var sectionList = [
   '.container-and-properties',
   '.generic-object-properties',
   '.static-dyn-prop-diagram',
-  '.qext-editor',
-  '.js-editor',
-  '.initial-properties-editor',
-  '.definition-editor',
-  '.def-initprops-editor',
-  '.paint-editor',
-  '.js-editor-2',
-  '.support-editor',
-  '.js-editor-3',
+  // '.qext-editor',
+  // '.js-editor',
+  // '.initial-properties-editor',
+  // '.definition-editor',
+  // '.def-initprops-editor',
+  // '.paint-editor',
+  // '.js-editor-2',
+  // '.support-editor',
+  // '.js-editor-3',
   '.qlik-sense-desktop',
   '.qsd-in-browser',
   '.dev-tools',
@@ -88,8 +88,6 @@ var resourceList =
 resourceListContainer.innerHTML = resourceList;
 
 
-
-
 // QEXT 
 var qextJson = 
 `{
@@ -100,7 +98,7 @@ var qextJson =
   "author": "YOUR NAME GOES HERE"
 }`
 
-aceEditor('qext-editor', 'json', qextJson);
+aceEditor('qext-editor', 'json', qextJson, 'my-table.qext');
 
 
 // Javascript
@@ -109,7 +107,7 @@ var js =
 	return {};
 });`
 
-aceEditor('js-editor', 'javascript', js);
+aceEditor('js-editor', 'javascript', js, 'my-table.js');
 
 
 // Initial Properties
