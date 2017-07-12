@@ -7,25 +7,9 @@ import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
 import staticDynPropInteractive from './102/static-dyn-prop-interactive.js';
 
 var scrollList = [
-  // '.resource-list-design',
-  // '.my-table-folder',
   '.container-and-properties',
   '.generic-object-properties',
-  '.static-dyn-prop-diagram',
-  // '.qext-editor',
-  // '.js-editor',
-  // '.initial-properties-editor',
-  // '.definition-editor',
-  // '.def-initprops-editor',
-  // '.paint-editor',
-  // '.js-editor-2',
-  // '.support-editor',
-  // '.js-editor-3',
-  // '.qlik-sense-desktop',
-  // '.qsd-in-browser',
-  // '.dev-tools',
-  // '.disable-cache',
-  // '.extension'
+  // '.static-dyn-prop-diagram',
 ];
 
 var opacityList = [
@@ -42,7 +26,7 @@ activateSidebar(2);
 // document.querySelector('body').onload = function(){
     scrollPosition(scrollList);
     scrollOpacity(opacityList)
-    staticDynPropDiagram();
+    staticDynPropDiagram('.static-dyn-prop-diagram');
     staticDynPropInteractive('.static-dyn-prop-interactive');
     // scrollygraph(sectionList);
 // };

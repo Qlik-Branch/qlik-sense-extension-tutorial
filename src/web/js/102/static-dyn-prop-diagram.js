@@ -1,7 +1,23 @@
 import * as d3 from 'd3';
+import {graphScroll} from 'graph-scroll';
 import '../../sass/102/static-dyn-prop-diagram.scss';
 
-export default function staticDynPropDiagram(){
+export default function staticDynPropDiagram(section){
+  /* Add an invisible line width 0 width to use as the scrolling section
+      in graph-scroll */
+  var scrollLine = document.createElement('div');
+  scrollLine.classList.add('scroll-line');
+  var scrollLineContent = document.createElement('div');
+  scrollLine.appendChild(scrollLineContent);
+  document.querySelector(section).appendChild(scrollLine);
+
+  window.addEventListener('load', function(){
+    graphScroll()
+      .container(d3.select(section))
+      .graph(d3.select(section +' .row'))
+      .sections(d3.selectAll(section +' .scroll-line'));
+  })
+
   // ============== Static Dyn Diagram ==============
   var staticDynSection = document.querySelector('.static-dyn-prop-diagram')
   var staticDynDiagram = staticDynSection.querySelector('.graph');

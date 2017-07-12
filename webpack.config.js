@@ -1,6 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+// const extractIndexSass = new ExtractTextPlugin('src/web/sass/content-style.scss');
 
 module.exports = {
   entry: {
@@ -31,33 +34,30 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.scss$/,
-        use: [{
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader'
-        }, {
-          loader: 'sass-loader'
-        }]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         loader: 'file-loader',
         options: {
-          name: './images/[hash].[ext]'
+          name: './images/[name].[ext]'
         }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         loader: 'file-loader',
         options: {
-          name: './fonts/[hash].[ext]'
+          name: './fonts/[name].[ext]'
         }
       }
     ]
@@ -122,10 +122,10 @@ module.exports = {
       filename: '108. Make it Scalable.html',
       title: 'Make it Scalable',
       chunks: ['app', 'p8']
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].css'
     })
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor'
-    // })
   ],
   devtool: 'cheap-module-eval-source-map',
 }
