@@ -1,12 +1,11 @@
 import activateSidebar from './sidebar.js';
-import scrollygraph from './scrollygraph.js';
+import {scrollPosition, scrollOpacity} from './scrollygraph.js';
 
 import senseSankeyDesktop from './101/senseSankeyDesktop.js';
 import senseSankeyServer from './101/senseSankeyServer.js';
 import '../sass/101. What Are Extensions.scss';
 
 var sectionList = [
-  '.ext-sunburst',
   '.ext-navigation',
   '.ext-resize'
 ];
@@ -15,6 +14,7 @@ var sectionList = [
 activateSidebar(1);
 
 
-scrollygraph(sectionList);
+scrollPosition(sectionList);
+scrollOpacity(sectionList);
 senseSankeyDesktop('.sense-sankey-desktop');
 senseSankeyServer('.sense-sankey-server');

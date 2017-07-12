@@ -25,6 +25,8 @@ export default function staticDynPropInteractive(section){
     .append('svg')
     .attr('width', config.svg.width);
 
+  svg.on('load', function(){resize()});
+
 
   // Labels
   var labels = ['Properties', 'Static Property:', 'Dynamic Property:', 'Sum', 'Layout'];
@@ -193,7 +195,7 @@ export default function staticDynPropInteractive(section){
     // Input Box
     var inputBoxLeft = interactiveLabel._groups[0][1].getComputedTextLength()
           + config.margin.left + 20;
-    var inputBoxTop = interactiveLabel._groups[0][1].getBBox().y + 200;
+    var inputBoxTop = interactiveLabel._groups[0][1].getBBox().y + 50;
     var inputBoxHeight = interactiveLabel._groups[0][1].getBBox().height;
       
       
@@ -206,7 +208,7 @@ export default function staticDynPropInteractive(section){
     // Dropdown Box
     var dropdownBoxLeft = interactiveLabel._groups[0][3].getBBox().width
       +config.margin.left + 20;
-    var dropdownBoxTop = interactiveLabel._groups[0][3].getBBox().y + 200;
+    var dropdownBoxTop = interactiveLabel._groups[0][3].getBBox().y + 50;
     var dropdownBoxHeight = interactiveLabel._groups[0][3].getBBox().height;
 
     dropdownBox
@@ -230,7 +232,7 @@ export default function staticDynPropInteractive(section){
     var imgHeight = document.querySelector(section +' .graph img').offsetHeight;
 
     img
-      .style('top', (200 + imgTop*.87) +'px')
+      .style('top', (50 + imgTop*.87) +'px')
       .style('left', (svgWidth/2)*1.1 +'px');
 
 

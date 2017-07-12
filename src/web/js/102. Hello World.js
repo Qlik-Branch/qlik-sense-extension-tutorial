@@ -1,5 +1,5 @@
 import activateSidebar from './sidebar.js';
-import scrollygraph from './scrollygraph.js';
+import {scrollPosition} from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
 import '../sass/102. Hello World.scss';
@@ -7,12 +7,11 @@ import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
 import staticDynPropInteractive from './102/static-dyn-prop-interactive.js';
 
 var sectionList = [
-  '.resource-list-design',
-  '.my-table-folder',
+  // '.resource-list-design',
+  // '.my-table-folder',
   '.container-and-properties',
   '.generic-object-properties',
   '.static-dyn-prop-diagram',
-  '.static-dyn-prop-interactive',
   '.qext-editor',
   '.js-editor',
   '.initial-properties-editor',
@@ -32,12 +31,12 @@ var sectionList = [
 // ============== Sidebar ==============
 activateSidebar(2);
 
-document.querySelector('body').onload = function(){
-    scrollygraph(sectionList);
+// document.querySelector('body').onload = function(){
+    scrollPosition(sectionList);
     staticDynPropDiagram();
     staticDynPropInteractive('.static-dyn-prop-interactive');
-    scrollygraph(sectionList);
-};
+    // scrollygraph(sectionList);
+// };
 
 // ============== Resource List ==============
 var resourceListContainer = document.querySelector('.resource-list-design .graph');
@@ -59,6 +58,7 @@ var resourceList =
     <h4>JSON</h4>
     <a href="https://www.codecademy.com/courses/javascript-beginner-en-xTAfX/0/1">Meet JSON | Codecademy</a>
     </br>
+    </br>
     <a href="https://www.digitalocean.com/community/tutorials/how-to-work-with-json-in-javascript">How To Work with JSON in JavaScript | DigitalOcean</a>
     <hr>
   </div>
@@ -68,6 +68,7 @@ var resourceList =
     <hr>
     <h4>JavaScript</h4>
     <a href="https://javascript.info/">The Modern JavaScript Tutorial</a>
+    </br>
     </br>
     <a href="http://eloquentjavascript.net/">Eloquent JavaScript</a>
     <hr>

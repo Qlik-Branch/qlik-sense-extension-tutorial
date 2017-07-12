@@ -1,7 +1,8 @@
 import * as d3 from 'd3';
-import activateSidebar from './sidebar.js';
 import {graphScroll} from 'graph-scroll';
-import scrollygraph from './scrollygraph.js';
+
+import activateSidebar from './sidebar.js';
+import {scrollPosition, scrollOpacity} from './scrollygraph.js';
 
 import scrollyQix from './100/scrollyQix.js';
 import openEcosystem from './100/openEcosystem.js';
@@ -18,7 +19,8 @@ activateSidebar(0);
 var selfService = document.querySelector('.self-service');
 
 openEcosystem('.open-ecosystem');
-scrollygraph(sectionList);
+scrollPosition(sectionList);
+scrollOpacity(sectionList);
 scrollyQix('.qix-interaction');
 
 // ============== Embedded Dashboard ==============

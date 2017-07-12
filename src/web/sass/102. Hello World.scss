@@ -1,8 +1,12 @@
-#sidebar .nav-sidebar .sub-sidebar{
-  display: none;
-}
-#sidebar .nav-sidebar .sublist-2{
-  display: block;
+#sidebar {
+  .nav-sidebar {
+    .sub-sidebar{
+      display: none;
+    }
+    .sublist-2{
+      display: block;
+    }
+  }
 }
 
 .ace_editor {
@@ -10,8 +14,14 @@
   height: 400px;
 }
 
+.resource-list-design {
+  .body-right {
+    padding-top: 80px;
+  }
+}
+
 .my-table-folder .body-right {
-  padding-bottom: 50px;
+  padding-top: 300px;
 }
 
 .container-and-properties .body-left {
@@ -37,6 +47,21 @@
 .static-dyn-prop-interactive .dynamic-line-2-fill {
   stroke-width: 1.5;
   stroke: #36B7CF;
+}
+
+.properties-layout-visual {
+  .body-right {
+    padding-top: 0;
+  }
+}
+
+.content .section.extension-architecture-diagram {
+  margin-top: 400px;
+  margin-bottom: 400px;
+
+  .body-right {
+    padding-top: 0;
+  }
 }
 
 .qext-editor .body-left {

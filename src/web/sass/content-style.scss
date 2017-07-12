@@ -84,14 +84,15 @@ body {
   position: relative;
 }
 .body-left {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 #section-0 .body-left {
   margin-top: 0;
 }
 .body-right {
   position: absolute;
-  padding-top: 200px;
+  // margin-top: 100px;
+  padding-top: 100px;
   top: 0;
   right: 0;
   transform: translateX(0);
@@ -99,6 +100,7 @@ body {
   -webkit-transform: translateY(0);
 }
 #section-0 .body-right {
+  margin-top: 0;
   padding-top: 0;
   transform: translateX(0);
   -ms-transform: translateX(0);

@@ -1,7 +1,8 @@
 $scroll-line-height: 3000px;
 
-.sense-sankey-server {
+.content .sense-sankey-server {
   height: $scroll-line-height;
+  margin-top: 0;
 
   .row {
     top: 0;
