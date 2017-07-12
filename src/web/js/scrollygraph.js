@@ -28,5 +28,9 @@ export default function scrollygraph(sectionList){
         .graph(d3.select(section +' .body-right'))
         .sections(d3.selectAll(section +' .body-left > *'));
     })
-  } applyGraphScroll(sectionList);
+  } 
+  
+  // window.onload = function(){
+    applyGraphScroll(sectionList);
+  // }
 }

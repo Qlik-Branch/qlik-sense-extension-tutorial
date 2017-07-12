@@ -6,6 +6,7 @@ $scroll-line-height: 4000px;
   .row {
     top: 0;
     float: left;
+    height: 100vh;
   }
 
   &.graph-scroll-fixed .row {
@@ -13,6 +14,11 @@ $scroll-line-height: 4000px;
     left: 47px;
     width: calc(100% - 32px);
     padding-left: 15px;
+
+    @media(min-width: 992px){
+      left: 310px;
+      width: calc(100% - 385px);
+    }
   }
 
   &.graph-scroll-below .row {
@@ -25,7 +31,6 @@ $scroll-line-height: 4000px;
   .body-left {
     margin-top: 0;
     padding-top: 40%;
-    // transform: translateY(-25%);
   }
 
   .body-right {

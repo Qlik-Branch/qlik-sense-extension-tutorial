@@ -8,21 +8,19 @@ import openEcosystem from './100/openEcosystem.js';
 import '../sass/100. Prereq Qliks Open Ecosystem.scss';
 
 var sectionList = [
-  // '.youtube-video',
   '.self-service',
-  // '.qix-interaction',
-  // '.open-ecosystem'
+  '.qix-interaction',
+  '.open-ecosystem'
 ];
 
 // ============== Sidebar ==============
 activateSidebar(0);
 
-// document.querySelector('body').onload = function(){
+document.querySelector('body').onload = function(){
   scrollygraph(sectionList);
-
   scrollyQix('.qix-interaction');
-  // openEcosystem('.open-ecosystem');
-// }
+  openEcosystem('.open-ecosystem');
+}
 
 // ============== Embedded Dashboard ==============
 /* Create iframe container */
