@@ -1,4 +1,4 @@
-$scroll-line-height: 3000px;
+$scroll-line-height: calc(1400px + 100vh);
 
 .content .sense-sankey-server {
   height: $scroll-line-height;
@@ -24,6 +24,7 @@ $scroll-line-height: 3000px;
 
   &.graph-scroll-below .row {
     position: absolute;
+    left: 0;
     right: 0;
     bottom: 0;
     top: auto;
@@ -31,7 +32,7 @@ $scroll-line-height: 3000px;
 
   .body-left {
     margin-top: 0;
-    padding-top: 25%;
+    padding-top: 25vh;
   }
 
   .body-right {

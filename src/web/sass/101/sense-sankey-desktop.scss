@@ -1,4 +1,4 @@
-$scroll-line-height: 4000px;
+$scroll-line-height: calc(2400px + 100vh);
 
 .content .sense-sankey-desktop {
   height: $scroll-line-height;
@@ -31,7 +31,7 @@ $scroll-line-height: 4000px;
 
   .body-left {
     margin-top: 0;
-    padding-top: 25%;
+    padding-top: 25vh;
   }
 
   .body-right {

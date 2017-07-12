@@ -71,15 +71,14 @@ export default function senseSankeyServer(section){
 
   // Paragraph
   addScrollListener(d3.select(section +' .body-left ol > li:first-of-type'),
-    'style', 'opacity', [0, -100], [0, 1]);
-  addScrollListener(d3.select(section +' .body-left ol > li:first-of-type'),
-    'style', 'color', [-1000, -1100], ['#565555', '#ddd']);
+    'style', 'color', [-100, -400, -700, -1000], ['#ddd', '#565555', '#565555', '#ddd']);
   addScrollListener(d3.select(section +' .body-left ol > li:first-of-type p'),
-    'style', 'color', [-1000, -1100], ['#565555', '#ddd']);
+    'style', 'color', [-100, -400, -700, -1000], ['#ddd', '#565555', '#565555', '#ddd']);
 
   addScrollListener(d3.select(section +' .body-left ol > li:nth-of-type(2)'),
-    'style', 'opacity', [-1000, -1100], [0, 1]);
-
+    'style', 'color', [-1100, -1400], ['#ddd', '#565555']);
+  addScrollListener(d3.select(section +' .body-left ol > li:nth-of-type(2) p'),
+    'style', 'color', [-1100, -1400], ['#ddd', '#565555']);
 
   onscroll(scrollFunctionArray);
 }
