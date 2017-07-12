@@ -1,12 +1,12 @@
 import activateSidebar from './sidebar.js';
-import {scrollPosition} from './scrollygraph.js';
+import {scrollPosition, scrollOpacity} from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
 import '../sass/102. Hello World.scss';
 import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
 import staticDynPropInteractive from './102/static-dyn-prop-interactive.js';
 
-var sectionList = [
+var scrollList = [
   // '.resource-list-design',
   // '.my-table-folder',
   '.container-and-properties',
@@ -21,18 +21,27 @@ var sectionList = [
   // '.js-editor-2',
   // '.support-editor',
   // '.js-editor-3',
+  // '.qlik-sense-desktop',
+  // '.qsd-in-browser',
+  // '.dev-tools',
+  // '.disable-cache',
+  // '.extension'
+];
+
+var opacityList = [
   '.qlik-sense-desktop',
   '.qsd-in-browser',
   '.dev-tools',
   '.disable-cache',
   '.extension'
-];
+]
 
 // ============== Sidebar ==============
 activateSidebar(2);
 
 // document.querySelector('body').onload = function(){
-    scrollPosition(sectionList);
+    scrollPosition(scrollList);
+    scrollOpacity(opacityList)
     staticDynPropDiagram();
     staticDynPropInteractive('.static-dyn-prop-interactive');
     // scrollygraph(sectionList);
@@ -122,7 +131,7 @@ var initialProperties =
 	};
 });`
 
-aceEditor('initial-properties-editor', 'javascript', initialProperties);
+aceEditor('initial-properties-editor', 'javascript', initialProperties, 'properties.js');
 
 
 // Definition
@@ -138,7 +147,7 @@ var definition =
 	}
 };`
 
-aceEditor('definition-editor', 'javascript', definition);
+aceEditor('definition-editor', 'javascript', definition, 'definition');
 
 
 // Initial Props Definition
@@ -164,7 +173,7 @@ var defInitProps =
 	};
 });`
 
-aceEditor('def-initprops-editor', 'javascript', defInitProps);
+aceEditor('def-initprops-editor', 'javascript', defInitProps, 'properties.js');
 
 
 // Paint
@@ -193,7 +202,7 @@ var paint =
   return myPaint;
 });`;
 
-aceEditor('paint-editor', 'javascript', paint);
+aceEditor('paint-editor', 'javascript', paint, 'paint.js');
 
 
 // JS 2
@@ -207,7 +216,7 @@ var js2 =
 	};
 }`;
 
-aceEditor('js-editor-2', 'javascript', js2);
+aceEditor('js-editor-2', 'javascript', js2, 'my-table.js');
 
 
 // Support
@@ -217,7 +226,7 @@ var support =
 	exportData: true 
 };`;
 
-aceEditor('support-editor', 'javascript', support);
+aceEditor('support-editor', 'javascript', support, 'support.js');
 
 
 // JS 3
@@ -232,4 +241,4 @@ var js3 =
 	};
 }`;
 
-aceEditor('js-editor-3', 'javascript', js3);
+aceEditor('js-editor-3', 'javascript', js3, 'paint.js');
