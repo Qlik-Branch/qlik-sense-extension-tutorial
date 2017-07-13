@@ -1,31 +1,17 @@
 import activateSidebar from './sidebar.js';
-import scrollygraph from './scrollygraph.js';
+import {scrollPosition} from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
 import '../sass/107. Make it Universal.scss';
 
-var sectionList = [
-  '.print-service-editor',
-  '.support-editor',
-  '.export-pdf',
-  '.paint-editor',
-  '.paint-editor-2'
-];
+var scrollPositionList = [
+  '.paint-editor'
+]
 
 // ============== Sidebar ==============
 activateSidebar(7);
 
-document.querySelector('body').onload = function(){
-  scrollygraph(sectionList);
-}
-
-
-// Print Service
-var printService =
-`var inPrint = this.backendAPI.isSnapshot === true`;
-
-aceEditor('print-service-editor', 'javascript', printService);
-
+scrollPosition(scrollPositionList);
 
 // Support
 var support =
@@ -37,7 +23,7 @@ var support =
     };
 });`;
 
-aceEditor('support-editor', 'javascript', support);
+aceEditor('support-editor', 'javascript', support, 'support.js');
 
 
 // Paint
@@ -47,7 +33,7 @@ var paint =
 	// don't return anything
 }`;
 
-aceEditor('paint-editor', 'javascript', paint);
+aceEditor('paint-editor', 'javascript', paint, 'paint.js');
 
 
 // Paint 2
@@ -64,4 +50,4 @@ var paint2 =
 		});
 }`;
 
-aceEditor('paint-editor-2', 'javascript', paint2);
+aceEditor('paint-editor-2', 'javascript', paint2, 'paint.js');
