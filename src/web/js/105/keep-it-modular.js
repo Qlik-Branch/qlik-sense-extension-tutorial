@@ -25,8 +25,6 @@ export default function keepItModular(section){
 
   var imgs = d3.selectAll(section +' .graph > img, ' +section +' .graph > .editor-container');
   var lis = d3.selectAll(section +' .body-left li');
-  // var paragraphs = d3.selectAll(section +' .')
-  console.log(lis);
 
   // Img Opacity
   function setImgOpacity(imgArray){

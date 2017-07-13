@@ -5,35 +5,63 @@ import '../../../node_modules/ace-builds/src-min-noconflict/mode-javascript.js';
 import '../../../node_modules/ace-builds/src-min-noconflict/mode-css.js';
 import '../../../node_modules/ace-builds/src-min-noconflict/theme-tomorrow_night.js';
 
-export default function aceEditor(section, language, text, filename){
+export default function aceEditor(section, language, text, filename, options){
   // Get count of total previous editors
   var previousEditors = document.querySelectorAll('.' +section +' .editor-container').length;
 
   // Get .graph div
   var editorGraph = document.querySelector('.' +section +' .graph');
 
-  // HTML string of nav tabs
-  var navTabsString = `
-    <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#${section}">${filename}</li>
-    </ul>
-    <div class="tab-content"></div>
-  `;
+  if(options){
+    if(options.addTab){
+      console.log(document.querySelector('.' +section +' .graph .editor-container'));
 
-  // Create element to contain nav tabs and editor
-  var editorContainer = document.createElement('div');
-  editorContainer.classList.add('editor-container');
-  editorContainer.innerHTML = navTabsString;
+      var listItem = document.createElement('li');
+      var anchor = document.createElement('a');
+      anchor.setAttribute('data-toggle', 'tab');
+      anchor.setAttribute('href', `#${section}-embed-${previousEditors}`);
+      anchor.innerText = filename;
 
-  // Create div to contain editor element
-  var editorElement = document.createElement('div');
-  editorElement.setAttribute('id', section +'-embed-' +previousEditors);
+      listItem.appendChild(anchor);
+      document.querySelector('.' +section +' .graph .editor-container .nav-tabs').appendChild(listItem);
 
-  // Append editor element to container with nav-tabs
-  editorContainer.querySelector('.tab-content').appendChild(editorElement);
+      var editorElement = document.createElement('div');
+      editorElement.setAttribute('id', section +'-embed-' +previousEditors);
+      editorElement.classList.add('tab-pane', 'fade');
 
-  // Append container to .graph div
-  editorGraph.appendChild(editorContainer);
+      document.querySelector('.' +section +' .graph .editor-container .tab-content').appendChild(editorElement);
+
+      // createTab();
+
+    } else createTab();
+  } else createTab();
+
+  function createTab(){
+    // HTML string of nav tabs
+    var navTabsString =
+      `<ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#${section}-embed-${previousEditors}">${filename}</a></li>
+      </ul>
+      <div class="tab-content"></div>
+    `;
+
+
+    // Create element to contain nav tabs and editor
+    var editorContainer = document.createElement('div');
+    editorContainer.classList.add('editor-container');
+    editorContainer.innerHTML = navTabsString;
+
+    // Create div to contain editor element
+    var editorElement = document.createElement('div');
+    editorElement.setAttribute('id', section +'-embed-' +previousEditors);
+    editorElement.classList.add('tab-pane', 'fade', 'in', 'active')
+
+    // Append editor element to container with nav-tabs
+    editorContainer.querySelector('.tab-content').appendChild(editorElement);
+
+    // Append container to .graph div
+    editorGraph.appendChild(editorContainer);
+  }
 
   var editor = ace.edit(section +'-embed-' +previousEditors);
   editor.getSession().setMode('ace/mode/' +language);
@@ -58,7 +86,7 @@ export default function aceEditor(section, language, text, filename){
   buttonDiv.innerText = 'Copy';
 
   new Clipboard('.copy-button');
-  editorGraph.querySelector('.ace_editor').appendChild(buttonDiv);
+  editorGraph.querySelector('.editor-container .tab-content .ace_editor:last-of-type').appendChild(buttonDiv);
 
   /* Ace Editor will scroll to top of page if you click out of
       the textarea and then back into it. The following maintains
