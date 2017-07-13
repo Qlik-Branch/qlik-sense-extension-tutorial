@@ -1,5 +1,8 @@
+import '../../../node_modules/ace-builds/src-min-noconflict/ace.js';
+var Range = ace.require('ace/range').Range;
+
 import activateSidebar from './sidebar.js';
-import scrollygraph from './scrollygraph.js';
+import {scrollPosition, scrollOpacity} from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
 import '../sass/104. Make it Selectable.scss';
@@ -19,25 +22,15 @@ var sectionList = [
 	'.extension-selection'
 ];
 
+var scrollPositionList = [
+	'.field-indices'
+]
+
 // ============== Sidebar ==============
 activateSidebar(4);
 
-document.querySelector('body').onload = function(){
-  scrollygraph(sectionList);
-}
+scrollPosition(scrollPositionList);
 
-
-// Select Values
-var selectValues =
-`selectValues(0, [1,3],false)`;
-
-aceEditor('select-values-editor', 'javascript', selectValues);
-
-// // Select Values 2
-// var selectValues2 =
-// `selectValues(0,[4],true)`;
-
-// aceEditor('select-values-editor-2', 'javascript', selectValues2);
 
 // Paint Editor
 var paintEditor =
@@ -46,7 +39,7 @@ var paintEditor =
 	// ...
 };`
 
-aceEditor('paint-editor', 'javascript', paintEditor);
+aceEditor('paint-editor', 'javascript', paintEditor, 'my-table.js');
 
 // Paint Editor 2
 var paintEditor2 =
@@ -76,7 +69,8 @@ for(var row = 0; row < qMatrix.length; row++) {
 	table.appendChild(tr);
 }`
 
-aceEditor('paint-editor-2', 'javascript', paintEditor2);
+var editor_paint2 = aceEditor('paint-editor-2', 'javascript', paintEditor2, 'my-table.js');
+editor_paint2.session.addMarker(new Range(15, 0, 17, 0), 'my-marker', 'fullLine');
 
 // Paint Editor 3
 var paintEditor3 =
@@ -89,7 +83,7 @@ if(col < dimensionInfo.length) {
 	td.setAttribute("dim-index", currentCell.qElemNumber);
 }`
 
-aceEditor('paint-editor-3', 'javascript', paintEditor3);
+aceEditor('paint-editor-3', 'javascript', paintEditor3, 'my-table.js');
 
 // Paint Editor 4
 var paintEditor4 =
@@ -105,4 +99,4 @@ $element.find(".selectable").on("click", function() {
 	backendApi.selectValues(dimCol, [dimInd],true);
 });`
 
-aceEditor('paint-editor-4', 'javascript', paintEditor4);
+aceEditor('paint-editor-4', 'javascript', paintEditor4, 'my-table.js');

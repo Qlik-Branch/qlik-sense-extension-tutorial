@@ -62,4 +62,6 @@ export default function aceEditor(section, language, text, filename){
   editor.onFocus = function(){
     document.querySelector('body').scrollTop = scrollTop;
   }
+
+  return editor;
 }
