@@ -1,27 +1,11 @@
 import activateSidebar from './sidebar.js';
-import scrollygraph from './scrollygraph.js';
+import {scrollPosition} from './scrollygraph.js';
 import aceEditor from './ace-editor.js';
 
 import '../sass/108. Make it Scalable.scss';
 
-var sectionList = [
-  '.definition-editor',
-  '.paint-editor',
-  '.paint-editor-2',
-  '.paint-editor-3',
-  '.paint-editor-4',
-  '.paint-editor-5',
-  '.paging-table',
-  '.page-parallel-editor',
-  '.page-sequence-editor'
-];
-
 // ============== Sidebar ==============
 activateSidebar(8);
-
-document.querySelector('body').onload = function(){
-  scrollygraph(sectionList);
-}
 
 
 // Definition
@@ -47,7 +31,7 @@ var definition =
 	}
 ]`;
 
-aceEditor('definition-editor', 'javascript', definition);
+aceEditor('definition-editor', 'javascript', definition, 'page definition');
 
 
 // Paint
@@ -61,7 +45,7 @@ var tbody = document.createElement("tbody");
 table.appendChild(thead);
 table.appendChild(tbody);`;
 
-aceEditor('paint-editor', 'javascript', paint);
+aceEditor('paint-editor', 'javascript', paint, 'paint.js');
 
 
 // Paint 2
@@ -74,7 +58,7 @@ thead.appendChild(hRow);
 // append the row to the table body
 tbody.appendChild(tr);`;
 
-aceEditor('paint-editor-2', 'javascript', paint2);
+aceEditor('paint-editor-2', 'javascript', paint2, 'paint.js');
 
 
 // Paint 3
@@ -127,7 +111,7 @@ var paint3 =
     });
 }`;
 
-aceEditor('paint-editor-3', 'javascript', paint3);
+aceEditor('paint-editor-3', 'javascript', paint3, 'paint.js');
 
 
 // Paint 4
@@ -178,7 +162,7 @@ for(var i = 0; i<numberOfPages; i++) {
 var table = document.createElement("table");
 ...`;
 
-aceEditor('paint-editor-4', 'javascript', paint4);
+aceEditor('paint-editor-4', 'javascript', paint4, 'paint.js');
 
 
 // Paint 5
@@ -190,7 +174,7 @@ var qMatrix = layout.qHyperCube.qDataPages[0].qMatrix;
 render(qMatrix);
 ...`;
 
-aceEditor('paint-editor-5', 'javascript', paint5);
+aceEditor('paint-editor-5', 'javascript', paint5, 'paint.js');
 
 
 // Page Parallel
@@ -205,7 +189,7 @@ Promise.all(pagePromises).then(function(pages) {
 	// do something with the array of pages, like render a chart
 });`;
 
-aceEditor('page-parallel-editor', 'javascript', pageParallel);
+aceEditor('page-parallel-editor', 'javascript', pageParallel, 'paint.js');
 
 
 // Page Sequence
@@ -252,4 +236,4 @@ pagesPr.then(function(pages) {
 	// do something with the pages
 });`;
 
-aceEditor('page-sequence-editor', 'javascript', pageSequence);
+aceEditor('page-sequence-editor', 'javascript', pageSequence, 'paint.js');

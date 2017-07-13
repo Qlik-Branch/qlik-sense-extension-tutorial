@@ -9,3 +9,68 @@
   width: 100%;
   height: 400px;
 }
+
+#section-0 {
+  margin-top: 50px;
+}
+
+.definition-editor.section,
+.paint-editor.section,
+.paint-editor-2.section,
+.paint-editor-3.section,
+.paint-editor-4.section,
+.paint-editor-5.section,
+.page-parallel-editor.section,
+.page-sequence-editor.section {
+  .body-right {
+    padding-top: 58px;
+  }
+}
+
+.definition-editor.section {
+  .ace_editor {
+    height: calc(16px*23);
+  }
+}
+
+.paint-editor.section {
+  .ace_editor {
+    height: calc(16px*11);
+  }
+}
+
+.paint-editor-2.section {
+  .ace_editor {
+    height: calc(16px*10);
+  }
+}
+
+.paint-editor-3.section {
+  .ace_editor {
+    height: calc(16px*50);
+  }
+}
+
+.paint-editor-4.section {
+  .ace_editor {
+    height: calc(16px*48);
+  }
+}
+
+.paint-editor-5.section {
+  .ace_editor {
+    height: calc(16px*9);
+  }
+}
+
+.page-parallel-editor.section {
+  .ace_editor {
+    height: calc(16px*12);
+  }
+}
+
+.page-sequence-editor.section {
+  .ace_editor {
+    height: calc(16px*44);
+  }
+}
