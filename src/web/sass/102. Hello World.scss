@@ -49,8 +49,11 @@
   stroke: #36B7CF;
 }
 
-.properties-layout-visual {
+.properties-layout-visual.section {
+  margin-top: 200px;
+
   .body-right {
+    margin-top: 0;
     padding-top: 0;
   }
 }
@@ -167,18 +170,18 @@
   }
 }
 
-.qlik-sense-desktop .body-left {
-  padding-bottom: 100px;
-}
+// .qlik-sense-desktop .body-left {
+//   padding-bottom: 100px;
+// }
 
-.qsd-in-browser .body-left {
-  padding-bottom: 100px;
-}
+// .qsd-in-browser .body-left {
+//   padding-bottom: 100px;
+// }
 
-.dev-tools .body-left {
-  padding-bottom: 100px;
-}
+// .dev-tools .body-left {
+//   padding-bottom: 100px;
+// }
 
-.disable-cache .body-left {
-  padding-bottom: 20px;
-}
+// .disable-cache .body-left {
+//   padding-bottom: 20px;
+// }

@@ -5,31 +5,25 @@ import aceEditor from './ace-editor.js';
 import '../sass/102. Hello World.scss';
 import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
 import staticDynPropInteractive from './102/static-dyn-prop-interactive.js';
+import testingOurExtension from './102/testing-our-extension.js';
 
 var scrollList = [
   '.container-and-properties',
-  '.generic-object-properties',
-  // '.static-dyn-prop-diagram',
+  '.generic-object-properties'
 ];
 
 var opacityList = [
-  '.qlik-sense-desktop',
-  '.qsd-in-browser',
-  '.dev-tools',
-  '.disable-cache',
-  '.extension'
 ]
 
 // ============== Sidebar ==============
 activateSidebar(2);
 
-// document.querySelector('body').onload = function(){
-    scrollPosition(scrollList);
-    scrollOpacity(opacityList)
-    staticDynPropDiagram('.static-dyn-prop-diagram');
-    staticDynPropInteractive('.static-dyn-prop-interactive');
-    // scrollygraph(sectionList);
-// };
+scrollPosition(scrollList);
+scrollOpacity(opacityList)
+staticDynPropDiagram('.static-dyn-prop-diagram');
+staticDynPropInteractive('.static-dyn-prop-interactive');
+testingOurExtension('.testing-our-extension');
+
 
 // ============== Resource List ==============
 var resourceListContainer = document.querySelector('.resource-list-design .graph');
