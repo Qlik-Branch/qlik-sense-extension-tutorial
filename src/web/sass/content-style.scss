@@ -151,6 +151,11 @@ body {
     z-index: 100;
   }
 }
+.my-marker {
+  position:absolute;
+  background: #1366aa;
+  z-index: 5;
+}
 
 /* ========= Media =========*/
 @media(min-width: 768px){

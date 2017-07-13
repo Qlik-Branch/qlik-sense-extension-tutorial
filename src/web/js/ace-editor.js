@@ -6,22 +6,36 @@ import '../../../node_modules/ace-builds/src-min-noconflict/mode-css.js';
 import '../../../node_modules/ace-builds/src-min-noconflict/theme-tomorrow_night.js';
 
 export default function aceEditor(section, language, text, filename){
+  // Get count of total previous editors
+  var previousEditors = document.querySelectorAll('.' +section +' .editor-container').length;
+
+  // Get .graph div
   var editorGraph = document.querySelector('.' +section +' .graph');
-  var navTabs = `
+
+  // HTML string of nav tabs
+  var navTabsString = `
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="tab" href="#${section}">${filename}</li>
     </ul>
     <div class="tab-content"></div>
   `;
 
-  editorGraph.innerHTML = navTabs;
+  // Create element to contain nav tabs and editor
+  var editorContainer = document.createElement('div');
+  editorContainer.classList.add('editor-container');
+  editorContainer.innerHTML = navTabsString;
 
+  // Create div to contain editor element
   var editorElement = document.createElement('div');
-  editorElement.setAttribute('id', section +'-embed');
+  editorElement.setAttribute('id', section +'-embed-' +previousEditors);
 
-  editorGraph.querySelector('.tab-content').appendChild(editorElement);
+  // Append editor element to container with nav-tabs
+  editorContainer.querySelector('.tab-content').appendChild(editorElement);
 
-  var editor = ace.edit(section +'-embed');
+  // Append container to .graph div
+  editorGraph.appendChild(editorContainer);
+
+  var editor = ace.edit(section +'-embed-' +previousEditors);
   editor.getSession().setMode('ace/mode/' +language);
   editor.$blockScrolling = Infinity;
   editor.session.setUseWorker(false);
