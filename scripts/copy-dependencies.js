@@ -1,4 +1,4 @@
-var fs = require('fs.extra');
+var fs = require('fs-extra');
 var path = require('path');
 
 let fileSources = [

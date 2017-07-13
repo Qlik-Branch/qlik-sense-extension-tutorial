@@ -7,8 +7,6 @@ var folderSource = path.join(__dirname, '../dist'),
 fs.emptyDir(folderDest, (err) =>{
   if(err) return console.log(err);
 
-  console.log('success');
-
   fs.copy(folderSource, folderDest, function(err){
     if(err) throw err;
   })
