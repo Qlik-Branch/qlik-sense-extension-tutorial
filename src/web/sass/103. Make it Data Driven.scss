@@ -14,63 +14,114 @@
   margin-top: 50px;
 }
 
-.create-extension .body-left {
-  padding-bottom: 100px;
+.content .lifecycle-of-extension + div {
+  margin-top: 0;
+
+  .body-left {
+    margin-top: 0;
+  }
 }
 
-.paint-extension .body-left {
-  padding-bottom: 30px;
+.initial-properties-editor.section,
+.definition-editor.section,
+.definition-editor-2.section,
+.paint-editor.section,
+.paint-editor-2.section,
+.paint-editor-3.section ,
+.paint-editor-4.section {
+  .body-right {
+    padding-top: 58px;
+  }
 }
 
-.resize-extension .body-left {
-  padding-bottom: 70px;
+.convert-extension.section .body-right {
+  padding-top: 152px;
 }
 
-.definition-editor .body-left {
-  padding-bottom: 100px;
+.initial-properties-editor {
+  .ace_editor {
+    height: calc(16px*18);
+  }
+}
+
+.definition-editor {
+  .body-left {
+    padding-bottom: 100px;
+  }
+
+  .ace_editor {
+    height: calc(16px*17);
+  }
 }
 
 .add-dimension .body-left {
   padding-bottom: 100px;
 }
 
-.definition-editor-2 .body-left {
-  padding-bottom: 100px;
+.definition-editor-2 {
+  .body-left {
+    padding-bottom: 100px;
+  }
+
+  .ace_editor {
+    height: calc(16px*25);
+  }
 }
 
-.q-matrix .body-left {
-  padding-bottom: 100px;
+.properties-panel.section .body-right {
+  padding-top: 152px;
 }
 
-.q-matrix-row .body-left {
-  padding-bottom: 100px;
+.content .data-pages.section + div {
+  margin-top: 0;
+
+  .body-left {
+    margin-top: 0;
+  }
 }
 
-.q-matrix-cell .body-left {
-  padding-bottom: 100px;
+.paint-editor {
+  .body-left {
+    padding-bottom: 150px;
+  }
+
+  .ace_editor {
+    height: calc(16px*8);
+  }
 }
 
-.paint-editor .body-left {
-  padding-bottom: 150px;
+.paint-editor-2 {
+  .body-left {
+    padding-bottom: 150px;
+  }
+
+  .ace_editor {
+    height: calc(16px*14);
+  }
 }
 
-.paint-editor-2 .body-left {
-  padding-bottom: 150px;
-}
+.paint-editor-3 {
+  .body-left {
+    padding-bottom: 150px;
+  }
 
-.paint-editor-3 .body-left {
-  padding-bottom: 150px;
+  .ace_editor {
+    height: calc(16px*41);
+  }
 }
 
 .headers .body-left {
   padding-bottom: 100px;
 }
 
-.paint-editor-4 .body-left {
-  padding-bottom: 150px;
-}
-.paint-editor-4 .ace_editor {
-  height: 475px;
+.paint-editor-4 {
+  .body-left {
+    padding-bottom: 150px;
+  }
+
+  .ace_editor {
+    height: calc(16px*32);
+  }
 }
 
 .ext-table .body-left {

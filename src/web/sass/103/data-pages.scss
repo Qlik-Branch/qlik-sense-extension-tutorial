@@ -1,0 +1,80 @@
+$scroll-line-height: calc(2400px + 100vh);
+
+.content .data-pages {
+  height: $scroll-line-height;
+
+  .row {
+    top: 0;
+    float: left;
+    height: 100vh;
+  }
+
+  &.graph-scroll-fixed .row {
+    position: fixed;
+    left: 47px;
+    width: calc(100% - 32px);
+    padding-left: 15px;
+
+    @media(min-width: 992px){
+      left: 310px;
+      width: calc(100% - 385px);
+    }
+  }
+
+  &.graph-scroll-below .row {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: auto;
+  }
+
+  .body-left {
+    margin-top: 0;
+    padding-top: 25vh;
+  }
+
+  .body-right {
+    vertical-align: middle;
+    position: relative;
+    padding-top: 0;
+    height: 100%;
+
+    .graph {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      img {
+        position: relative;
+        top: 45%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .scroll-line {
+    position: relative;
+    top: 0;
+    width: 0;
+    height: $scroll-line-height;
+    float: left;
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.graph-scroll-fixed .body-right {
+    position: relative;
+    right: 0;
+    left: 0;
+    width: 50%;
+  }
+  &.graph-scroll-below .body-right {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    top: auto;
+  }
+}
