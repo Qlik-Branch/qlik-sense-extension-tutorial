@@ -194,7 +194,7 @@ export default function staticDynPropInteractive(section){
 
     // Input Box
     var inputBoxLeft = interactiveLabel._groups[0][1].getComputedTextLength()
-          + config.margin.left + 20;
+          + config.margin.left + 35;
     var inputBoxTop = interactiveLabel._groups[0][1].getBBox().y + 50;
     var inputBoxHeight = interactiveLabel._groups[0][1].getBBox().height;
       
@@ -207,7 +207,7 @@ export default function staticDynPropInteractive(section){
 
     // Dropdown Box
     var dropdownBoxLeft = interactiveLabel._groups[0][3].getBBox().width
-      +config.margin.left + 20;
+      +config.margin.left + 35;
     var dropdownBoxTop = interactiveLabel._groups[0][3].getBBox().y + 50;
     var dropdownBoxHeight = interactiveLabel._groups[0][3].getBBox().height;
 
@@ -233,7 +233,7 @@ export default function staticDynPropInteractive(section){
 
     img
       .style('top', (50 + imgTop*.87) +'px')
-      .style('left', (svgWidth/2)*1.1 +'px');
+      .style('left', (svgWidth/2)*1.17 +'px');
 
 
     // Static Line

@@ -24,6 +24,13 @@ scrollOpacity(sectionList);
 scrollyQix('.qix-interaction');
 
 // ============== Embedded Dashboard ==============
+var wsURL = 'wss://sense-demo.qlik.com/app/372cbc85-f7fb-4db6-a620-9a5367845dce?reloadUri=https%3A%2F%2Fsense-demo.qlik.com%2Fsingle%2F%3Fappid%3D372cbc85-f7fb-4db6-a620-9a5367845dce%26sheet%3DLChBs%26opt%3Dcurrsel';
+// console.log(window);
+// var websock = WebSocket WebSocket(wsURL);
+// websock.addEventListener('message', function(event){
+//   console.log(event.data);
+// })
+
 /* Create iframe container */
 var graph0 = document.querySelector('#section-0 .graph');
 var iframeContainer = document.createElement('div');
@@ -33,9 +40,30 @@ iframeContainer.classList.add('iframe-container');
 var qlikSenseIframe = document.createElement('iframe');
 qlikSenseIframe.src = 'https://sense-demo.qlik.com/single/?appid=372cbc85-f7fb-4db6-a620-9a5367845dce&sheet=LChBs&opt=currsel';
 
+
 /* Append iframe to body */
 iframeContainer.appendChild(qlikSenseIframe);
 graph0.appendChild(iframeContainer);
+
+// function checkIframe(){
+//   console.log('check iframe');
+//   var iframeDoc = qlikSenseIframe.contentDocument || qlikSenseIframe.contentWindow.document;
+
+//   if(iframeDoc.readyState == 'complete'){
+//     qlikSenseIframe.contentWindow.onload = function(){
+//       console.log('loaded');
+//     };
+//     console.log(qlikSenseIframe.contentWindow);
+//     console.log('after loaded');
+//     return;
+//   }
+
+//   window.setTimeout(function(){
+//     checkIframe();
+//   }, 100);
+// }
+
+// document.querySelector('body').onload = checkIframe();
 
 
 // ============== Embed Youtube ==============
