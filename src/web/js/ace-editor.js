@@ -83,10 +83,24 @@ export default function aceEditor(section, language, text, filename, options){
 
   buttonDiv.classList.add('copy-button');
   buttonDiv.setAttribute('data-clipboard-text', editor.getValue());
+  buttonDiv.setAttribute('data-toggle', 'tooltip');
+  buttonDiv.setAttribute('title', 'copied');
+  $(document).ready(function(){
+    // $('[data-toggle="tooltip"]').tooltip();
+    $('.copy-button').tooltip({
+      trigger: 'click'
+    })
+  })
   buttonDiv.innerText = 'Copy';
 
-  new Clipboard('.copy-button');
+  var clipboard = new Clipboard('.copy-button');
   editorGraph.querySelector('.editor-container .tab-content .ace_editor:last-of-type').appendChild(buttonDiv);
+
+  clipboard.on('success', function(){
+    setTimeout(function(){
+      $('.copy-button').tooltip('hide');
+    }, 1000)
+  })
 
   /* Ace Editor will scroll to top of page if you click out of
       the textarea and then back into it. The following maintains

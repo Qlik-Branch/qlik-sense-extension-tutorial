@@ -3,8 +3,6 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// const extractIndexSass = new ExtractTextPlugin('src/web/sass/content-style.scss');
-
 module.exports = {
   entry: {
     app: './src/web/js/index.js',
