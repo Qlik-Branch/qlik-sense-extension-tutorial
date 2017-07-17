@@ -65,9 +65,9 @@ export default function openEcosystem(section){
     .attr('class', 'text small-text-mashup')
 
 
-  svg.attr('onload', function(){
-    resize();
-  })
+  // svg.attr('onload', function(){
+  //   resize();
+  // })
 
 
   // ============== Resize ==============
@@ -78,6 +78,7 @@ export default function openEcosystem(section){
 
     var graphRect = graph.getBoundingClientRect();
     var ecosystemRect = imgEcosystem.getBoundingClientRect();
+    
     imgEcosystemExtension.style.left = ecosystemRect.width*0.024 +'px';
     imgEcosystemExtension.style.width = ecosystemRect.width*0.95 +'px';
     imgEcosystemExtension.style.top = (15 + ecosystemRect.height*0.345) +'px';
@@ -155,7 +156,8 @@ export default function openEcosystem(section){
       .attr('x2', svgWidth*0.9)
       .attr('y2', svgHeight*0.7);
 
-  } resize();
+  } 
+  window.addEventListener('load', function(){resize()})
 
 
   // ============== Scroll ==============
