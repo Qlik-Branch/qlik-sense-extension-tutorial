@@ -147,13 +147,18 @@ var fetchPage = function(pageNumber) {
     }
 }
 
+// Create a page label
+var pageSpan = document.createElement("span");
+pageSpan.innerHTML = "Page ";
+$element.append(pageSpan);
+
 // Create a button for each page
 for(var i = 0; i<numberOfPages; i++) {
     var button = document.createElement("button");
-    button.innerHTML = "Page " + (i+1);
+    button.innerHTML = (i+1);
     button.addEventListener("click", fetchPage(i));
     // On init, color the first button
-    if (i === 0) button.style.backgroundColor = "deepskyblue";
+    if (i === 0) button.className = "active-pg";
     $element.append(button);
 }
 
@@ -175,6 +180,31 @@ render(qMatrix);
 ...`;
 
 aceEditor('paint-editor-5', 'javascript', paint5, 'paint.js');
+
+// Style 1
+var style1 =
+`
+.qv-object-my-table button {
+	border: none;
+	margin-left: 7px;
+	margin-bottom: 5px;
+	background: none;
+	color: #999;
+	font-style: italic;
+	font-size: 14px;
+	line-height: 22px;
+	cursor: pointer;
+}
+
+.qv-object-my-table button.active-pg {
+	color: #36B7CF;
+	border-bottom: 1px solid #36B7CF;
+	font-weight: bold;
+	font-style: normal;
+}
+`;
+
+aceEditor('style-1', 'css', style1, 'style.css');
 
 
 // Page Parallel

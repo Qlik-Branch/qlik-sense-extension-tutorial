@@ -209,7 +209,7 @@ var paint4 =
 	}
 
 	// Append the table to the $element
-	$element.appendChild(table);
+	$element.append(table);
 
 }`;
 

@@ -38,6 +38,37 @@ activateSidebar(5);
 var css = 
 `.qv-object-my-table th {
 	text-align: left;
+	font-weight: bold;
+	color: #737373;
+	font-size: 14px;
+	line-height: 18px;
+	border-bottom: 1px solid #D2CCCC;
+	padding: 0px 6px;
+}
+
+.qv-object-my-table td {
+	text-align: left;
+	font-weight: normal;
+	color: #5A5A5A;
+	font-size: 14px;
+	line-height: 18px;
+	padding: 8px 6px;
+}
+
+.qv-object-my-table tr:nth-child(6n-1) td {
+	background-color: rgba(54,183,207,0.13);
+}
+
+.qv-object-my-table tr:nth-child(6n) td {
+	background-color: rgba(54,183,207,0.13);
+}
+
+.qv-object-my-table tr:nth-child(6n+1) td {
+	background-color: rgba(54,183,207,0.13);
+}
+
+.qv-object-my-table .measureCell {
+	text-align: right;
 }`;
 
 aceEditor('css-editor', 'css', css, 'style.css');
@@ -78,6 +109,40 @@ var requireJS4 =
 }`;
 
 aceEditor('require-js-editor-4', 'javascript', requireJS4, 'my-table.js');
+
+// Paint Measure Cell Editor
+var paintMeasureCell = 
+`
+// ...
+		// Add measure labels
+        var measureInfo = layout.qHyperCube.qMeasureInfo;
+        for(var i = 0; i < measureInfo.length; i++) {
+            // Create a header cell
+            var hCell = document.createElement("th");
+            // Set the cell contents to the measure label
+            hCell.innerHTML = measureInfo[i].qFallbackTitle;
+            // Set the class as a measure cell
+            hCell.className = "measureCell";
+            // Add the cell to the header row
+            hRow.appendChild(hCell);
+		}
+// ...
+				// Check if dimension, then add metadata
+				if(col < dimensionInfo.length) {
+                    // Add a selectable class
+					td.className = "selectable";
+					// Add metadata for the selection
+					td.setAttribute("dim-col",col);
+					td.setAttribute("dim-index", currentCell.qElemNumber);
+				}
+                // If a measure cell, set the style
+                else {
+                    td.className = "measureCell";
+				}
+// ...
+`;
+
+aceEditor('paint-measure-cell-editor', 'javascript', requireJS4, 'paint.js');
 
 // Initial Properties Editor
 var initialProperties =

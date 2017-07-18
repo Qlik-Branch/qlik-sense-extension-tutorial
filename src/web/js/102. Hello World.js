@@ -137,7 +137,7 @@ var defInitProps =
 
 	var myDefinition = {
 		type: "items",
-		component: "accordions",
+		component: "accordion",
 		items: {
 			settings: {
 				uses: "settings"
@@ -174,7 +174,7 @@ var paint =
   
   // Append span to the container
   $element.append(span);
-}`;
+};`;
 
 aceEditor('paint-editor', 'javascript', paint, 'my-table.js');
 
