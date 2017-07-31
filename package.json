@@ -9,7 +9,7 @@
     "copy-dependencies": "node scripts/copy-dependencies.js",
     "build": "npm run copy-dependencies && webpack",
     "watch": "npm run copy-dependencies && webpack --watch",
-    "serve": "webpack-dev-server --content-base dist --port 8000 --open",
+    "serve": "webpack-dev-server --content-base dist --port 9000 --open",
     "http-serve": "http-server",
     "start": "npm run watch-markdown & npm run watch & npm run serve",
     "publish": "node scripts/publish.js"

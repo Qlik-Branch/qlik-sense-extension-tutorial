@@ -59,17 +59,17 @@ var myTable =
 	};
 });`;
 
-// Resize 2
-var resize2 =
-`define([], function($element, layout) {
-	// Get your existing table
-	var table = $element[0].querySelector("table");
-	// Create a random color
-	table.style.color = "#" + ('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
-}`;
+// // Resize 2
+// var resize2 =
+// `define([], function($element, layout) {
+// 	// Get your existing table
+// 	var table = $element[0].querySelector("table");
+// 	// Create a random color
+// 	table.style.color = "#" + ('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
+// }`;
 
 aceEditor('css-editor', 'css', css, 'style.css');
 aceEditor('resize-editor', 'javascript', resize, 'resize.js');
 
 aceEditor('resize-editor', 'javascript', myTable, 'my-table.js', {addTab: true});
-aceEditor('resize-editor-2', 'javascript', resize2, 'resize.js');
+// aceEditor('resize-editor-2', 'javascript', resize2, 'resize.js');

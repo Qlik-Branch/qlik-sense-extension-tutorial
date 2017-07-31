@@ -204,7 +204,7 @@ var style1 =
 }
 `;
 
-aceEditor('style-1', 'css', style1, 'style.css');
+aceEditor('style-editor-1', 'css', style1, 'style.css');
 
 
 // Page Parallel
