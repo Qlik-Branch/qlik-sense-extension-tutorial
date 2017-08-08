@@ -7,19 +7,25 @@ import staticDynPropDiagram from './static-dyn-prop-diagram.js';
 import staticDynPropInteractive from './static-dyn-prop-interactive.js';
 import testingOurExtension from './testing-our-extension.js';
 
+import qextJson from './code-snippets/qext-json.js';
+import js from './code-snippets/js-editor.js';
+import initialProperties from './code-snippets/initial-properties-editor.js';
+import definition from './code-snippets/definition-editor.js';
+import defInitProps from './code-snippets/def-initprops-editor.js';
+import paint from './code-snippets/paint-editor.js';
+import js2 from './code-snippets/js-editor-2.js';
+import support from './code-snippets/support-editor.js';
+import js3 from './code-snippets/js-editor-3.js';
+
 var scrollList = [
   '.container-and-properties',
   '.generic-object-properties'
 ];
 
-var opacityList = [
-]
-
 // ============== Sidebar ==============
 activateSidebar(2);
 
 scrollPosition(scrollList);
-scrollOpacity(opacityList)
 staticDynPropDiagram('.static-dyn-prop-diagram');
 staticDynPropInteractive('.static-dyn-prop-interactive');
 testingOurExtension('.testing-our-extension');
@@ -74,145 +80,12 @@ var resourceList =
 </div>`
 resourceListContainer.innerHTML = resourceList;
 
-
-// QEXT 
-var qextJson = 
-`{
-  "name": "My Table",
-  "description": "My first extension",
-  "type": "visualization",
-  "version": "0.0.1",
-  "author": "YOUR NAME GOES HERE"
-}`
-
 aceEditor('qext-editor', 'json', qextJson, 'my-table.qext');
-
-
-// Javascript
-var js = 
-`define([], function() {
-	return {};
-});`
-
 aceEditor('js-editor', 'javascript', js, 'my-table.js');
-
-
-// Initial Properties
-var initialProperties =
-`define([], function() {
-	var myProps = {
-		textColor: "black"
-	};
-
-	return {
-		initialProperties: myProps
-	};
-});`
-
 aceEditor('initial-properties-editor', 'javascript', initialProperties, 'my-table.js');
-
-
-// Definition
-var definition =
-`var myDefinition = {
-	type: "items",
-		component: "accordions",
-		items: {
-			settings: {
-				uses: "settings"
-			}
-		}
-	}
-};`
-
 aceEditor('definition-editor', 'javascript', definition, 'my-table');
-
-
-// Initial Props Definition
-var defInitProps =
-`define([], function() {
-	var myProps = {
-		textColor: "black"
-	};
-
-	var myDefinition = {
-		type: "items",
-		component: "accordion",
-		items: {
-			settings: {
-				uses: "settings"
-			}
-		}
-	};
-
-	return {
-		initialProperties: myProps,
-		definition: myDefinition
-	};
-});`
-
 aceEditor('def-initprops-editor', 'javascript', defInitProps, 'my-table.js');
-
-
-// Paint
-var paint =
-`var myPaint = function($element, layout) {
-  // Get the text color value
-  var textColor = layout.textColor;
-
-  // Clear the previous contents of the container so we start from scratch each time
-  $element.html("");
-
-  // Create a span
-  var span = document.createElement("span");
-
-  // Set text color
-  span.style.color = textColor;
-  
-  // Add message
-  span.innerHTML = "hello, world";
-  
-  // Append span to the container
-  $element.append(span);
-};`;
-
 aceEditor('paint-editor', 'javascript', paint, 'my-table.js');
-
-
-// JS 2
-var js2 = 
-`define([], function() {
-	// ...
-	return {
-		initialProperties: myProps,
-		definition: myDefinition,
-		paint: myPaint
-	};
-}`;
-
 aceEditor('js-editor-2', 'javascript', js2, 'my-table.js');
-
-
-// Support
-var support = 
-`var mySupport = {
-	snapshot: true,
-	exportData: true 
-};`;
-
 aceEditor('support-editor', 'javascript', support, 'my-table.js');
-
-
-// JS 3
-var js3 = 
-`define([], function() {
-	// ...
-	return {
-		initialProperties: myProps,
-		definition: myDefinition,
-		paint: myPaint,
-		support: mySupport
-	};
-}`;
-
 aceEditor('js-editor-3', 'javascript', js3, 'my-table.js');

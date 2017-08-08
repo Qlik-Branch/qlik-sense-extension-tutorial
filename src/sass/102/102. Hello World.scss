@@ -21,11 +21,23 @@
 }
 
 .my-table-folder .body-right {
-  padding-top: 100px;
+  padding-top: 250px;
 }
 
-.container-and-properties .body-left {
-  padding-bottom: 60px;
+.container-and-properties {
+  .body-left {
+    padding-bottom: 60px;
+  }
+
+  .body-right {
+    padding-top: 200px;
+  }
+}
+
+.generic-object-properties {
+  .body-right {
+    padding-top: 200px;
+  }
 }
 
 .static-dyn-prop-interactive .body-left {
@@ -80,108 +92,3 @@
     padding-top: 58px;
   }
 }
-
-.qext-editor {
-  .body-left {
-    padding-bottom: 100px;
-  }
-
-  .ace_editor {
-    height: calc(16px*10);
-  }
-}
-
-.js-editor {
-  .body-left {
-    padding-bottom: 100px;
-  }
-
-  .ace_editor {
-    height: calc(16px*6);
-  }
-}
-
-.initial-properties-editor {
-  .body-left {
-    padding-bottom: 100px;
-  }
-
-  .ace_editor {
-    height: calc(16px*12);
-  }
-}
-
-.definition-editor {
-  .body-left {
-    padding-bottom: 100px;
-  }
-
-  .ace_editor {
-    height: calc(16px*13);
-  }
-}
-
-.def-initprops-editor {
-  .body-left {
-    min-height: calc(16px*23);
-  }
-
-  .ace_editor {
-    height: calc(16px*23);
-  }
-}
-
-.paint-editor {
-  .body-left {
-    min-height: calc(16px*26);
-  }
-  
-  .ace_editor {
-    height: calc(16px*26);}
-}
-
-.js-editor-2 {
-  .body-left {
-    padding-bottom: 200px;
-  }
-
-  .ace_editor {
-    height: calc(16px*11);
-  }
-}
-
-.support-editor {
-  .body-left {
-    padding-bottom: 100px;
-  }
-
-  .ace_editor {
-    height: calc(16px*7);
-  }
-}
-
-.js-editor-3 {
-  .body-left {
-    padding-bottom: 200px;
-  }
-
-  .ace_editor {
-    height: calc(16px*12);
-  }
-}
-
-// .qlik-sense-desktop .body-left {
-//   padding-bottom: 100px;
-// }
-
-// .qsd-in-browser .body-left {
-//   padding-bottom: 100px;
-// }
-
-// .dev-tools .body-left {
-//   padding-bottom: 100px;
-// }
-
-// .disable-cache .body-left {
-//   padding-bottom: 20px;
-// }

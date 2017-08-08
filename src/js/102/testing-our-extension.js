@@ -93,7 +93,7 @@ export default function testingOurExtension(section){
   }
 
   // Imgs
-  addScrollListener(d3.select(img1), 'style', 'opacity', [-100, -400, -700, -1000], [0, 1, 1, 0]);
+  addScrollListener(d3.select(img1), 'style', 'opacity', [-700, -1000], [1, 0]);
   addScrollListener(d3.select(img2), 'style', 'opacity', [-1100, -1400, -1700, -2000], [0, 1, 1, 0]);
   addScrollListener(d3.select(img3), 'style', 'opacity', [-2100, -2400, -2700, -3000], [0, 1, 1, 0]);
   addScrollListener(d3.select(img4), 'style', 'opacity', [-3100, -3400, -3700, -4000], [0, 1, 1, 0]);
@@ -101,7 +101,7 @@ export default function testingOurExtension(section){
   
   // Paragraph
   addScrollListener(d3.selectAll(section +' .body-left h5:first-of-type, ' +section +' .body-left p:first-of-type'),
-    'style', 'color', [-100, -400, -700, -1000], ['#ddd', '#565555', '#565555', '#ddd']);
+    'style', 'color', [-700, -1000], ['#565555', '#ddd']);
 
   addScrollListener(d3.selectAll(section +' .body-left h5:nth-of-type(2), ' +section +' .body-left p:nth-of-type(2)'),
     'style', 'color', [-1100, -1400, -2000, -2100], ['#ddd', '#565555', '#565555', '#ddd']);
