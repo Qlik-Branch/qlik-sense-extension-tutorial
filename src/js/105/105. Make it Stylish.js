@@ -47,4 +47,4 @@ aceEditor('javascript-editor-2', 'javascript', javascript2, 'my-table.js');
 aceEditor('properties-editor', 'javascript', properties, 'definition.js');
 aceEditor('properties-editor-2', 'javascript', properties2, 'definition.js');
 aceEditor('properties-editor-3', 'javascript', properties3, 'definition.js');
-aceEditor('properties-editor-4', 'javascript', properties4, 'paint-js');
+aceEditor('properties-editor-4', 'javascript', properties4, 'paint.js');

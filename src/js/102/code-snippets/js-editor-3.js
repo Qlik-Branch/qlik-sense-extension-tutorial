@@ -7,4 +7,4 @@ export default
 		paint: myPaint,
 		support: mySupport
 	};
-}`
+})`
