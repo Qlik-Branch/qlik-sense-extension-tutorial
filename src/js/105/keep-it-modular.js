@@ -19,6 +19,11 @@ export default function keepItModular(section){
   })
 
 
+  /* Make the code editor tabs not selectable */
+  const d3Tabs = d3.selectAll(section +' .body-right .graph .editor-container .nav li');
+  // d3Tabs.select('a').classed('inactive-link', true);
+
+
   // ============== Scroll ==============
   var scrollFunctionArray = [],
       sectionTop = document.querySelector(section).getBoundingClientRect().top;
@@ -33,6 +38,10 @@ export default function keepItModular(section){
         // Set opacity
         addScrollListener(d3.select(img), 'style', 'opacity', 
           [(-i*1000 - 100), (-i*1000 - 400)], [0, 1]);
+      } else if(i === 0){ // if first img..
+        // Set opacity
+        addScrollListener(d3.select(img), 'style', 'opacity', 
+          [(-i*1000 - 700), (-i*1000 - 1000)], [1, 0]);
       } else {
         // Set opacity
         addScrollListener(d3.select(img), 'style', 'opacity', 
@@ -50,6 +59,12 @@ export default function keepItModular(section){
           [(-i*1000 - 100), (-i*1000 - 400)], ['#ddd', '#565555']);
         addScrollListener(d3.select(li).select('p'), 'style', 'color',
           [(-i*1000 - 100), (-i*1000 - 400)], ['#ddd', '#565555']);
+      } else if(i === 0){ // if first p..
+        // Set Color
+        addScrollListener(d3.select(li), 'style', 'color',
+          [(-i*1000 - 700), (-i*1000 - 1000)], ['#565555', '#ddd']);
+        addScrollListener(d3.select(li).select('p'), 'style', 'color',
+          [(-i*1000 - 700), (-i*1000 - 1000)], ['#565555', '#ddd']);
       } else{
         // Set color
         addScrollListener(d3.select(li), 'style', 'color',
@@ -68,10 +83,39 @@ export default function keepItModular(section){
   /* Function to be called everytime there is scroll action. The function is
       passed an array of functions, each of which updates the style or attribute
       using a scale */
+  var tab;
   function onscroll(scrollFunctionArray){
     // Get top position of section
     sectionTop = document.querySelector(section).getBoundingClientRect().top;
     
+    if(sectionTop > -2000 && tab != 0){
+      var link = d3.select(d3Tabs._groups[0][0]);
+      var a = link.select('a')._groups[0][0];
+        a.click();
+
+      tab = 0;
+    }
+    else if((sectionTop > -3000 && sectionTop <= -2000)&& tab != 1){
+      var link = d3.select(d3Tabs._groups[0][1]);
+      var a = link.select('a')._groups[0][0];
+        a.click();
+
+      tab = 1;
+    }
+    else if((sectionTop > -4000 && sectionTop <= -3000)&& tab != 2){
+      var link = d3.select(d3Tabs._groups[0][2]);
+      var a = link.select('a')._groups[0][0];
+        a.click();
+
+      tab = 2;
+    }
+    else if((sectionTop > -5000 && sectionTop <= -4000)&& tab != 3){
+      var link = d3.select(d3Tabs._groups[0][3]);
+      var a = link.select('a')._groups[0][0];
+        a.click();
+
+      tab = 3;
+    }
 
     // Execute each function in the function array
     scrollFunctionArray.forEach((fx) =>{

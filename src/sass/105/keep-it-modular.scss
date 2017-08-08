@@ -36,7 +36,7 @@ $scroll-line-height: calc(4400px + 100vh);
   .body-right {
     vertical-align: middle;
     position: relative;
-    padding-top: 0;
+    padding-top: 150px;
     height: 100%;
 
     .graph {
@@ -54,6 +54,11 @@ $scroll-line-height: calc(4400px + 100vh);
         position: absolute;
         width: 100%;
         top: 20%;
+
+        .inactive-link {
+          pointer-events: none;
+          cursor: default;
+        }
       }
 
       .editor-container:nth-of-type(4) {
