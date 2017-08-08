@@ -88,13 +88,13 @@ export default function testingOurExtension(section){
   }
 
   // Imgs
-  addScrollListener(d3.select(img1), 'style', 'opacity', [-100, -400, -700, -1000], [0, 1, 1, 0]);
+  addScrollListener(d3.select(img1), 'style', 'opacity', [-700, -1000], [1, 0]);
   addScrollListener(d3.select(img2), 'style', 'opacity', [-1100, -1400, -1700, -2000], [0, 1, 1, 0]);
   addScrollListener(d3.select(img3), 'style', 'opacity', [-2100, -2400], [0, 1]);
 
   // Paragraph
   addScrollListener(d3.selectAll(section +' .body-left p:first-of-type, ' +section +' .body-left p:nth-of-type(2)'),
-    'style', 'opacity', [-100, -400, -700, -1000], [0, 1, 1, 0]);
+    'style', 'opacity', [-700, -1000], [1, 0]);
   addScrollListener(d3.selectAll(section +' .body-left p:nth-of-type(3), ' +section +' .body-left p:nth-of-type(4)'),
     'style', 'opacity', [-1100, -1400, -1700, -2000], [0, 1, 1, 0]);
   addScrollListener(d3.selectAll(section +' .body-left p:nth-of-type(5), ' +section +' .body-left p:nth-of-type(6)'),

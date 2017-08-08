@@ -53,7 +53,12 @@ export default function dataPages(section){
         // Set opacity
         addScrollListener(d3.select(img), 'style', 'opacity', 
           [(-i*1000 - 100), (-i*1000 - 400)], [0, 1]);
-      } else {
+      } else if(i === 0){ // else if first img..
+        // Set opacity
+        addScrollListener(d3.select(img), 'style', 'opacity', 
+          [(-i*1000 - 700), (-i*1000 - 1000)], [1, 0]);
+      }
+      else {
         // Set opacity
         addScrollListener(d3.select(img), 'style', 'opacity', 
           [(-i*1000 - 100), (-i*1000 - 400), (-i*1000 - 700), (-i*1000 - 1000)], [0, 1, 1, 0]);
@@ -67,7 +72,11 @@ export default function dataPages(section){
         // Set Color
         addScrollListener(d3.select(p), 'style', 'color',
           [(-i*1000 - 100), (-i*1000 - 400)], ['#ddd', '#565555']);
-      } else{
+      } else if(i === 0){ // else if first p..
+        // Set opacity
+        addScrollListener(d3.select(p), 'style', 'color', 
+          [(-i*1000 - 700), (-i*1000 - 1000)], ['#565555', '#ddd']);
+      }else{
         // Set color
         addScrollListener(d3.select(p), 'style', 'color',
           [(-i*1000 - 100), (-i*1000 - 400), (-i*1000 - 700), (-i*1000 - 1000)], 
