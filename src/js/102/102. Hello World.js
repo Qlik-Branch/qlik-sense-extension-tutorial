@@ -1,11 +1,11 @@
-import activateSidebar from './sidebar.js';
-import {scrollPosition, scrollOpacity} from './scrollygraph.js';
-import aceEditor from './ace-editor.js';
+import activateSidebar from '../lib/sidebar.js';
+import {scrollPosition, scrollOpacity} from '../lib/scrollygraph.js';
+import aceEditor from '../lib/ace-editor.js';
 
-import '../sass/102. Hello World.scss';
-import staticDynPropDiagram from './102/static-dyn-prop-diagram.js';
-import staticDynPropInteractive from './102/static-dyn-prop-interactive.js';
-import testingOurExtension from './102/testing-our-extension.js';
+import '../../sass/102/102. Hello World.scss';
+import staticDynPropDiagram from './static-dyn-prop-diagram.js';
+import staticDynPropInteractive from './static-dyn-prop-interactive.js';
+import testingOurExtension from './testing-our-extension.js';
 
 var scrollList = [
   '.container-and-properties',

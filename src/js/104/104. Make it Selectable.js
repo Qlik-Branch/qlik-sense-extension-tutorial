@@ -1,11 +1,11 @@
 import '../../../node_modules/ace-builds/src-min-noconflict/ace.js';
 var Range = ace.require('ace/range').Range;
 
-import activateSidebar from './sidebar.js';
-import {scrollPosition, scrollOpacity} from './scrollygraph.js';
-import aceEditor from './ace-editor.js';
+import activateSidebar from '../lib/sidebar.js';
+import {scrollPosition, scrollOpacity} from '../lib/scrollygraph.js';
+import aceEditor from '../lib/ace-editor.js';
 
-import '../sass/104. Make it Selectable.scss';
+import '../../sass/104/104. Make it Selectable.scss';
 
 var sectionList = [
 	'.field-indices',

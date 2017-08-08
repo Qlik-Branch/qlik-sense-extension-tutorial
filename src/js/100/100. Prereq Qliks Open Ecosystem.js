@@ -1,12 +1,12 @@
 import * as d3 from 'd3';
 import {graphScroll} from 'graph-scroll';
 
-import activateSidebar from './sidebar.js';
-import {scrollPosition, scrollOpacity} from './scrollygraph.js';
+import activateSidebar from '../lib/sidebar.js';
+import {scrollPosition, scrollOpacity} from '../lib/scrollygraph.js';
 
-import scrollyQix from './100/scrollyQix.js';
-import openEcosystem from './100/openEcosystem.js';
-import '../sass/100. Prereq Qliks Open Ecosystem.scss';
+import scrollyQix from './scrollyQix.js';
+import openEcosystem from './openEcosystem.js';
+import '../../sass/100/100. Prereq Qliks Open Ecosystem.scss';
 
 var sectionList = [
   '.self-service',

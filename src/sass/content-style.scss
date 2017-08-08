@@ -1,11 +1,11 @@
-$FontPathOpenSans: "../../../node_modules/npm-font-open-sans/fonts/";
-@import "../../../node_modules/npm-font-open-sans/open-sans";
+$FontPathOpenSans: "../../node_modules/npm-font-open-sans/fonts/";
+@import "../../node_modules/npm-font-open-sans/open-sans";
 
-$FontPath: "../../../node_modules/roboto-slab-fontface-kit/fonts/";
-@import "../../../node_modules/roboto-slab-fontface-kit/roboto-slab";
+$FontPath: "../../node_modules/roboto-slab-fontface-kit/fonts/";
+@import "../../node_modules/roboto-slab-fontface-kit/roboto-slab";
 
-$raleway-font-path: '../../../node_modules/fonts-raleway/fonts/fonts-raleway';
-@import "../../../node_modules/fonts-raleway/scss/raleway";
+$raleway-font-path: '../../node_modules/fonts-raleway/fonts/fonts-raleway';
+@import "../../node_modules/fonts-raleway/scss/raleway";
 
 /* ========= Container =========*/
 body {

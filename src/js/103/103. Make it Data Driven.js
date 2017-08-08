@@ -1,10 +1,10 @@
-import activateSidebar from './sidebar.js';
-import {scrollPosition, scrollOpacity} from './scrollygraph.js';
-import aceEditor from './ace-editor.js';
+import activateSidebar from '../lib/sidebar.js';
+import {scrollPosition, scrollOpacity} from '../lib/scrollygraph.js';
+import aceEditor from '../lib/ace-editor.js';
 
-import testingOurExtension from './103/lifecycle-of-extension.js';
-import dataPages from './103/data-pages.js';
-import '../sass/103. Make it Data Driven.scss';
+import testingOurExtension from './lifecycle-of-extension.js';
+import dataPages from './data-pages.js';
+import '../../sass/103/103. Make it Data Driven.scss';
 
 var sectionList = [
   '.create-extension',

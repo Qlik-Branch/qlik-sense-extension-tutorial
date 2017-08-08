@@ -1,12 +1,12 @@
 import '../../../node_modules/ace-builds/src-min-noconflict/ace.js';
 var Range = ace.require('ace/range').Range;
 
-import activateSidebar from './sidebar.js';
-import {scrollPosition, scrollOpacity} from './scrollygraph.js';
-import aceEditor from './ace-editor.js';
-import keepItModular from './105/keep-it-modular.js';
+import activateSidebar from '../lib/sidebar.js';
+import {scrollPosition, scrollOpacity} from '../lib/scrollygraph.js';
+import aceEditor from '../lib/ace-editor.js';
+import keepItModular from './keep-it-modular.js';
 
-import '../sass/105. Make it Stylish.scss';
+import '../../sass/105/105. Make it Stylish.scss';
 
 var sectionList = [
 	'.files-with-stylesheet',

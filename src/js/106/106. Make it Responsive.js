@@ -1,8 +1,8 @@
-import activateSidebar from './sidebar.js';
-import {scrollPosition} from './scrollygraph.js';
-import aceEditor from './ace-editor.js';
+import activateSidebar from '../lib/sidebar.js';
+import {scrollPosition} from '../lib/scrollygraph.js';
+import aceEditor from '../lib/ace-editor.js';
 
-import '../sass/106. Make it Responsive.scss';
+import '../../sass/106/106. Make it Responsive.scss';
 
 
 var scrollPositionList = [

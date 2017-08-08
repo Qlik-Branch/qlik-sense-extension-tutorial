@@ -34,7 +34,7 @@ folderSources.forEach((folder) =>{
     if(err){
       fs.mkdirpSync(folder.folderDest);
 
-      fs.copyRecursive(folder.folderPath, folder.folderDest, function(err){
+      fs.copy(folder.folderPath, folder.folderDest, function(err){
         if(err) throw err;
       })
     }
