@@ -23,8 +23,14 @@
   padding-bottom: 100px;
 }
 
-.ext-resize .body-left {
-  padding-bottom: 150px;
+.ext-resize {
+  .body-left {
+    padding-bottom: 150px;
+  }
+
+  .body-right {
+    padding-top: 200px;
+  }
 }
 
 .sense-sankey-download .body-left {
