@@ -1,6 +1,3 @@
-import * as d3 from 'd3';
-import {graphScroll} from 'graph-scroll';
-
 import activateSidebar from '../lib/sidebar.js';
 import {scrollPosition, scrollOpacity} from '../lib/scrollygraph.js';
 
@@ -18,9 +15,9 @@ activateSidebar(0);
 
 var selfService = document.querySelector('.self-service');
 
-openEcosystem('.open-ecosystem');
 scrollPosition(sectionList);
-scrollOpacity(sectionList);
+// scrollOpacity(sectionList);
+openEcosystem('.open-ecosystem');
 scrollyQix('.qix-interaction');
 
 // ============== Embedded Dashboard ==============
@@ -33,7 +30,8 @@ iframeContainer.classList.add('iframe-container');
 /* Define iframe src url */
 var qlikSenseIframe = document.createElement('iframe');
 // qlikSenseIframe.src = 'https://sense-demo.qlik.com/single/?appid=372cbc85-f7fb-4db6-a620-9a5367845dce&sheet=LChBs&identity=openecosystem&opt=currsel';
-/* Switching to full app integration to include Qlik Sense loading indicators */
+
+/* Was using Qlik Sense Single Configurator link, but switched to the full app in order to display loading screen */
 qlikSenseIframe.src = 'https://sense-demo.qlik.com/sense/app/372cbc85-f7fb-4db6-a620-9a5367845dce/sheet/LChBs/state/analysis';
 
 /* Append iframe to body */
