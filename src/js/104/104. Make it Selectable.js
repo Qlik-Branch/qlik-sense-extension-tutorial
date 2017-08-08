@@ -4,6 +4,7 @@ var Range = ace.require('ace/range').Range;
 import activateSidebar from '../lib/sidebar.js';
 import {scrollPosition, scrollOpacity} from '../lib/scrollygraph.js';
 import aceEditor from '../lib/ace-editor.js';
+import selectValuesAPI from './select-values-api.js';
 
 import '../../sass/104/104. Make it Selectable.scss';
 
@@ -13,14 +14,10 @@ import paintEditor3 from './code-snippets/paint-editor-3.js';
 import paintEditor4 from './code-snippets/paint-editor-4.js';
 
 
-var scrollPositionList = [
-	'.field-indices'
-]
-
 // ============== Sidebar ==============
 activateSidebar(4);
 
-scrollPosition(scrollPositionList);
+selectValuesAPI('.select-values-api');
 
 aceEditor('paint-editor', 'javascript', paintEditor, 'my-table.js');
 var editor_paint2 = aceEditor('paint-editor-2', 'javascript', paintEditor2, 'my-table.js');

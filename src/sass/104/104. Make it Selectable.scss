@@ -1,8 +1,12 @@
-#sidebar .nav-sidebar .sub-sidebar{
-  display: none;
-}
-#sidebar .nav-sidebar .sublist-4{
-  display: block;
+#sidebar {
+  .nav-sidebar {
+    .sub-sidebar{
+      display: none;
+    }
+    .sublist-4 {
+      display: block;
+    }
+  }
 }
 
 .ace_editor {
@@ -14,22 +18,70 @@
   margin-top: 50px;
 }
 
-.content .pre-selection.section,
-.content .post-selection.section {
-  margin-top: 0;
-}
+.select-values-api {
+  .body-left {
+    & > * {
+      padding-top: 150px;
+      padding-bottom: 250px;
+      opacity: 0.3;
+    }
+  }
 
-.hypercube-table-annotated .body-left {
-  padding-bottom: 100px;
-}
+  .body-right {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    height: 125px;
 
+    .graph {
+      .table-container {
+        table {
+          font-family: 'Open Sans';
+          font-size: 14px;
 
-.pre-selection .body-left {
-  padding-bottom: 100px;
-}
+          thead {
+            font-weight: bold;
+            color: #A1A1A1;
 
-.post-selection .body-left {
-  padding-bottom: 60px;
+            tr {
+              th {
+                height: 25px;
+
+                &:nth-of-type(3){
+                  text-align: right;
+                }
+              }
+            }
+          }
+
+          tbody {
+            tr {
+              td {
+                font-weight: 300;
+                color: #5A5A5A;
+                height: 25px;
+
+                &:first-of-type {
+                  width: 100px;
+                }
+
+                &:nth-of-type(2){
+                  font-style: italic;
+                  color: #47BDD3;
+                  width: 50px;
+                  text-align: center;
+                }
+
+                &:nth-of-type(3){
+                  text-align: right;
+                  width: 100px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .paint-editor.section,
@@ -38,46 +90,6 @@
 .paint-editor-4.section {
   .body-right {
     padding-top: 58px;
-  }
-}
-
-.paint-editor {
-  .body-left {
-    padding-bottom: 80px;
-  }
-
-  .ace_editor {
-    height: calc(16px*7);
-  }
-}
-
-.paint-editor-2 {
-  .body-left {
-    padding-bottom: 200px;
-  }
-
-  .ace_editor {
-    height: calc(16px*28);
-  }
-}
-
-.paint-editor-3 {
-  .body-left {
-    padding-bottom: 200px;
-  }
-
-  .ace_editor {
-    height: calc(16px*11);
-  }
-}
-
-.paint-editor-4 {
-  .body-left {
-    padding-bottom: 200px;
-  }
-
-  .ace_editor {
-    height: calc(16px*14);
   }
 }
 

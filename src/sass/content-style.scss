@@ -73,9 +73,6 @@ body {
   position: relative;
   clear: both;
 }
-.content .body-right {
-  // float: right;
-}
 .content .section {
   margin-top: 100px;
 }
@@ -83,10 +80,16 @@ body {
 /* ========= Graphs ========= */
 .section {
   position: relative;
-}
-.body-left {
-  margin-top: 100px;
-  padding-right: 30px;
+
+  .row {
+    .body-left {
+      margin-top: 100px;
+      padding-right: 30px;
+      .graph-scroll-active {
+        opacity: 1;
+      }
+    }
+  }
 }
 #section-0 .body-left {
   margin-top: 0;
