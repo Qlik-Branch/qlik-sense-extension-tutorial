@@ -66,14 +66,14 @@ export default function senseSankeyServer(section){
   }
 
   // Imgs
-  addScrollListener(d3.select(img1), 'style', 'opacity', [-100, -400, -700, -1000], [0, 1, 1, 0]);
+  addScrollListener(d3.select(img1), 'style', 'opacity', [-700, -1000], [1, 0]);
   addScrollListener(d3.select(img2), 'style', 'opacity', [-1100, -1400], [0, 1]);
 
   // Paragraph
   addScrollListener(d3.select(section +' .body-left ol > li:first-of-type'),
-    'style', 'color', [-100, -400, -700, -1000], ['#ddd', '#565555', '#565555', '#ddd']);
+    'style', 'color', [-100, -400, -700, -1000], ['#565555', '#ddd']);
   addScrollListener(d3.select(section +' .body-left ol > li:first-of-type p'),
-    'style', 'color', [-100, -400, -700, -1000], ['#ddd', '#565555', '#565555', '#ddd']);
+    'style', 'color', [-100, -400, -700, -1000], ['#565555', '#ddd']);
 
   addScrollListener(d3.select(section +' .body-left ol > li:nth-of-type(2)'),
     'style', 'color', [-1100, -1400], ['#ddd', '#565555']);
