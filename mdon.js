@@ -1349,11 +1349,13 @@ function compileMarkdown(inputMarkdown) {
   // =============== Markdown-It ===============
   // Parse input markdown using markdown-it
   var parse = md.parse(inputMarkdown);
+  // var parse2 = md.parse(inputMarkdown);
 
   // =============== Data Conversion ===============
   /* Find opening tags that have same nesting value as inline 
       and update */
   var preppedData = (0, _dataPrep2.default)(parse);
+  // var preppedData2 = dataPrep(parse2);
 
   /* Nest all content into tags that contain them */
   var nestedData = (0, _nestData2.default)(preppedData);
@@ -10201,22 +10203,6 @@ function dataPrep(inputArray) {
     i++;
   }
 
-  //   if(element.tag === 'h2' && element.nesting === 1){
-  //     var h2Array = inputArray[elementIndex + 1].content.split(' ');
-  //     var name = '';
-  //     h2Array.forEach(function(word, i){
-  //       if(i) name += '-';
-  //       name += word.replace(/[^a-zA-Z]/g, '');
-  //     })
-
-  //     var attribute = ['name', name]
-  //     if(element.attrs){
-  //       element.attrs.push(attribute);
-  //     } else element.attrs = [attribute];
-  //   }
-
-  //   outputArray.push(element)
-
   return outputArray;
 }
 
@@ -10432,6 +10418,8 @@ function generateHTML(input) {
 
   input.forEach(function (element) {
     // for each element..
+    if (element.tag === 'a') element.attrs.push(['target', '_blank']);
+
     if (Array.isArray(element.content)) {
       // if element's content is an array..
       outString += '<' + element.tag; // Element will be a tag element
