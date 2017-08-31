@@ -46,11 +46,11 @@ const d3IframeContainer = d3.select('.embedded-dashboard .graph')
   .classed('iframe-container', true);
 
 
-// /* Define iframe src url */
-// const iframeSrc = 'https://sense-demo.qlik.com/sense/app/372cbc85-f7fb-4db6-a620-9a5367845dce/sheet/LChBs/state/analysis';
-// d3IframeContainer.append('iframe')
-//   .attr('src', iframeSrc)
-// var qlikSenseIframe = document.createElement('iframe');
+/* Define iframe src url */
+const iframeSrc = 'https://sense-demo.qlik.com/sense/app/372cbc85-f7fb-4db6-a620-9a5367845dce/sheet/LChBs/state/analysis';
+d3IframeContainer.append('iframe')
+  .attr('src', iframeSrc)
+var qlikSenseIframe = document.createElement('iframe');
 
 
 // ============== Embed Youtube ==============
@@ -67,3 +67,10 @@ youtubeIframe.setAttribute('allowfullscreen', '');
 
 /* Append iframe to graph */
 graph1.appendChild(youtubeIframe);
+
+
+
+// ============== Embed Youtube ==============
+d3.select('.move-past-basics .graph')
+  .append('p')
+  .html('Moving past the basic charts');
