@@ -1,142 +1,96 @@
 import * as d3 from 'd3';
+import Rx from 'rxjs';
 import {graphScroll} from 'graph-scroll';
 import '../../sass/105/keep-it-modular.scss';
 
 export default function keepItModular(section){
-  /* Add an invisible line width 0 width to use as the scrolling section
-      in graph-scroll */
-  var scrollLine = document.createElement('div');
-  scrollLine.classList.add('scroll-line');
-  var scrollLineContent = document.createElement('div');
-  scrollLine.appendChild(scrollLineContent);
-  document.querySelector(section).appendChild(scrollLine);
+  const d3Section = d3.select(section);
+  const d3Graph = d3Section.select('.graph');
+  const d3Folder = d3Graph.select('img:nth-child(1)');
+  const d3Editor = d3Graph.select('.editor-container');
+  
+  // ========= Buttons =========
+  const d3ButtonContainer = d3Section.select('.body-left')
+    .append('div')
+    .classed('button-container', true);
 
-  window.addEventListener('load', function(){
-    graphScroll()
-      .container(d3.select(section))
-      .graph(d3.select(section +' .row'))
-      .sections(d3.selectAll(section +' .scroll-line'));
-  })
+  const buttons = [{label: 'Prev', class: 'prev'}, {label: 'Next', class: 'next'}];
+
+  d3ButtonContainer.selectAll('.btn')
+    .data(buttons)
+    .enter()
+    .append('button')
+    .attr('type', 'button')
+    .attr('class', d => `btn btn-primary ${d.class}`)
+    .html(d => d.label);
+
+  const d3PrevButton = d3Section.select('.body-left .prev');
+  const d3NextButton = d3Section.select('.body-left .next');
+  const d3Buttons = d3Section.selectAll('.body-left .btn');
 
 
+  // ========= Code Editor =========
   /* Make the code editor tabs not selectable */
   const d3Tabs = d3.selectAll(section +' .body-right .graph .editor-container .nav li');
-  // d3Tabs.select('a').classed('inactive-link', true);
+  d3Tabs.select('a').classed('inactive-link', true);
 
-
-  // ============== Scroll ==============
-  var scrollFunctionArray = [],
-      sectionTop = document.querySelector(section).getBoundingClientRect().top;
-
-  var imgs = d3.selectAll(section +' .graph > img, ' +section +' .graph > .editor-container');
-  var lis = d3.selectAll(section +' .body-left li');
-
-  // Img Opacity
-  function setImgOpacity(imgArray){
-    imgArray.forEach((img, i) =>{
-      if((i + 1) === imgArray.length){ // if last img..
-        // Set opacity
-        addScrollListener(d3.select(img), 'style', 'opacity', 
-          [(-i*1000 - 100), (-i*1000 - 400)], [0, 1]);
-      } else if(i === 0){ // if first img..
-        // Set opacity
-        addScrollListener(d3.select(img), 'style', 'opacity', 
-          [(-i*1000 - 700), (-i*1000 - 1000)], [1, 0]);
-      } else {
-        // Set opacity
-        addScrollListener(d3.select(img), 'style', 'opacity', 
-          [(-i*1000 - 100), (-i*1000 - 400), (-i*1000 - 700), (-i*1000 - 1000)], [0, 1, 1, 0]);
-      }
-    })
-  } setImgOpacity(imgs._groups[0]);
-
-  // li color
-  function setLIColor(liArray){
-    liArray.forEach((li, i) =>{
-      if((i + 1) === liArray.length){ // if last p..
-        // Set Color
-        addScrollListener(d3.select(li), 'style', 'color',
-          [(-i*1000 - 100), (-i*1000 - 400)], ['#ddd', '#565555']);
-        addScrollListener(d3.select(li).select('p'), 'style', 'color',
-          [(-i*1000 - 100), (-i*1000 - 400)], ['#ddd', '#565555']);
-      } else if(i === 0){ // if first p..
-        // Set Color
-        addScrollListener(d3.select(li), 'style', 'color',
-          [(-i*1000 - 700), (-i*1000 - 1000)], ['#565555', '#ddd']);
-        addScrollListener(d3.select(li).select('p'), 'style', 'color',
-          [(-i*1000 - 700), (-i*1000 - 1000)], ['#565555', '#ddd']);
-      } else{
-        // Set color
-        addScrollListener(d3.select(li), 'style', 'color',
-          [(-i*1000 - 100), (-i*1000 - 400), (-i*1000 - 700), (-i*1000 - 1000)], 
-          ['#ddd', '#565555', '#565555', '#ddd']);
-        addScrollListener(d3.select(li).select('p'), 'style', 'color',
-          [(-i*1000 - 100), (-i*1000 - 400), (-i*1000 - 700), (-i*1000 - 1000)], 
-          ['#ddd', '#565555', '#565555', '#ddd']);
-      }
-    })
-  } setLIColor(lis._groups[0]);
-
-  
-  /* Add scroll event listener to window and pass it array of scroll functions */
-  window.addEventListener('scroll', function(){onscroll(scrollFunctionArray)})
-  /* Function to be called everytime there is scroll action. The function is
-      passed an array of functions, each of which updates the style or attribute
-      using a scale */
-  var tab;
-  function onscroll(scrollFunctionArray){
-    // Get top position of section
-    sectionTop = document.querySelector(section).getBoundingClientRect().top;
+  // ========= Observables =========
+  const prevClick$ = Rx.Observable.fromEvent(document.querySelector(section +' .body-left .btn.prev'), 'click')
+    .mapTo(-1);
+  const nextClick$ = Rx.Observable.fromEvent(document.querySelector(section +' .body-left .btn.next'), 'click')
+    .mapTo(1);
     
-    if(sectionTop > -2000 && tab != 0){
-      var link = d3.select(d3Tabs._groups[0][0]);
+  const stage$ = prevClick$.merge(nextClick$)
+    .scan((acc, curr) => {
+      if((acc + curr) <= 5 && (acc + curr) >= 1) return acc += curr;
+      else return acc;
+    }, 1)
+    .startWith(1);
+  
+
+  stage$.subscribe(s => {
+    d3Section.selectAll('.body-left ol li')
+      .classed('current', false);
+    
+    d3Section.select(`.body-left ol li:nth-child(${s})`)
+      .classed('current', true);
+
+    d3Folder.classed('hidden', s != 1);
+    d3Editor.classed('transparent', s != 2 && s != 3 && s != 4 && s != 5);
+
+    if(s > 1){
+      var link = d3.select(d3Tabs._groups[0][s - 2]);
       var a = link.select('a')._groups[0][0];
         a.click();
-
-      tab = 0;
     }
-    else if((sectionTop > -3000 && sectionTop <= -2000)&& tab != 1){
-      var link = d3.select(d3Tabs._groups[0][1]);
-      var a = link.select('a')._groups[0][0];
-        a.click();
+  });
 
-      tab = 1;
-    }
-    else if((sectionTop > -4000 && sectionTop <= -3000)&& tab != 2){
-      var link = d3.select(d3Tabs._groups[0][2]);
-      var a = link.select('a')._groups[0][0];
-        a.click();
+  const stage1$ = stage$.filter(f => f === 1);
+  const stage2$ = stage$.filter(f => f === 2);
+  const stage3$ = stage$.filter(f => f === 3);
+  const stage4$ = stage$.filter(f => f === 4);
+  const stage5$ = stage$.filter(f => f === 5);
 
-      tab = 2;
-    }
-    else if((sectionTop > -5000 && sectionTop <= -4000)&& tab != 3){
-      var link = d3.select(d3Tabs._groups[0][3]);
-      var a = link.select('a')._groups[0][0];
-        a.click();
+  // Stage 1
+  stage1$.subscribe(s => {
+    d3PrevButton
+      .classed('active', false)
+      .classed('disabled', true);
+  });
 
-      tab = 3;
-    }
-
-    // Execute each function in the function array
-    scrollFunctionArray.forEach((fx) =>{
-      fx();
+  stage2$
+    .merge(stage3$)
+    .merge(stage4$)
+    .subscribe(s => {
+      d3Buttons
+        .classed('active', true)
+        .classed('disabled', false);
     });
-  } onscroll(scrollFunctionArray);
 
-
-  /* Function to add a scaling function to function array. This function
-      generates a scale and defines how the element property should be
-      updated in relation to that scale */
-  function addScrollListener(d3Element, type, property, domain, range){
-    // Define the scale
-    var scale = d3.scaleLinear()
-      .domain(domain)
-      .range(range)
-      .clamp(true);
-
-    // Add the scaling effect to the function array
-    scrollFunctionArray.push(function scroll(){
-      d3Element[type](property, scale(sectionTop));
-    });
-  }
+  // Stage 5
+  stage5$.subscribe(s => {
+    d3NextButton
+      .classed('active', false)
+      .classed('disabled', true);
+  });
 }

@@ -29,19 +29,19 @@ export default function testingOurExtension(section){
     .append('div')
     .classed('button-container', true);
 
-    const buttons = [{label: 'Prev', class: 'prev'}, {label: 'Next', class: 'next'}];
+  const buttons = [{label: 'Prev', class: 'prev'}, {label: 'Next', class: 'next'}];
 
-    d3ButtonContainer.selectAll('.btn')
-      .data(buttons)
-      .enter()
-      .append('button')
-      .attr('type', 'button')
-      .attr('class', d => `btn btn-primary ${d.class}`)
-      .html(d => d.label);
+  d3ButtonContainer.selectAll('.btn')
+    .data(buttons)
+    .enter()
+    .append('button')
+    .attr('type', 'button')
+    .attr('class', d => `btn btn-primary ${d.class}`)
+    .html(d => d.label);
 
-    const d3PrevButton = d3Section.select('.body-left .prev');
-    const d3NextButton = d3Section.select('.body-left .next');
-    const d3Buttons = d3Section.selectAll('.body-left .btn');
+  const d3PrevButton = d3Section.select('.body-left .prev');
+  const d3NextButton = d3Section.select('.body-left .next');
+  const d3Buttons = d3Section.selectAll('.body-left .btn');
 
 
   // ========= Observables =========
