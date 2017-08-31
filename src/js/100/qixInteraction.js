@@ -105,7 +105,7 @@ export default function qixInteraction(section){
 
   const stage$ = prevClick$.merge(nextClick$)
     .scan((acc, curr) => {
-      if((acc + curr) <= 4 && (acc + curr) >= 1) return acc += curr;
+      if((acc + curr) <= 3 && (acc + curr) >= 1) return acc += curr;
       else return acc;
     }, 1)
     .startWith(1);
