@@ -48,6 +48,7 @@
     "markdown-it": "^8.3.1",
     "npm-font-open-sans": "^1.0.3",
     "roboto-slab-fontface-kit": "^1.0.1",
+    "rxjs": "^5.4.3",
     "rxq": "^0.6.7",
     "save-dev": "^2.0.0"
   }

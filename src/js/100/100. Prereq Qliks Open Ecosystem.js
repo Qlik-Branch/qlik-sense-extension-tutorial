@@ -7,7 +7,7 @@ var d3 = {
 import activateSidebar from '../lib/sidebar.js';
 import {scrollPosition, scrollOpacity} from '../lib/scrollygraph.js';
 
-import scrollyQix from './scrollyQix.js';
+import qixInteraction from './qixInteraction.js';
 import openEcosystem from './openEcosystem.js';
 import '../../sass/100/100. Prereq Qliks Open Ecosystem.scss';
 
@@ -24,7 +24,7 @@ var selfService = document.querySelector('.self-service');
 scrollPosition(sectionList);
 // scrollOpacity(sectionList);
 openEcosystem('.open-ecosystem');
-scrollyQix('.qix-interaction');
+qixInteraction('.qix-interaction');
 
 // ============== Embedded Dashboard ==============
 var newWidth = 10;
@@ -46,12 +46,11 @@ const d3IframeContainer = d3.select('.embedded-dashboard .graph')
   .classed('iframe-container', true);
 
 
-/* Define iframe src url */
-const iframeSrc = 'https://sense-demo.qlik.com/sense/app/372cbc85-f7fb-4db6-a620-9a5367845dce/sheet/LChBs/state/analysis';
-d3IframeContainer.append('iframe')
-  .attr('src', iframeSrc)
-var qlikSenseIframe = document.createElement('iframe');
-// qlikSenseIframe.src = 'https://sense-demo.qlik.com/single/?appid=372cbc85-f7fb-4db6-a620-9a5367845dce&sheet=LChBs&identity=openecosystem&opt=currsel';
+// /* Define iframe src url */
+// const iframeSrc = 'https://sense-demo.qlik.com/sense/app/372cbc85-f7fb-4db6-a620-9a5367845dce/sheet/LChBs/state/analysis';
+// d3IframeContainer.append('iframe')
+//   .attr('src', iframeSrc)
+// var qlikSenseIframe = document.createElement('iframe');
 
 
 // ============== Embed Youtube ==============

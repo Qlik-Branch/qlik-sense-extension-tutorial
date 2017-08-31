@@ -1,7 +1,8 @@
 $scroll-line-height: 4000px;
 
 .qix-interaction {
-  height: $scroll-line-height;
+  // height: $scroll-line-height;
+  height: 100vh;
 
   .row {
     top: 0;
@@ -9,28 +10,46 @@ $scroll-line-height: 4000px;
     height: 100vh;
   }
 
-  &.graph-scroll-fixed .row {
-    position: fixed;
-    left: 47px;
-    width: calc(100% - 32px);
-    padding-left: 15px;
+  // &.graph-scroll-fixed .row {
+  //   position: fixed;
+  //   left: 47px;
+  //   width: calc(100% - 32px);
+  //   padding-left: 15px;
 
-    @media(min-width: 992px){
-      left: 310px;
-      width: calc(100% - 385px);
-    }
-  }
+  //   @media(min-width: 992px){
+  //     left: 310px;
+  //     width: calc(100% - 385px);
+  //   }
+  // }
 
-  &.graph-scroll-below .row {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    top: auto;
-  }
+  // &.graph-scroll-below .row {
+  //   position: absolute;
+  //   right: 0;
+  //   bottom: 0;
+  //   top: auto;
+  // }
 
   .body-left {
     margin-top: 0;
-    padding-top: 30vh;
+    padding-top: 10vh;
+
+    p {
+      margin-bottom: 20px;
+      opacity: 0.2;
+    }
+
+    p.current {
+      opacity: 1;
+    }
+
+    .button-container {
+      // float: left;
+      text-align: center;
+
+      button {
+        margin: 0 20px;
+      }
+    }
   }
 
   .body-right {
@@ -64,8 +83,16 @@ $scroll-line-height: 4000px;
 
       & > img:nth-of-type(2),
       & > img:nth-of-type(3) {
-        max-height: 35%;
+        max-height: 45%;
         padding-top: 0;
+      }
+      
+      & > img:nth-of-type(4) {
+        width: 100px;
+      }
+
+      & > img:nth-of-type(5) {
+        width: 150px;
       }
 
       .user-div {
