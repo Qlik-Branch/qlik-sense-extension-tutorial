@@ -1,7 +1,7 @@
 $scroll-line-height: calc(4400px + 100vh);
 
 .content .testing-our-extension {
-  height: $scroll-line-height;
+  height: 100vh;
   margin-top: 0;
 
   .row {
@@ -32,6 +32,26 @@ $scroll-line-height: calc(4400px + 100vh);
   .body-left {
     margin-top: 0;
     padding-top: 10vh;
+
+    h5 {
+      margin-top: 30px;
+    }
+    
+    h5, p {
+      opacity: 0.2;
+    }
+
+    h5.current, p.current {
+      opacity: 1;
+    }
+
+    .button-container {
+      text-align: center;
+
+      button {
+        margin: 0 20px;
+      }
+    }
   }
 
   .body-right {
