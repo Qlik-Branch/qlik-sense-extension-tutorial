@@ -44,7 +44,7 @@ export default function testingOurExtension(section){
       fx();
     });
     
-    if(sectionTop > -1000){
+    if(sectionTop > -500){
       img1.style.display = 'block';
       img2.style.display = 'none';
       img3.style.display = 'none';
@@ -52,7 +52,7 @@ export default function testingOurExtension(section){
       text1.style('display', 'block');
       text2.style('display', 'none');
       text3.style('display', 'none');
-    } else if(sectionTop > -2000){
+    } else if(sectionTop > -1000){
       img1.style.display = 'none';
       img2.style.display = 'block';
       img3.style.display = 'none';
@@ -60,7 +60,7 @@ export default function testingOurExtension(section){
       text1.style('display', 'none');
       text2.style('display', 'block');
       text3.style('display', 'none');
-    } else if(sectionTop > -3000){
+    } else if(sectionTop > -1500){
       img1.style.display = 'none';
       img2.style.display = 'none';
       img3.style.display = 'block';
@@ -88,15 +88,15 @@ export default function testingOurExtension(section){
   }
 
   // Imgs
-  addScrollListener(d3.select(img1), 'style', 'opacity', [-700, -1000], [1, 0]);
-  addScrollListener(d3.select(img2), 'style', 'opacity', [-1100, -1400, -1700, -2000], [0, 1, 1, 0]);
-  addScrollListener(d3.select(img3), 'style', 'opacity', [-2100, -2400], [0, 1]);
+  addScrollListener(d3.select(img1), 'style', 'opacity', [-450, -500], [1, 0]);
+  addScrollListener(d3.select(img2), 'style', 'opacity', [-650, -700, -950, -1000], [0, 1, 1, 0]);
+  addScrollListener(d3.select(img3), 'style', 'opacity', [-1050, -1100], [0, 1]);
 
   // Paragraph
   addScrollListener(d3.selectAll(section +' .body-left p:first-of-type, ' +section +' .body-left p:nth-of-type(2)'),
-    'style', 'opacity', [-700, -1000], [1, 0]);
+    'style', 'opacity', [-300, -500], [1, 0]);
   addScrollListener(d3.selectAll(section +' .body-left p:nth-of-type(3), ' +section +' .body-left p:nth-of-type(4)'),
-    'style', 'opacity', [-1100, -1400, -1700, -2000], [0, 1, 1, 0]);
+    'style', 'opacity', [-650, -700, -950, -1000], [0, 1, 1, 0]);
   addScrollListener(d3.selectAll(section +' .body-left p:nth-of-type(5), ' +section +' .body-left p:nth-of-type(6)'),
-    'style', 'opacity', [-2100, -2400, -2700, -3000], [0, 1, 1, 0]);
+    'style', 'opacity', [-1050, -1100], [0, 1]);
 }
