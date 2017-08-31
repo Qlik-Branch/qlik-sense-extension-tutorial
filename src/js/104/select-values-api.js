@@ -111,7 +111,6 @@ export default function(sectionClass){
 
   // ============ Observables ============
   const paragraph$ = selectStageObservable(sectionClass);
-  paragraph$.subscribe(s => console.log(s));
 
   paragraph$
     .filter(f => f <= 1)
