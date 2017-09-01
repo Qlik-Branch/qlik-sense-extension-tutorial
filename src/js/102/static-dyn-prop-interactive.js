@@ -233,7 +233,7 @@ export default function staticDynPropInteractive(section){
 
     img
       .style('top', (50 + imgTop*.87) +'px')
-      .style('left', (svgWidth/2)*1.17 +'px');
+      .style('left', (svgWidth/2)*1.16 +'px');
 
 
     // Static Line
@@ -289,5 +289,9 @@ export default function staticDynPropInteractive(section){
       .attr('x2', circleRightEdge)
       .attr('y2', (2/3)*svgHeight - 5);
   };
+
+  window.addEventListener('load', function(){
+    resize();
+  })
   resize();
 }
