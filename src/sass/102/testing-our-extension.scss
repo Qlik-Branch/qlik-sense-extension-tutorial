@@ -8,6 +8,10 @@ $scroll-line-height: calc(4400px + 100vh);
     top: 0;
     float: left;
     height: 100vh;
+
+    .body-left {
+      margin-top: 0;
+    }
   }
 
   &.graph-scroll-fixed .row {
@@ -31,7 +35,7 @@ $scroll-line-height: calc(4400px + 100vh);
 
   .body-left {
     margin-top: 0;
-    padding-top: 10vh;
+    padding-top: 0;
 
     h5 {
       margin-top: 30px;
