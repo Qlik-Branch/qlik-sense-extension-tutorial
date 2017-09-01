@@ -35,9 +35,10 @@
 }
 
 .sidebar-label {
+  position: relative;
   float: left;
   margin-top: 6px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   margin-left: 10px;
   margin-right: 10px;
   font-family: 'Roboto Slab';
@@ -48,9 +49,11 @@
 
 .sidebar hr {
   position: relative;
+  top: 16px;
   border-top-color: #6EE8FC;
   left: -10px;
   width: 220px;
+  z-index: 100;
 }
 
 .nav-sidebar .sub-sidebar {
