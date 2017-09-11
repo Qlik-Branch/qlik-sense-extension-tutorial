@@ -2,12 +2,14 @@ $scroll-line-height: calc(4400px + 100vh);
 
 .content .testing-our-extension {
   height: 100vh;
+  min-height: 900px;
   margin-top: 0;
 
   .row {
     top: 0;
     float: left;
     height: 100vh;
+    min-height: 900px;
 
     .body-left {
       margin-top: 0;
@@ -54,6 +56,7 @@ $scroll-line-height: calc(4400px + 100vh);
 
       button {
         margin: 0 20px;
+        z-index: 100;
       }
     }
   }

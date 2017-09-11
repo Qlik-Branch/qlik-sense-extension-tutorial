@@ -26,12 +26,14 @@ $scroll-line-height: calc(700px + 100vh);
 
     @media(min-width: 992px){
       left: 310px;
-      width: calc(100% - 385px);
+      width: calc(100% - 415px);
     }
   }
 
   &.graph-scroll-below .row {
     position: absolute;
+    left: 0;
+    width: calc(100% - 10px);
     right: 0;
     bottom: 0;
     top: auto;

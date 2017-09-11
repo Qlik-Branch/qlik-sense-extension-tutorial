@@ -17,15 +17,10 @@ import js2 from './code-snippets/js-editor-2.js';
 import support from './code-snippets/support-editor.js';
 import js3 from './code-snippets/js-editor-3.js';
 
-var scrollList = [
-  '.container-and-properties',
-  '.generic-object-properties'
-];
 
 // ============== Sidebar ==============
 activateSidebar(2);
 
-scrollPosition(scrollList);
 staticDynPropDiagram('.static-dyn-prop-diagram');
 staticDynPropInteractive('.static-dyn-prop-interactive');
 testingOurExtension('.testing-our-extension');
