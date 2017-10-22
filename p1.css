@@ -1,0 +1,181 @@
+/* Activate Sidebar Selection */
+#sidebar .nav-sidebar .sub-sidebar {
+  display: none; }
+
+#sidebar .nav-sidebar .sublist-1 {
+  display: block; }
+
+.content .header p:first-of-type {
+  font-family: "Raleway";
+  font-size: 20px;
+  color: #565555;
+  font-weight: normal;
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 33px; }
+
+.ext-navigation .body-left {
+  padding-bottom: 100px; }
+
+.ext-resize .body-left {
+  padding-bottom: 150px; }
+
+.ext-resize .body-right {
+  padding-top: 200px; }
+
+.sense-sankey-download .body-left {
+  padding-bottom: 90px; }
+
+.sense-sankey-folder .body-left {
+  padding-bottom: 30px; }
+
+.sense-sankey-custom-objects .graph img {
+  max-height: 350px; }
+
+.sense-sankey-custom-objects .body-left {
+  padding-bottom: 200px; }
+
+.import-extensions .body-left {
+  padding-bottom: 100px; }
+
+.sense-sankey-custom-objects2 .graph img {
+  max-height: 350px; }
+
+.sense-sankey-custom-objects2 .body-left {
+  padding-bottom: 200px; }
+
+.drag-drop-ext .body-left {
+  padding-bottom: 100px; }
+.content .sense-sankey-server {
+  height: 100vh;
+  margin-top: 0; }
+  .content .sense-sankey-server .row {
+    top: 0;
+    float: left;
+    height: 100vh; }
+  .content .sense-sankey-server.graph-scroll-fixed .row {
+    position: fixed;
+    left: 47px;
+    width: calc(100% - 32px);
+    padding-left: 15px; }
+    @media (min-width: 992px) {
+      .content .sense-sankey-server.graph-scroll-fixed .row {
+        left: 310px;
+        width: calc(100% - 385px); } }
+  .content .sense-sankey-server.graph-scroll-below .row {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto; }
+  .content .sense-sankey-server .body-left {
+    margin-top: 0;
+    padding-top: 10vh; }
+    .content .sense-sankey-server .body-left li {
+      opacity: 0.2; }
+    .content .sense-sankey-server .body-left li.current {
+      opacity: 1; }
+    .content .sense-sankey-server .body-left .button-container {
+      text-align: center; }
+      .content .sense-sankey-server .body-left .button-container button {
+        margin: 0 20px; }
+  .content .sense-sankey-server .body-right {
+    vertical-align: middle;
+    position: relative;
+    padding-top: 0;
+    height: 100%; }
+    .content .sense-sankey-server .body-right .graph {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      .content .sense-sankey-server .body-right .graph img {
+        position: relative;
+        margin: auto;
+        top: 45%;
+        transform: translateY(-50%); }
+  .content .sense-sankey-server .scroll-line {
+    position: relative;
+    top: 0;
+    width: 0;
+    height: calc(1400px + 100vh);
+    float: left; }
+    .content .sense-sankey-server .scroll-line div {
+      width: 100%;
+      height: 100%; }
+  .content .sense-sankey-server.graph-scroll-fixed .body-right {
+    position: relative;
+    right: 0;
+    left: 0;
+    width: 50%; }
+  .content .sense-sankey-server.graph-scroll-below .body-right {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    top: auto; }
+.content .sense-sankey-desktop {
+  height: 100vh;
+  margin-top: 0; }
+  .content .sense-sankey-desktop .row {
+    top: 0;
+    float: left;
+    width: 100%;
+    height: 100vh; }
+  .content .sense-sankey-desktop.graph-scroll-fixed .row {
+    position: fixed;
+    left: 47px;
+    width: calc(100% - 32px);
+    padding-left: 15px; }
+    @media (min-width: 992px) {
+      .content .sense-sankey-desktop.graph-scroll-fixed .row {
+        left: 310px;
+        width: calc(100% - 385px); } }
+  .content .sense-sankey-desktop.graph-scroll-below .row {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: auto; }
+  .content .sense-sankey-desktop .body-left {
+    margin-top: 0;
+    padding-top: 10vh; }
+    .content .sense-sankey-desktop .body-left li {
+      opacity: 0.2; }
+    .content .sense-sankey-desktop .body-left li.current {
+      opacity: 1; }
+    .content .sense-sankey-desktop .body-left .button-container {
+      text-align: center; }
+      .content .sense-sankey-desktop .body-left .button-container button {
+        margin: 0 20px; }
+  .content .sense-sankey-desktop .body-right {
+    vertical-align: middle;
+    position: relative;
+    padding-top: 0;
+    height: 100%; }
+    .content .sense-sankey-desktop .body-right .graph {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      .content .sense-sankey-desktop .body-right .graph img {
+        position: relative;
+        margin: auto;
+        top: 45%;
+        max-width: 100%;
+        transform: translateY(-50%); }
+  .content .sense-sankey-desktop .scroll-line {
+    position: relative;
+    top: 0;
+    width: 0;
+    height: calc(2400px + 100vh);
+    float: left; }
+    .content .sense-sankey-desktop .scroll-line div {
+      width: 100%;
+      height: 100%; }
+  .content .sense-sankey-desktop.graph-scroll-fixed .body-right {
+    position: relative;
+    right: 0;
+    left: 0;
+    width: 50%; }
+  .content .sense-sankey-desktop.graph-scroll-below .body-right {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    top: auto; }

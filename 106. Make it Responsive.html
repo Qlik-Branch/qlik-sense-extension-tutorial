@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Make it Responsive</title>
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="p6.css" rel="stylesheet"><link href="app.css" rel="stylesheet"></head>
+  <body>
+    <div id="sidebar" class="sidebar">
+  <div class="sidebar-label">Qlik Extension Tutorial</div>
+  <div><a href="javascript:void(0)" class="closebtn">&times;</a></div>
+  </br>
+  </br>
+  <hr/>
+  <ul class="nav nav-sidebar">
+    <li class="chapter-0"><a href="100. Prereq Qliks Open Ecosystem.html"><span class="glyphicon glyphicon-menu-right"></span> 100. Qlik's open ecosystem</a>
+      <ul class="nav sub-sidebar sublist-0">
+        <li><a href="#h2-0">Meet the Qlik Sense client</a></li>
+        <li><a href="#h2-1">Qlik Sense under the hood</a></li>
+        <li><a href="#h2-2">The open ecosystem</a></li>
+        <li><a href="#h2-3">Why an open ecosystem?</a></li>
+        <li><a href="#h2-4">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-1"><a href="101. What Are Extensions.html"><span class="glyphicon glyphicon-menu-right"></span> 101. What are extensions</a>
+      <ul class="nav sub-sidebar sublist-1">
+        <li><a href="#h2-0">What are extensions conceptually?</a></li>
+        <li><a href="#h2-1">What are extensions technically?</a></li>
+        <li><a href="#h2-2">How do you deploy an extension?</a></li>
+        <li><a href="#h2-3">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-2"><a href="102. Hello World.html"><span class="glyphicon glyphicon-menu-right"></span> 102. Hello World</a>
+      <ul class="nav sub-sidebar sublist-2">
+        <li><a href="#h2-0">Prerequisites</a></li>
+        <li><a href="#h2-1">Anatomy of an extension</a></li>
+        <li><a href="#h2-2">Setting up development environment</a></li>
+        <li><a href="#h2-3">Wiring it together with code</a></li>
+        <li><a href="#h2-4">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-3"><a href="103. Make it Data Driven.html"><span class="glyphicon glyphicon-menu-right"></span> 103. Make it data driven</a>
+      <ul class="nav sub-sidebar sublist-3">
+        <li><a href="#h2-0">Lifecycle of an Extension</a></li>
+        <li><a href="#h2-1">Defining Our Data</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-4"><a href="104. Make it Selectable.html"><span class="glyphicon glyphicon-menu-right"></span> 104. Make it selectable</a>
+      <ul class="nav sub-sidebar sublist-4">
+        <li><a href="#h2-0">The backend API</a></li>
+        <li><a href="#h2-1">Adding selections to our table</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-5"><a href="105. Make it Stylish.html"><span class="glyphicon glyphicon-menu-right"></span> 105. Make it stylish</a>
+      <ul class="nav sub-sidebar sublist-5">
+        <li><a href="#h2-0">Creating a stylesheet</a></li>
+        <li><a href="#h2-1">Module loading</a></li>
+        <li><a href="#h2-2">Keep it modular</a></li>
+        <li><a href="#h2-3">Adding custom property panel items</a></li>
+        <li><a href="#h2-4">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-6"><a href="106. Make it Responsive.html"><span class="glyphicon glyphicon-menu-right"></span> 106. Make it responsive</a>
+      <ul class="nav sub-sidebar sublist-6">
+        <li><a href="#h2-0">Adding responsiveness via CSS</a></li>
+        <li><a href="#h2-1">Adding responsiveness via JS</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-7"><a href="107. Make it Universal.html"><span class="glyphicon glyphicon-menu-right"></span> 107. Make it universal</a>
+      <ul class="nav sub-sidebar sublist-7">
+        <li><a href="#h2-0">Environment Context</a></li>
+        <li><a href="#h2-1">Printing Extensions</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-8"><a href="108. Make it Scalable.html"><span class="glyphicon glyphicon-menu-right"></span> 108. Make it scalable</a>
+      <ul class="nav sub-sidebar sublist-8">
+        <li><a href="#h2-0">Paging the Data</a></li>
+        <li><a href="#h2-1">Pulling All Pages in Parallel and in Sequence</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    <div class="hamburger-open">&#9776;</div>
+
+    <div class="main-content">
+      <div class="container content">
+        <div class="header">
+          <h1>106. Make it Responsive</h1><p>Learning goal: Define responsive functionality in our extension</br><a href="https://github.com/axisgroup/my-table/tree/106-make-it-responsive" target="_blank">Chapter 106 complete code</a></p>
+          <hr/>
+        </div>
+        <div id="body-content">
+          <div id="section-0"class="section "><div class="row">
+              <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 body-left">
+        <p>Qlik Sense out of the box charts are responsive, so we want our extensions to be responsive as well. They should adjust themselves to fit whatever container they are asked to fill in a way that is useful and usable for the user. There are a couple of different ways we can modify our extension based on its size. Let’s review.</p></div><div class="col-xs-0 col-sm-0 col-md-0 col-lg-0 body-right"><div class="graph"></div></div></div></div><div id="section-1"class="section css-editor"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <h2>Adding Responsiveness via CSS</h2><p>In CSS, we can define style properties based on the current size of our browser. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">We do this with what are called “media queries”.</a> Media queries can limit the scope of styles based on features like width and height. We can use media queries to determine if a user is on a phone-size device and apply different styles accordingly.</br></br></p><p>Let’s add a responsive style to our extension. When viewing our table on a phone, we want the text to be slightly bigger so it’s easier to read. We can adjust the font size using a media query for when the width of the screen is less than 480 px. We will also only show the first 2 columns of our table. Add the following to <em>style.css</em>:</br></br></p><p>Now if we resize our browser to a narrow width, the font-size will adjust in response. Note that there are many options for using media queries that target screens and devices. For more examples, check out < <a href="https://responsivedesign.is/develop/browser-feature-support/media-queries-for-common-device-breakpoints/" target="_blank">media queries for common device breakpoints | Responsive Web Design</a> >.</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="css-editor"></div></div></div></div><div id="section-2"class="section resize-extension"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <h2>Adding Responsiveness via JS</h2><p>CSS media queries can help us restyle our extension in response to various browser and device sizes. However, CSS will only get us so far. What if we want to make incremental changes to our visualization on resize, instead of re-rendering the whole thing from scratch with our paint function? That’s where our resize function comes into play.</br></br></p><p>Recall our extension lifecycle from before. There are two types of events that trigger rendering: data or properties changing, and the chart container changing size.</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="resize-extension"><img src="./images/resize-extension.png" alt="" class="img-responsive"></img></div></div></div></div><div id="section-3"class="section resize-editor"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <p>When only defining a paint function, Qlik Sense will use that function for both types of events. But in our extension, we do not need to re-render the table from scratch on resize. Thanks to Qlik’s CSS, our table does not need any changes in order to resize itself. It will continue to fit into its container. Therefore, running a paint function every time the chart is resized is a waste of time and resources. We can improve the performance of our extension by defining an empty resize function to prevent a re-paint. Let’s create a file called <em>resize.js</em>, define a module that exports our resize function, and incorporate it into our extension definition:</br></br></p><p>Now our chart doesn’t re-paint every time we resize. We can’t really see that change though. For a simple table, there is typically not much to be done on a resize event; that function comes in handy with more complex graphics. Let's leave our resize function empty.</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="resize-editor"></div></div></div></div><div id="section-4"class="section "><div class="row">
+              <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 body-left">
+        <h2>Fin</h2><h4>Recap</h4><ul><li><p>CSS can be used to define styles at various screen dimensions via media queries</p></li><li><p>The resize function can be used to incrementally change the extension on resize, rather than redrawing the entire visual from scratch</p></li></ul><h4>Resources</h4><ul><li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">Media Queries</a></p></li><li><p><a href="https://responsivedesign.is/develop/browser-feature-support/media-queries-for-common-device-breakpoints/" target="_blank">Media Queries for Common Device Breakpoints</a></p></li></ul></div><div class="col-xs-0 col-sm-0 col-md-0 col-lg-0 body-right"><div class="graph"></div></div></div></div>
+        </div>
+        <hr/>
+      </div>
+    </div>
+
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="p6.bundle.js"></script><script type="text/javascript" src="app.bundle.js"></script></body>
+</html>

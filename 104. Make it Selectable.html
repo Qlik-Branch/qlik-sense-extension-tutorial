@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Make it Selectable</title>
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="p4.css" rel="stylesheet"><link href="app.css" rel="stylesheet"></head>
+  <body>
+    <div id="sidebar" class="sidebar">
+  <div class="sidebar-label">Qlik Extension Tutorial</div>
+  <div><a href="javascript:void(0)" class="closebtn">&times;</a></div>
+  </br>
+  </br>
+  <hr/>
+  <ul class="nav nav-sidebar">
+    <li class="chapter-0"><a href="100. Prereq Qliks Open Ecosystem.html"><span class="glyphicon glyphicon-menu-right"></span> 100. Qlik's open ecosystem</a>
+      <ul class="nav sub-sidebar sublist-0">
+        <li><a href="#h2-0">Meet the Qlik Sense client</a></li>
+        <li><a href="#h2-1">Qlik Sense under the hood</a></li>
+        <li><a href="#h2-2">The open ecosystem</a></li>
+        <li><a href="#h2-3">Why an open ecosystem?</a></li>
+        <li><a href="#h2-4">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-1"><a href="101. What Are Extensions.html"><span class="glyphicon glyphicon-menu-right"></span> 101. What are extensions</a>
+      <ul class="nav sub-sidebar sublist-1">
+        <li><a href="#h2-0">What are extensions conceptually?</a></li>
+        <li><a href="#h2-1">What are extensions technically?</a></li>
+        <li><a href="#h2-2">How do you deploy an extension?</a></li>
+        <li><a href="#h2-3">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-2"><a href="102. Hello World.html"><span class="glyphicon glyphicon-menu-right"></span> 102. Hello World</a>
+      <ul class="nav sub-sidebar sublist-2">
+        <li><a href="#h2-0">Prerequisites</a></li>
+        <li><a href="#h2-1">Anatomy of an extension</a></li>
+        <li><a href="#h2-2">Setting up development environment</a></li>
+        <li><a href="#h2-3">Wiring it together with code</a></li>
+        <li><a href="#h2-4">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-3"><a href="103. Make it Data Driven.html"><span class="glyphicon glyphicon-menu-right"></span> 103. Make it data driven</a>
+      <ul class="nav sub-sidebar sublist-3">
+        <li><a href="#h2-0">Lifecycle of an Extension</a></li>
+        <li><a href="#h2-1">Defining Our Data</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-4"><a href="104. Make it Selectable.html"><span class="glyphicon glyphicon-menu-right"></span> 104. Make it selectable</a>
+      <ul class="nav sub-sidebar sublist-4">
+        <li><a href="#h2-0">The backend API</a></li>
+        <li><a href="#h2-1">Adding selections to our table</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-5"><a href="105. Make it Stylish.html"><span class="glyphicon glyphicon-menu-right"></span> 105. Make it stylish</a>
+      <ul class="nav sub-sidebar sublist-5">
+        <li><a href="#h2-0">Creating a stylesheet</a></li>
+        <li><a href="#h2-1">Module loading</a></li>
+        <li><a href="#h2-2">Keep it modular</a></li>
+        <li><a href="#h2-3">Adding custom property panel items</a></li>
+        <li><a href="#h2-4">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-6"><a href="106. Make it Responsive.html"><span class="glyphicon glyphicon-menu-right"></span> 106. Make it responsive</a>
+      <ul class="nav sub-sidebar sublist-6">
+        <li><a href="#h2-0">Adding responsiveness via CSS</a></li>
+        <li><a href="#h2-1">Adding responsiveness via JS</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-7"><a href="107. Make it Universal.html"><span class="glyphicon glyphicon-menu-right"></span> 107. Make it universal</a>
+      <ul class="nav sub-sidebar sublist-7">
+        <li><a href="#h2-0">Environment Context</a></li>
+        <li><a href="#h2-1">Printing Extensions</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+    <li class="chapter-8"><a href="108. Make it Scalable.html"><span class="glyphicon glyphicon-menu-right"></span> 108. Make it scalable</a>
+      <ul class="nav sub-sidebar sublist-8">
+        <li><a href="#h2-0">Paging the Data</a></li>
+        <li><a href="#h2-1">Pulling All Pages in Parallel and in Sequence</a></li>
+        <li><a href="#h2-2">Fin</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    <div class="hamburger-open">&#9776;</div>
+
+    <div class="main-content">
+      <div class="container content">
+        <div class="header">
+          <h1>104. Make it Selectable</h1><p>Learning goal: Make our extension interactive by incorporating selections with the Backend API</br><a href="https://github.com/axisgroup/my-table/tree/104-make-it-selectable" target="_blank">Chapter 104 complete code</a></p>
+          <hr/>
+        </div>
+        <div id="body-content">
+          <div id="section-0"class="section "><div class="row">
+              <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 body-left">
+        <p>We’ve now got an extension that renders data from Qlik. That is only one piece of the puzzle however. It’s unidirectional: we receive data from Qlik that we render. But we also want our extension to be able to go the opposite direction. That is to say, we want to be able to filter data in Qlik by interacting with our extension. Let’s work on this feature next.</p></div><div class="col-xs-0 col-sm-0 col-md-0 col-lg-0 body-right"><div class="graph"></div></div></div></div><div id="section-1"class="section field-indices"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <p>In the previous chapter, we did a deep-dive on the <code>qMatrix</code> structure that contains our calculated data in HyperCubes. Specifically, we looked at the individual cells in our row and column structure and examined properties like <code>qNum</code> and <code>qText</code>. One special property we discussed was the <code>qElemNumber</code>. When looking at a dimension cell, the <code>qElemNumber</code> represents the Field Index of a dimension value within a dimension. The <code>Field Index</code> is Qlik’s unique identifier for a distinct value in a Field. This index is important to us because it can be used to tell Qlik exactly which values we want to filter in a dimension.</br></br></p><p>In order to leverage our <code>qElemNumbers</code> to make selections, we need an API to talk to Qlik. Enter the <strong>Backend API</strong>.</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="field-indices"><img src="./images/field-indices.png" alt="" class="img-responsive"></img></div></div></div></div><div id="section-2"class="section "><div class="row">
+              <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 body-left">
+        <h2>The Backend API</h2><p>The BackendAPI is an API unique to extensions that enables us to communicate with the Qlik engine. It provides some Helper functions for common calls that we might want to make in our extension. For example, the Backend API has a <code>getProperties</code> method that will retrieve our Generic Object properties. <a href="http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/backend-api-reference.htm" target="_blank">For more on the Backend API, check out the documentation.</a></br></br></p><p>One key function in the Backend API is the <code>selectValues</code> method. This method can filter data in a dimension that exists in our HyperCube. It takes 3 inputs:</p><ol><li><p>A number for the index of our dimension. The first dimension in our HyperCube would be index <code>0</code>.</p></li><li><p>An array of <code>qElemNumbers</code> to select. All values entered here will be part of the new selection.</p></li><li><p>A boolean for the toggle mode of our selection. When true, the selected values will be added to any already selected values. When false, any already selected values will be discarded before selecting the new list of values.</p></li></ol></div><div class="col-xs-0 col-sm-0 col-md-0 col-lg-0 body-right"><div class="graph"></div></div></div></div><div id="section-3"class="section select-values-api"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <p>Let’s take the following example table from a HyperCube, with annotated Field Indices:</p><p>Let’s say I want to select "Manufacturing" and "Contractor" from my "Department" dimension. Since that dimension is in the first column, I could use the method <code>selectValues(0, [0, 1], false)</code></p><p>pre-selection</p><p>post-selection</p><p>This call ensures that I filter to only the field values with indices 0 and 1.</p><p>If I want to add more selections on top, I could make the call again and set the toggle mode to true: <code>selectValues(0, [4], true)</code></p><p>Alternatively, I could have set toggle mode to false, which would deselect elements 1 and 3 and then select element 4: <code>selectValues(0, [3], false)</code></p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="select-values-api"></div></div></div></div><div id="section-4"class="section "><div class="row">
+              <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 body-left">
+        <h2>Adding Selections to Our Table</h2><p>Now that we know how to use the <code>selectValues</code> method, we can incorporate it into our extension. Let’s add a feature where a user can click on a dimension value to filter to that dimension.</p></div><div class="col-xs-0 col-sm-0 col-md-0 col-lg-0 body-right"><div class="graph"></div></div></div></div><div id="section-5"class="section paint-editor"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <p>First, we are going to need to access the Backend API in our extension code. In our paint method, we can access the Backend API via <code>this.backendApi</code>. Let’s go ahead and save off that reference for later use:</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="paint-editor"></div></div></div></div><div id="section-6"class="section paint-editor-2"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <p>In order to make our cells selectable, we need to tag them with the right metadata that we can use to feed a <code>selectValues</code> call. Let’s start by editing our code where we create table cells to determine if they are dimension cells or not. We can do this by comparing the column number to our <code>dimensionInfo</code> array length.</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="paint-editor-2"></div></div></div></div><div id="section-7"class="section paint-editor-3"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <p>Inside of our new if statement, we can add the metadata we want to the table cell. For our purposes, let’s tag it with a class called <code>selectable</code> that we can use to find the selectable cells later. Let’s also add attributes for the dimension column number and the field index.</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="paint-editor-3"></div></div></div></div><div id="section-8"class="section paint-editor-4"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <p>Almost there! We now have td’s that should be selectable, easily identified by a <code>.selectable</code> class. We also have metadata about the dimension column and the value’s Field Index. Now we just need to create a UI for selection. We can do that by adding a click event to these elements that calls <code>selectValues</code>. Let’s add this at the end after our $element has been populated with the table:</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="paint-editor-4"></div></div></div></div><div id="section-9"class="section extension-selection"><div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-left">
+        <p>Now we have an interactive extension that can filter data in our Qlik Sense dashboards!</p></div><div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 body-right"><div class="graph" id="extension-selection"><img src="./images/extension-selection.gif" alt="" class="img-responsive"></img></div></div></div></div><div id="section-10"class="section "><div class="row">
+              <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 body-left">
+        <h2>Fin</h2><h4>Recap</h4><ul><li><p>Extensions can interact with the QIX Engine via the <code>Backend API</code> to add functionality like making selections.</p></li></ul><h4>Resources</h4><ul><li><p><a href="http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/backend-api-reference.htm" target="_blank">Backend API Documentation</a></p></li></ul></div><div class="col-xs-0 col-sm-0 col-md-0 col-lg-0 body-right"><div class="graph"></div></div></div></div>
+        </div>
+        <hr/>
+      </div>
+    </div>
+
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="p4.bundle.js"></script><script type="text/javascript" src="app.bundle.js"></script></body>
+</html>

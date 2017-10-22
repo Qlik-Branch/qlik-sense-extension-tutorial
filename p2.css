@@ -1,0 +1,277 @@
+#sidebar .nav-sidebar .sub-sidebar {
+  display: none; }
+
+#sidebar .nav-sidebar .sublist-2 {
+  display: block; }
+
+.row {
+  width: 100%; }
+
+.ace_editor {
+  width: 100%;
+  height: 400px; }
+
+.resource-list-design .body-right {
+  padding-top: 80px; }
+
+.my-table-folder .body-right {
+  padding-top: 250px; }
+
+.container-and-properties .body-left {
+  padding-bottom: 60px; }
+
+.container-and-properties .body-right {
+  padding-top: 200px; }
+
+.generic-object-properties .body-right {
+  padding-top: 200px; }
+
+.static-dyn-prop-interactive .body-left {
+  padding-bottom: 200px; }
+
+.static-dyn-prop-interactive .dynamic-line-1,
+.static-dyn-prop-interactive .dynamic-line-2 {
+  stroke-width: 1;
+  stroke: #36B7CF;
+  stroke-dasharray: 2, 4; }
+
+.static-dyn-prop-interactive .dynamic-line-1-fill {
+  stroke-width: 1.5;
+  stroke: #36B7CF; }
+
+.static-dyn-prop-interactive .dynamic-circle-fill {
+  stroke: #36B7CF; }
+
+.static-dyn-prop-interactive .dynamic-line-2-fill {
+  stroke-width: 1.5;
+  stroke: #36B7CF; }
+
+.properties-layout-visual.section {
+  margin-top: 200px; }
+  .properties-layout-visual.section .body-right {
+    margin-top: 0;
+    padding-top: 0; }
+
+.content .section.extension-architecture-diagram {
+  margin-top: 200px; }
+  .content .section.extension-architecture-diagram .body-right {
+    padding-top: 0; }
+
+.qext-editor .body-right,
+.js-editor .body-right,
+.initial-properties-editor .body-right,
+.definition-editor .body-right,
+.def-initprops-editor .body-right,
+.paint-editor .body-right,
+.js-editor-2 .body-right,
+.support-editor .body-right,
+.js-editor-3 .body-right {
+  padding-top: 58px; }
+.content .testing-our-extension {
+  height: 100vh;
+  min-height: 900px;
+  margin-top: 0; }
+  .content .testing-our-extension .row {
+    top: 0;
+    float: left;
+    height: 100vh;
+    min-height: 900px; }
+    .content .testing-our-extension .row .body-left {
+      margin-top: 0; }
+  .content .testing-our-extension.graph-scroll-fixed .row {
+    position: fixed;
+    left: 47px;
+    width: calc(100% - 32px);
+    padding-left: 15px; }
+    @media (min-width: 992px) {
+      .content .testing-our-extension.graph-scroll-fixed .row {
+        left: 310px;
+        width: calc(100% - 385px); } }
+  .content .testing-our-extension.graph-scroll-below .row {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: auto; }
+  .content .testing-our-extension .body-left {
+    margin-top: 0;
+    padding-top: 0; }
+    .content .testing-our-extension .body-left h5 {
+      margin-top: 30px; }
+    .content .testing-our-extension .body-left h5, .content .testing-our-extension .body-left p {
+      opacity: 0.2; }
+    .content .testing-our-extension .body-left h5.current, .content .testing-our-extension .body-left p.current {
+      opacity: 1; }
+    .content .testing-our-extension .body-left .button-container {
+      text-align: center; }
+      .content .testing-our-extension .body-left .button-container button {
+        margin: 0 20px;
+        z-index: 100; }
+  .content .testing-our-extension .body-right {
+    vertical-align: middle;
+    position: relative;
+    padding-top: 0;
+    height: 100%; }
+    .content .testing-our-extension .body-right .graph {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      .content .testing-our-extension .body-right .graph img {
+        position: relative;
+        top: 45%;
+        transform: translateY(-50%); }
+  .content .testing-our-extension .scroll-line {
+    position: relative;
+    top: 0;
+    width: 0;
+    height: calc(4400px + 100vh);
+    float: left; }
+    .content .testing-our-extension .scroll-line div {
+      width: 100%;
+      height: 100%; }
+  .content .testing-our-extension.graph-scroll-fixed .body-right {
+    position: relative;
+    right: 0;
+    left: 0;
+    width: 50%; }
+  .content .testing-our-extension.graph-scroll-below .body-right {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    top: auto; }
+.static-dyn-prop-interactive .body-right {
+  padding-top: 50px; }
+
+.static-dyn-prop-interactive .right-label {
+  text-anchor: end; }
+
+.static-dyn-prop-interactive .interactive-number {
+  text-anchor: start; }
+
+.static-dyn-prop-interactive .interactive-label,
+.static-dyn-prop-interactive .interactive-number {
+  font-family: "Open Sans";
+  font-size: 16px;
+  color: #565656; }
+
+.static-dyn-prop-interactive .input-box {
+  font-family: "Open Sans";
+  font-size: 16px;
+  color: #565656;
+  position: absolute;
+  width: 40px;
+  border: solid 1px #36B7CF; }
+
+.static-dyn-prop-interactive .dropdown-box {
+  font-family: "Open Sans";
+  font-size: 14px;
+  color: #565656;
+  position: absolute;
+  border: solid 1px #36B7CF; }
+
+.static-dyn-prop-interactive img {
+  position: absolute;
+  width: 12%; }
+
+.static-dyn-prop-interactive .static-line {
+  stroke-width: 1;
+  stroke: #36B7CF; }
+
+.dynamic-circle {
+  fill: none;
+  stroke: #36B7CF;
+  stroke-dasharray: 2, 4; }
+.content .static-dyn-prop-diagram {
+  height: calc(700px + 100vh);
+  margin-top: 200px; }
+  .content .static-dyn-prop-diagram + div {
+    margin-top: 0; }
+    .content .static-dyn-prop-diagram + div .body-left {
+      margin-top: 0; }
+  .content .static-dyn-prop-diagram .row {
+    top: 0;
+    float: left;
+    height: 100vh; }
+  .content .static-dyn-prop-diagram.graph-scroll-fixed .row {
+    position: fixed;
+    left: 47px;
+    width: calc(100% - 32px);
+    padding-left: 15px; }
+    @media (min-width: 992px) {
+      .content .static-dyn-prop-diagram.graph-scroll-fixed .row {
+        left: 310px;
+        width: calc(100% - 415px); } }
+  .content .static-dyn-prop-diagram.graph-scroll-below .row {
+    position: absolute;
+    left: 0;
+    width: calc(100% - 10px);
+    right: 0;
+    bottom: 0;
+    top: auto; }
+  .content .static-dyn-prop-diagram .body-left {
+    margin-top: 0;
+    padding-top: 35vh; }
+  .content .static-dyn-prop-diagram .body-right {
+    position: relative;
+    padding-top: 30vh;
+    height: 100%; }
+    .content .static-dyn-prop-diagram .body-right .graph {
+      position: relative;
+      width: 100%;
+      height: 80%; }
+  .content .static-dyn-prop-diagram .scroll-line {
+    position: relative;
+    top: 0;
+    width: 0;
+    height: calc(700px + 100vh);
+    float: left; }
+    .content .static-dyn-prop-diagram .scroll-line div {
+      width: 100%;
+      height: 100%; }
+  .content .static-dyn-prop-diagram.graph-scroll-fixed .body-right {
+    position: relative;
+    right: 0;
+    left: 0;
+    width: 50%; }
+  .content .static-dyn-prop-diagram.graph-scroll-below .body-right {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    top: auto; }
+
+.property-label {
+  font-family: 'Open Sans';
+  font-size: 16px;
+  color: #565656; }
+
+.number-label-left {
+  text-anchor: end; }
+
+.static-dyn-prop-diagram img {
+  position: absolute;
+  width: 12%; }
+
+.static-dyn-prop-diagram .static-line {
+  stroke-width: 1;
+  stroke: #36B7CF; }
+
+.dynamic-circle {
+  fill: none;
+  stroke: #36B7CF;
+  stroke-dasharray: 2, 4; }
+
+.dynamic-line-1,
+.dynamic-line-2 {
+  stroke-width: 1;
+  stroke: #36B7CF;
+  stroke-dasharray: 2, 4; }
+
+.dynamic-line-1-fill {
+  stroke-width: 1.5;
+  stroke: #36B7CF; }
+
+.dynamic-circle-fill {
+  stroke: #36B7CF; }
+
+.dynamic-line-2-fill {
+  stroke-width: 1.5;
+  stroke: #36B7CF; }

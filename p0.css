@@ -1,0 +1,167 @@
+/* Activate Sidebar Selection */
+#sidebar .nav-sidebar .sub-sidebar {
+  display: none; }
+
+#sidebar .nav-sidebar .sublist-0 {
+  display: block; }
+
+/* Adjust Header */
+.content .header p:first-of-type {
+  font-family: "Raleway";
+  font-size: 20px;
+  color: #565555;
+  font-weight: normal;
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 33px; }
+
+.embedded-dashboard .graph {
+  position: relative; }
+  .embedded-dashboard .graph img {
+    width: 100%;
+    height: auto;
+    margin: auto; }
+  .embedded-dashboard .graph .iframe-container {
+    position: absolute;
+    top: 4.8%;
+    left: 3.9%;
+    width: 92.2%;
+    height: 64.2%;
+    border: none; }
+    .embedded-dashboard .graph .iframe-container iframe {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+
+.self-service .body-right {
+  padding-top: 200px; }
+
+.move-past-basics .body-right {
+  padding-top: 200px; }
+  .move-past-basics .body-right .graph p {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500; }
+.open-ecosystem h3 {
+  padding-top: 500px; }
+
+.open-ecosystem .body-left {
+  padding-bottom: 400px; }
+
+.open-ecosystem .body-right {
+  padding-top: 0; }
+
+.open-ecosystem h3:first-of-type {
+  padding-top: 0; }
+
+.open-ecosystem .graph {
+  position: relative;
+  height: 100%; }
+  .open-ecosystem .graph > img:first-child {
+    max-width: 70%;
+    padding-top: 15px; }
+  .open-ecosystem .graph > img:nth-child(2) {
+    position: absolute; }
+  .open-ecosystem .graph > img:nth-child(3) {
+    position: absolute; }
+  .open-ecosystem .graph > img:nth-child(4) {
+    position: absolute; }
+  .open-ecosystem .graph .div-container {
+    position: absolute;
+    width: 100%; }
+  .open-ecosystem .graph .big-circle {
+    fill: #4A90E2; }
+  .open-ecosystem .graph .small-circle {
+    fill: #36B7CF; }
+  .open-ecosystem .graph .text {
+    font-family: 'Open Sans';
+    font-size: 11px;
+    font-weight: bold;
+    text-anchor: middle;
+    fill: white; }
+  .open-ecosystem .graph .big-line {
+    stroke-width: 2;
+    stroke: #4A90E2;
+    stroke-dasharray: 2; }
+  .open-ecosystem .graph .small-line {
+    stroke-width: 2;
+    stroke: #36B7CF;
+    stroke-dasharray: 2; }
+.qix-interaction {
+  height: 100vh; }
+  .qix-interaction .row {
+    top: 0;
+    float: left;
+    height: 100vh; }
+  .qix-interaction .body-left {
+    margin-top: 0;
+    padding-top: 10vh; }
+    .qix-interaction .body-left p {
+      margin-bottom: 20px;
+      opacity: 0.2; }
+    .qix-interaction .body-left p.current {
+      opacity: 1; }
+    .qix-interaction .body-left .button-container {
+      text-align: center; }
+      .qix-interaction .body-left .button-container button {
+        margin: 0 20px; }
+  .qix-interaction .body-right {
+    position: relative;
+    padding-top: 0;
+    height: 100%; }
+    .qix-interaction .body-right .graph {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      .qix-interaction .body-right .graph img,
+      .qix-interaction .body-right .graph .arrow-div {
+        margin: auto;
+        padding-top: 10px;
+        padding-bottom: 10px; }
+      .qix-interaction .body-right .graph .arrow-div {
+        width: 100%;
+        height: 15%;
+        padding-top: 0;
+        padding-bottom: 0; }
+      .qix-interaction .body-right .graph > img:first-of-type {
+        max-height: 15%;
+        padding-bottom: 0; }
+      .qix-interaction .body-right .graph > img:nth-of-type(2),
+      .qix-interaction .body-right .graph > img:nth-of-type(3) {
+        max-height: 45%;
+        padding-top: 0; }
+      .qix-interaction .body-right .graph > img:nth-of-type(4) {
+        width: 100px; }
+      .qix-interaction .body-right .graph > img:nth-of-type(5) {
+        width: 150px; }
+      .qix-interaction .body-right .graph .user-div {
+        height: 30%; }
+        .qix-interaction .body-right .graph .user-div img:first-of-type {
+          position: relative;
+          left: -20%;
+          height: 40%; }
+        .qix-interaction .body-right .graph .user-div img:nth-of-type(2) {
+          height: 40%; }
+      .qix-interaction .body-right .graph .line {
+        stroke-width: 2px;
+        stroke: #43C9DF;
+        stroke-dasharray: 2, 4; }
+  .qix-interaction .scroll-line {
+    position: relative;
+    top: 0;
+    width: 0;
+    height: 4000px;
+    float: left; }
+    .qix-interaction .scroll-line div {
+      width: 100%;
+      height: 100%; }
+  .qix-interaction.graph-scroll-fixed .body-right {
+    position: relative;
+    right: 0;
+    left: 0;
+    width: 50%; }
+  .qix-interaction.graph-scroll-below .body-right {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    top: auto; }
